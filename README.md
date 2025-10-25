@@ -147,8 +147,7 @@ This project is open source and available for personal use. Feel free to fork an
 ## 📧 Contact
 
 **Hrushikesh Singh**
-- 📧 Email: hrushisingh1999@gmail.com
-- 💼 LinkedIn: [Connect with me](https://linkedin.com/in/your-profile)
+- 📧 Email: hrushisingh697@gmail.com
 - 🐙 GitHub: [@Rishisingh1999](https://github.com/Rishisingh1999)
 - 🌐 Portfolio: [rishisingh1999.github.io](https://rishisingh1999.github.io/my-portfolio-website/)
 
