@@ -22,7 +22,6 @@ A cutting-edge portfolio website designed to showcase my professional journey as
 
 ### 🎯 Key Highlights
 
-- 🎨 **Advanced Dark Theme** - Pinterest/Levi Wilson-inspired animated interface
 - 🌊 **Smooth Animations** - Intersection Observer API with CSS transitions
 - 📊 **Dynamic Content** - Live GitHub repository integration
 - 🎭 **Interactive UI** - 3D hover effects, floating SVG backgrounds
@@ -102,33 +101,6 @@ A cutting-edge portfolio website designed to showcase my professional journey as
 ### View Live
 Simply visit: **[https://rishisingh1999.github.io/my-portfolio-website/](https://rishisingh1999.github.io/my-portfolio-website/)**
 
-### Run Locally
-
-```bash
-# Clone the repository
-git clone https://github.com/Rishisingh1999/my-portfolio-website.git
-
-# Navigate to directory
-cd my-portfolio-website
-
-# Open in browser (no build required!)
-open index.html
-```
-
-Or use a simple HTTP server:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js (if you have http-server installed)
-http-server
-
-# Then open: http://localhost:8000
-```
-
----
-
 ## 📸 Preview
 
 ### Desktop View
@@ -154,47 +126,6 @@ http-server
 - 💼 **Client Presentations** - Showcase expertise and projects
 - 📚 **Personal Branding** - Establish online presence
 - 🎓 **Portfolio Reviews** - Academic and professional assessments
-
----
-
-## 🔧 Customization
-
-### Easy to Modify
-
-1. **Content**: Edit `index.html` to update your information
-2. **Styling**: Modify `styles.css` color variables:
-   ```css
-   --bg-dark: #181820;
-   --primary: #5eea71;
-   --highlight: #5eea71;
-   ```
-3. **Functionality**: Extend `script.js` for additional features
-
-### Adding Projects
-Projects are hardcoded in the HTML. Simply duplicate a `.project-card` div and update the content:
-
-```html
-<div class="project-card">
-    <i class="fas fa-icon-name"></i>
-    <h3>Your Project Name</h3>
-    <p>Project description...</p>
-    <span class="tag">Tag1</span>
-    <span class="tag">Tag2</span>
-</div>
-```
-
----
-
-## 📊 Performance
-
-- ⚡ **Lighthouse Score**: 95+ across all metrics
-- 🚀 **Load Time**: < 2 seconds on average connection
-- 📦 **Total Size**: ~25KB (HTML + CSS + JS)
-- 🎨 **Smooth Animations**: 60fps on modern browsers
-
----
-
-## 🤝 Contributing
 
 This is a personal portfolio project, but suggestions are welcome!
 
