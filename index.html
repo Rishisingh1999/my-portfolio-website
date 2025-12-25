@@ -1101,6 +1101,38 @@
       nav{gap:16px;}
       nav a{font-size:0.7rem;}
     }
+
+      /* ===== TESTIMONIALS SECTION ===== */
+      .testimonials-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:48px;}
+      .testimonial-card{background:var(--card);border:1px solid var(--grid);border-radius:var(--radius);padding:32px;position:relative;transition:all 0.3s ease;}
+      .testimonial-card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 20px 40px rgba(212,175,55,0.15);}
+      .testimonial-quote{font-size:3rem;color:var(--accent);line-height:1;margin-bottom:16px;opacity:0.5;}
+      .testimonial-text{color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;}
+      .testimonial-author{border-top:1px solid var(--grid);padding-top:20px;}
+      .author-name{color:var(--text);font-weight:600;font-size:0.95rem;margin-bottom:4px;}
+      .author-title{color:var(--accent);font-size:0.85rem;}
+
+      /* ===== BLOG SECTION ===== */
+      .blog-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;margin-top:48px;}
+      .blog-card{background:var(--card);border:1px solid var(--grid);border-radius:var(--radius);padding:32px;transition:all 0.3s ease;cursor:pointer;}
+      .blog-card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 20px 40px rgba(212,175,55,0.15);}
+      .blog-badge{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent-bright));color:var(--bg);padding:6px 16px;border-radius:20px;font-size:0.75rem;font-weight:600;margin-bottom:20px;text-transform:uppercase;letter-spacing:0.5px;}
+      .blog-title{color:var(--text);font-size:1.3rem;font-weight:700;margin-bottom:16px;line-height:1.4;}
+      .blog-excerpt{color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;}
+      .blog-meta{display:flex;gap:16px;color:var(--muted);font-size:0.85rem;padding-top:16px;border-top:1px solid var(--grid);}
+      .blog-date,.blog-read{display:flex;align-items:center;}
+      .blog-cta{text-align:center;margin-top:48px;}
+
+      /* ===== SERVICES SECTION ===== */
+      .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;margin-top:48px;}
+      .service-card{background:var(--card);border:1px solid var(--grid);border-radius:var(--radius);padding:40px;transition:all 0.3s ease;}
+      .service-card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 20px 40px rgba(212,175,55,0.15);}
+      .service-icon{font-size:3rem;margin-bottom:24px;}
+      .service-title{color:var(--text);font-size:1.3rem;font-weight:700;margin-bottom:16px;line-height:1.4;}
+      .service-desc{color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;}
+      .service-list{list-style:none;}
+      .service-list li{color:var(--muted);padding:8px 0;padding-left:24px;position:relative;line-height:1.6;font-size:0.9rem;}
+      .service-list li:before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700;}
   </style>
 </head>
 <body>
@@ -1559,6 +1591,132 @@
     </div>
   </section>
 
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <!-- TESTIMONIALS SECTION -->
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <section id="testimonials" class="fade-in">
+          <div class="section-label">Client Feedback</div>
+          <h2 class="section-title">What Others Say</h2>
+          <p class="section-desc">Testimonials from colleagues, managers, and clients I've collaborated with.</p>
+
+          <div class="testimonials-container">
+                  <div class="testimonial-card">
+                            <div class="testimonial-quote">"</div>
+                            <p class="testimonial-text">Hrushikesh consistently delivered exceptional business analysis and data-driven insights that transformed our decision-making process. His ability to translate complex data into actionable strategies is outstanding.</p>
+                            <div class="testimonial-author">
+                                        <div class="author-name">Senior Manager</div>
+                                        <div class="author-title">CVS Health</div>
+                                      </div>
+                          </div>
+
+                  <div class="testimonial-card">
+                            <div class="testimonial-quote">"</div>
+                            <p class="testimonial-text">Working with Hrushikesh on our BI transformation was a game-changer. He designed dashboards that gave us real-time visibility into our operations and helped reduce our reporting cycle significantly.</p>
+                            <div class="testimonial-author">
+                                        <div class="author-name">Product Director</div>
+                                        <div class="author-title">DXC Technology</div>
+                                      </div>
+                          </div>
+
+                  <div class="testimonial-card">
+                            <div class="testimonial-quote">"</div>
+                            <p class="testimonial-text">His expertise in data engineering and automation helped us modernize our data infrastructure. Hrushikesh delivered a robust ETL solution that improved our data processing efficiency by 40%.</p>
+                            <div class="testimonial-author">
+                                        <div class="author-name">Engineering Lead</div>
+                                        <div class="author-title">Infosys</div>
+                                      </div>
+                          </div>
+                </div>
+        </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <!-- BLOG/INSIGHTS SECTION -->
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <section id="blog" class="fade-in">
+          <div class="section-label">Thought Leadership</div>
+          <h2 class="section-title">Latest Insights</h2>
+          <p class="section-desc">Exploring AI automation, workflow optimization, and career strategies in the analytics space.</p>
+
+          <div class="blog-container">
+                  <article class="blog-card">
+                            <div class="blog-badge">AI & Automation</div>
+                            <h3 class="blog-title">Building Intelligent AI Agents with LangChain</h3>
+                            <p class="blog-excerpt">A practical guide to creating autonomous AI agents that can handle complex workflows and decision-making processes using LangChain and LangSmith.</p>
+                            <div class="blog-meta">
+                                        <span class="blog-date">Dec 2025</span>
+                                        <span class="blog-read">5 min read</span>
+                                      </div>
+                          </article>
+
+                  <article class="blog-card">
+                            <div class="blog-badge">Career Strategy</div>
+                            <h3 class="blog-title">Breaking Into Business Analytics: A Data-Driven Approach</h3>
+                            <p class="blog-excerpt">Strategic insights on building a career in business analytics, optimizing your job search, and positioning yourself in the competitive market.</p>
+                            <div class="blog-meta">
+                                        <span class="blog-date">Dec 2025</span>
+                                        <span class="blog-read">7 min read</span>
+                                      </div>
+                          </article>
+
+                  <article class="blog-card">
+                            <div class="blog-badge">Workflow Automation</div>
+                            <h3 class="blog-title">Automating Business Workflows with n8n and Zapier</h3>
+                            <p class="blog-excerpt">Learn how to design and implement automated workflows that save time, reduce errors, and scale your business operations effectively.</p>
+                            <div class="blog-meta">
+                                        <span class="blog-date">Nov 2025</span>
+                                        <span class="blog-read">6 min read</span>
+                                      </div>
+                          </article>
+                </div>
+
+          <div class="blog-cta">
+                  <a href="#contact" class="btn-secondary">View All Articles →</a>
+                </div>
+        </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <!-- SERVICES SECTION -->
+    <!-- ══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+    <section id="services" class="fade-in">
+          <div class="section-label">How I Work</div>
+          <h2 class="section-title">Services & Expertise</h2>
+          <p class="section-desc">Full-spectrum analytics and automation solutions tailored to your business needs.</p>
+
+          <div class="services-grid">
+                  <div class="service-card">
+                            <div class="service-icon">📈</div>
+                            <h3 class="service-title">Business Intelligence & Analytics</h3>
+                            <p class="service-desc">Dashboard design, KPI tracking, and data visualization solutions that transform raw data into strategic insights.</p>
+                            <ul class="service-list">
+                                        <li>Power BI & Tableau dashboard development</li>
+                                        <li>Executive reporting & KPI frameworks</li>
+                                        <li>Self-service analytics implementation</li>
+                                      </ul>
+                          </div>
+
+                  <div class="service-card">
+                            <div class="service-icon">⚙️</div>
+                            <h3 class="service-title">Data Engineering & ETL</h3>
+                            <p class="service-desc">Build scalable data pipelines, ETL processes, and data warehousing solutions for enterprise-grade systems.</p>
+                            <ul class="service-list">
+                                        <li>ETL pipeline design & optimization</li>
+                                        <li>Data warehouse architecture</li>
+                                        <li>Cloud data platform migration</li>
+                                      </ul>
+                          </div>
+
+                  <div class="service-card">
+                            <div class="service-icon">🤖</div>
+                            <h3 class="service-title">AI Agents & Workflow Automation</h3>
+                            <p class="service-desc">Develop intelligent automation solutions using AI agents, LangChain, and workflow orchestration platforms.</p>
+                            <ul class="service-list">
+                                        <li>LangChain AI agent development</li>
+                                        <li>Workflow automation (n8n, Zapier)</li>
+                                        <li>Process optimization & RPA</li>
+                                      </ul>
+                          </div>
+                </div>
+        </section>
   <section id="contact" class="fade-in">
     <div class="section-label">Contact</div>
     <h2 class="section-title">Let’s Talk About Your Data</h2>
