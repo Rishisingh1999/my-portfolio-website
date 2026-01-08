@@ -1162,24 +1162,5 @@
 
     <!-- AI Chatbot Widget -->
     <div id="ai-chat-widget" style="position:fixed;bottom:30px;right:30px;z-index:999;">
-          <button id="chat-toggle" onclick="toggleChat()" style="width:60px;height:60px;border-radius:50%;border:2px solid #d4af37;background:linear-gradient(135deg,#ffd700,#d94a62);color:#160308;font-weight:800;font-size:1.5rem;cursor:pointer;box-shadow:0 8px 22px rgba(212,175,55,0.7);transition:transform 0.2s;display:flex;align-items:center;justify-content:center;">🤖</button>
-          <div id="chat-frame-container" style="display:none;position:absolute;bottom:80px;right:0;width:380px;height:600px;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.8);border:2px solid rgba(212,175,55,0.4);">
-                  <iframe src="https://poe.com/RishiPortfolioBot" style="width:100%;height:100%;border:none;"></iframe>
-                </div>
-        </div>
-
-    <script>
-          function toggleChat(){
-                  const container = document.getElementById('chat-frame-container');
-                  const button = document.getElementById('chat-toggle');
-                  if(container.style.display === 'none'){
-                            container.style.display = 'block';
-                            button.textContent = '✕';
-                          }else{
-                            container.style.display = 'none';
-                            button.textContent = '🤖';
-                          }
-                }
-        </script>
-</body>
+    <a href="https://poe.com/RishiPortfolioBot" target="_blank" rel="noopener noreferrer" id="chat-toggle" style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;border:2px solid #d4af37;background:linear-gradient(135deg,#ffd700,#d94a62);color:#160308;font-weight:800;font-size:1.5rem;cursor:pointer;box-shadow:0 8px 22px rgba(212,175,55,0.7);transition:transform 0.2s;text-decoration:none;" title="Chat with my AI Assistant">🤖</a>          <div id="chat-frame-container" style="display:none;position:absolute;bottom:80px;right:0;width:380px;height:600px;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.8);border:2px solid rgba(212,175,55,0.4);">
 </html>
