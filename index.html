@@ -1454,8 +1454,7 @@
   <button id="chat-widget-button" aria-label="Open chat">
     💬
   </button>
-  <div id="chat-widget-window">
-    <div class="chat-header">
+        <div id="chat-widget-window">
       <span>Ask me about Rishi!</span>
       <button class="chat-close" aria-label="Close chat">×</button>
     </div>
@@ -1472,13 +1471,15 @@
 </div>
 
 <script>
-(function() {
+  document.addEventListener('DOMContentLoaded', function() {
   const chatButton = document.getElementById('chat-widget-button');
   const chatWindow = document.getElementById('chat-widget-window');
   const chatClose = document.querySelector('.chat-close');
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const chatSend = document.getElementById('chat-send');
+
+      console.log('Chat elements:', { chatButton, chatWindow, chatClose });
   
   // Toggle chat window
   chatButton.addEventListener('click', () => {
@@ -1556,6 +1557,7 @@
   chatInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') sendMessage();
   });
-})();
+})
 </script>
+
 </html>
