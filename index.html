@@ -1057,23 +1057,26 @@
             <li><span>Portfolio:</span> <a href="https://rishisingh1999.github.io" target="_blank">rishisingh1999.github.io</a></li>
           </ul>
         </div>
-        <form class="contact-form card" onsubmit="return false;">
-          <h3>Quick Message (Demo)</h3>
+      <form class="contact__form card" action="https://formsubmit.co/hrushisingh697@gmail.com" method="POST">          <h3>Quick Message (Demo)</h3>
+                <!-- FormSubmit Configuration -->
+                         <input type="hidden" name="_subject" value="New Portfolio Contact from Website!">
+                                 <input type="hidden" name="_captcha" value="false">
+                                         <input type="hidden" name="_template" value="table">
+                                                 <input type="text" name="_honey" style="display:none">
+                                                         <input type="hidden" name="_next" value="https://rishisingh1999.github.io/my-portfolio-website/#contact">
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Your name" />
+            <input name="name" required id="name" type="text" placeholder="name="name" Your name" />
           </div>
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" type="email" placeholder="you@example.com" />
+            <input id="email" name="email" required type="email" placeholder="you@example.com" />
           </div>
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" rows="4" placeholder="Project details, role, or collaboration idea..."></textarea>
+            <textarea idname="message" required ="message" rows="4" placeholder="Project details, role, or collaboration idea..."></textarea>
           </div>
-          <button class="btn btn--primary" id="fake-submit">Send Message</button>
-          <p class="form-status" id="form-status">Form is in demo mode for this portfolio.</p>
-        </form>
+        <button type="submit" class="btn btn--primary">Send Message</button>          <p class="form-status" id="form-status">Form is in demo mode for this portfolio.</p>
       </div>
     </section>
 
@@ -1213,7 +1216,7 @@
       }
     });
   </script>
-
+/*  */
   <!-- Small JS wrapper: compile TS block above at runtime -->
   <script>
     (function () {
@@ -1221,7 +1224,7 @@
       if (!tsScript) return;
       const tsCode = tsScript.textContent || "";
       // compile TypeScript to JavaScript using the TS compiler loaded in <head>
-      const jsCode = window.ts.transpile(tsCode, {
+      const jsCode = window.ts.transpile(tsCode, /
         target: window.ts.ScriptTarget.ES2017,
         module: window.ts.ModuleKind.None,
       });
@@ -1232,3 +1235,4 @@
   </script>
 </body>
 </html>
+
