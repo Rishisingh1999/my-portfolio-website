@@ -2,738 +2,1233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Hrushikesh Singh Bondili | RevOps & Business Analytics</title>
+  <title>Hrushikesh Singh Bondili | RevOps & Analytics Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Hrushikesh Singh Bondili - RevOps Analyst & Business Analyst specializing in revenue operations, analytics, dashboards, and automation." />
+  <meta
+    name="description"
+    content="Portfolio of Hrushikesh Singh Bondili – RevOps Analyst and Business Analyst specializing in revenue analytics, dashboards and automation."
+  />
+  <!-- TypeScript compiler from CDN so we can run TS directly in the browser -->
+  <script src="https://unpkg.com/typescript@5.6.3/lib/typescript.js"></script>
   <style>
+    /* ===== Base ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --card: #111827;
-      --accent: #3b82f6;
-      --accent-soft: rgba(59, 130, 246, 0.2);
+      --bg: #020617;
+      --bg-alt: #020a16;
+      --bg-card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-strong: #0ea5e9;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1f2937;
-      --radius-lg: 14px;
-      --radius-md: 10px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
-      --shadow-chip: 0 10px 25px rgba(15, 23, 42, 0.8);
-      --transition-fast: 0.2s ease;
-      --transition-med: 0.3s ease;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 999px;
+      --shadow-card: 0 25px 60px rgba(15, 23, 42, 0.9);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text",
+        "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    * {
-      box-sizing: border-box;
+    html,
+    body {
       margin: 0;
       padding: 0;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
+      color: var(--text);
+      font-family: var(--font-sans);
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: var(--font-sans);
-      background: radial-gradient(circle at top left, #111827 0, #020617 45%, #000 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .page {
-      max-width: 1100px;
+    #app {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
+      padding: 20px 18px 60px;
     }
 
-    header {
+    /* ===== Navigation ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      padding: 10px 14px;
+      margin: 0 -14px 12px;
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.98), rgba(2, 6, 23, 0.86));
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .brand h1 {
-      font-size: 1.9rem;
-      letter-spacing: 0.04em;
-    }
-
-    .brand .title {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
+    .nav__logo {
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       font-size: 0.9rem;
-      color: var(--muted);
-      justify-content: flex-end;
     }
 
-    .pill-link {
+    .nav__logo span {
+      color: var(--accent);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav__links a {
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), #22c55e);
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav__links a:hover {
+      color: #f9fafb;
+    }
+
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    .nav__cta {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+    }
+
+    .nav__menu {
+      display: none;
+      border: none;
+      background: transparent;
+      padding: 0;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav__menu span {
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin: 4px -14px 0;
+      padding: 10px 16px 14px;
+      background: rgba(2, 6, 23, 0.97);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-mobile a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 26px;
+      padding: 28px 4px 24px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       padding: 6px 12px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.9);
-      box-shadow: var(--shadow-chip);
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: background var(--transition-fast), border-color var(--transition-fast), transform 0.15s ease;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.75);
+      font-size: 0.75rem;
+      color: var(--muted);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
     }
 
-    .pill-link span.icon {
-      width: 18px;
-      height: 18px;
+    .hero__badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero__title {
+      margin: 16px 0 10px;
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      line-height: 1.25;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .hero__text {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 34rem;
+    }
+
+    .hero__actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast), border-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, var(--accent-strong), #22c55e);
+      color: #0b1120;
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.9);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+      max-width: 520px;
+    }
+
+    .stat {
+      padding: 10px 9px 8px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      box-shadow: var(--shadow-card);
+    }
+
+    .stat__number {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .stat__suffix {
+      font-size: 0.8rem;
+      margin-left: 2px;
+      color: var(--accent);
+    }
+
+    .stat__label {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero__visual {
+      position: relative;
+      min-height: 260px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
+      perspective: 1200px;
+    }
+
+    .hero__card {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      padding: 20px 18px 22px;
+      border-radius: 22px;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.25), #020617);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.95);
+      transform-style: preserve-3d;
+      transform: rotateX(14deg) rotateY(-14deg);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero__tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero__name {
+      margin-top: 14px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .hero__role {
+      margin-top: 4px;
       font-size: 0.85rem;
+      color: var(--accent);
     }
 
-    .pill-link:hover {
-      background: #020617;
-      border-color: var(--accent);
-      transform: translateY(-1px);
-      text-decoration: none;
+    .hero__orb {
+      position: absolute;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent);
+      filter: blur(1px);
+      mix-blend-mode: screen;
+      opacity: 0.7;
     }
 
-    main {
+    .hero__orb--1 {
+      width: 120px;
+      height: 120px;
+      top: 10%;
+      right: 5%;
+      animation: orb1 14s linear infinite;
+    }
+
+    .hero__orb--2 {
+      width: 150px;
+      height: 150px;
+      bottom: -10%;
+      left: -10%;
+      animation: orb2 18s linear infinite;
+    }
+
+    .hero__orb--3 {
+      width: 90px;
+      height: 90px;
+      bottom: 20%;
+      right: -5%;
+      animation: orb3 12s linear infinite;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== Sections ===== */
+    .section {
+      padding: 28px 4px 24px;
+    }
+
+    .section--alt {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.9));
+      border-radius: 24px;
+      border: 1px solid rgba(15, 23, 42, 0.85);
+      box-shadow: var(--shadow-card);
+      margin-top: 10px;
+    }
+
+    .section__header {
+      margin-bottom: 18px;
+    }
+
+    .section__header h2 {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .section__header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.5fr);
-      gap: 24px;
+      gap: 18px;
     }
 
-    @media (max-width: 880px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .contact {
-        justify-content: flex-start;
-      }
+    .services {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
-    section {
-      margin-bottom: 22px;
+    .projects {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
 
-    .section-card {
-      background: radial-gradient(circle at top left, rgba(55, 65, 81, 0.45), rgba(15, 23, 42, 0.95));
+    .testimonials {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      padding: 16px 14px 14px;
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.85);
-      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.97));
+      border: 1px solid rgba(31, 41, 55, 0.95);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
 
-    .section-card::before {
+    .card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .section-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.17em;
-      color: var(--muted);
-    }
-
-    .section-tagline {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .summary-text {
-      font-size: 0.9rem;
-      color: #d1d5db;
-    }
-
-    .summary-highlight {
-      color: #f97316;
-      font-weight: 500;
-    }
-
-    .experience-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 6px;
-    }
-
-    .exp-card {
-      padding: 12px 12px 10px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .exp-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(59, 130, 246, 0.18), transparent 40%);
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 60%);
       opacity: 0;
       transition: opacity var(--transition-med);
       pointer-events: none;
     }
 
-    .exp-card:hover::before {
+    .card:hover::before {
       opacity: 1;
     }
 
-    .exp-topline {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: baseline;
-      margin-bottom: 3px;
-    }
-
-    .exp-role {
-      font-size: 0.97rem;
-      font-weight: 600;
-    }
-
-    .exp-meta {
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: right;
-    }
-
-    .exp-org {
-      font-size: 0.83rem;
-      color: #9ca3af;
-    }
-
-    .exp-tags {
+    .card h3 {
       margin-top: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .chip {
-      font-size: 0.7rem;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .exp-bullets {
-      margin-top: 6px;
-      padding-left: 16px;
-      list-style: disc;
-      font-size: 0.8rem;
-      color: #d1d5db;
-    }
-
-    .exp-bullets li + li {
-      margin-top: 3px;
-    }
-
-    .projects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    .project-card {
-      padding: 10px 11px 9px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.98));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: baseline;
       margin-bottom: 4px;
+      font-size: 1rem;
     }
 
-    .project-name {
+    .card p {
+      margin: 4px 0;
+      color: #d1d5db;
       font-size: 0.9rem;
-      font-weight: 600;
     }
 
-    .project-meta {
-      font-size: 0.76rem;
+    .service ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 6px;
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
-    .project-stack {
-      font-size: 0.78rem;
-      color: #a5b4fc;
-      margin-bottom: 3px;
-      font-family: var(--font-mono);
+    .service ul li::before {
+      content: "• ";
+      color: var(--accent);
     }
 
-    .project-text {
-      font-size: 0.8rem;
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 22px;
+    }
+
+    .about-layout__col p {
+      font-size: 0.9rem;
       color: #e5e7eb;
     }
 
-    .project-text span.metric {
-      color: #22c55e;
-      font-weight: 500;
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-left: 1px solid rgba(55, 65, 81, 0.8);
+      padding-left: 14px;
     }
 
-    .skills-group {
-      margin-top: 6px;
+    .timeline__item {
+      position: relative;
+      margin-bottom: 12px;
     }
 
-    .skills-title {
+    .timeline__item::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.2);
+    }
+
+    .timeline__title {
+      font-size: 0.9rem;
+    }
+
+    .timeline__meta {
       font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: var(--muted);
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 22px;
+    }
+
+    .skills-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skill-bar__label {
+      font-size: 0.83rem;
       margin-bottom: 3px;
     }
 
-    .skills-chips {
+    .skill-bar__track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      overflow: hidden;
+    }
+
+    .skill-bar__fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent-strong), #22c55e);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+      transition: width 1.1s ease-out;
+    }
+
+    .skills-tags h3 {
+      font-size: 0.9rem;
+    }
+
+    .tag-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
+      margin-top: 6px;
     }
 
-    .skills-chips .chip {
+    .tag {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      border-radius: 999px;
       background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
     }
 
-    .education-item {
+    .project__category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+      color: var(--muted);
+    }
+
+    .project__stack {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    .testimonial p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .testimonial__meta {
       margin-top: 8px;
-    }
-
-    .edu-topline {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 0.82rem;
-    }
-
-    .edu-degree {
-      font-weight: 500;
-    }
-
-    .edu-inst {
       font-size: 0.8rem;
       color: var(--muted);
-      margin-top: 2px;
     }
 
-    .cert-list {
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 20px;
+    }
+
+    .contact-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.87rem;
+    }
+
+    .contact-card li + li {
+      margin-top: 6px;
+    }
+
+    .contact-card span {
+      color: var(--muted);
+      margin-right: 4px;
+    }
+
+    .contact-form .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .contact-form label {
       font-size: 0.8rem;
-      color: #d1d5db;
+      color: var(--muted);
     }
 
-    .cert-list li + li {
-      margin-top: 2px;
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 10px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 8px 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
     }
 
-    footer {
-      margin-top: 22px;
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+    }
+
+    .form-status {
+      margin-top: 6px;
       font-size: 0.78rem;
       color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding-top: 10px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
     }
 
-    .footer-note {
-      opacity: 0.8;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
+    .footer {
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(15, 23, 42, 0.8);
+      font-size: 0.8rem;
       color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(148, 163, 184, 0.5);
+      text-align: center;
     }
 
-    .footer-links a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
+    @keyframes float {
+      0% {
+        transform: rotateX(14deg) rotateY(-14deg) translateY(0);
+      }
+      50% {
+        transform: rotateX(10deg) rotateY(-10deg) translateY(-10px);
+      }
+      100% {
+        transform: rotateX(14deg) rotateY(-14deg) translateY(0);
+      }
+    }
+
+    @keyframes orb1 {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(-10px, 20px, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes orb2 {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(20px, -10px, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes orb3 {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(-16px, 6px, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .anim-fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .anim-fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .anim-tilt {
+      transform: perspective(800px) rotateX(8deg) rotateY(-6deg) translateY(10px);
+      transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+    }
+
+    .anim-tilt:hover {
+      transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 1);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero__visual {
+        order: -1;
+      }
+      .hero__stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .about-layout,
+      .skills-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav__links {
+        display: none;
+      }
+      .nav__menu {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <h1>Hrushikesh Singh Bondili</h1>
-        <div class="title">RevOps Analyst · Business Analytics · Data Science</div>
-      </div>
-      <div class="contact">
-        <span>United States</span>
-        <span>·</span>
-        <a href="tel:+12039944997">+1 203‑994‑4997</a>
-        <span>·</span>
-        <a href="mailto:hrushisingh697@gmail.com">hrushisingh697@gmail.com</a>
-        <a class="pill-link" href="https://linkedin.com/in/hrushikesh-singh-revops" target="_blank" rel="noreferrer">
-          <span class="icon">in</span>
-          <span>LinkedIn</span>
-  
-      </div>
+  <div id="app">
+    <header class="nav">
+      <div class="nav__logo">HSB<span>.</span></div>
+      <nav class="nav__links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#testimonials">Clients</a>
+        <a href="#contact" class="nav__cta">Contact</a>
+      </nav>
+      <button class="nav__menu" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
     </header>
 
-    <main>
-      <!-- LEFT COLUMN -->
-      <div>
-        <!-- Summary -->
-        <section class="section-card">
-          <div class="section-inner">
-            <div class="section-header">
-              <div class="section-title">Professional Summary</div>
-              <div class="section-tagline">RevOps · Analytics · Automation</div>
-            </div>
-            <p class="summary-text">
-              Results-driven <span class="summary-highlight">RevOps & Business Analyst</span> with 4+ years across Deloitte, A3 Technology, Salesforce, Outreach.io, and Wipro, focused on revenue forecasting, pipeline optimization, and data-driven decision-making in Agile environments. 
-              I build scalable Power BI/Tableau dashboards, automate workflows with SQL/Python/n8n, and help leadership uncover multimillion-dollar revenue opportunities through advanced analytics and stakeholder collaboration.
-            </p>
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#testimonials">Clients</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero" id="hero">
+      <div class="hero__content">
+        <span class="hero__badge">RevOps · Analytics · Automation</span>
+        <h1 class="hero__title">
+          I’m <span class="accent">Hrushikesh Singh Bondili</span><br />
+          RevOps Analyst & Business Analyst
+        </h1>
+        <p class="hero__text">
+          I help SaaS and GovCon teams unlock <strong>data-driven revenue growth</strong> with Power BI dashboards,
+          predictive models, and automated RevOps workflows.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary hero__btn">Hire Me</a>
+          <a href="#projects" class="btn btn--ghost">View Projects</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__number" data-target="4">0</span><span class="stat__suffix">+</span>
+            <span class="stat__label">Years Experience</span>
           </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="section-card">
-          <div class="section-inner">
-            <div class="section-header">
-              <div class="section-title">Professional Experience</div>
-              <div class="section-tagline">Recent roles & impact</div>
-            </div>
-
-            <div class="experience-list">
-              <!-- A3 Technology -->
-              <article class="exp-card">
-                <div class="exp-topline">
-                  <div class="exp-role">RevOps Analyst · A3 Technology, Inc.</div>
-                  <div class="exp-meta">Jan 2026 – Present · Remote (US)</div>
-                </div>
-                <div class="exp-org">GovCon · IT & staffing revenue · AI & cyber-defense pipeline</div>
-                <div class="exp-tags">
-                  <span class="chip">Power BI</span>
-                  <span class="chip">SQL · Python</span>
-                  <span class="chip">n8n</span>
-                  <span class="chip">Revenue Forecasting</span>
-                </div>
-                <ul class="exp-bullets">
-                  <li>Analyze IT/staffing revenue across client acquisition, billing, and renewals, targeting AI and cyber-defense pipeline optimization for government contractor operations.</li>
-                  <li>Build Power BI dashboards tracking ARR, MRR, churn, and pipeline health, enabling leadership to identify <strong>$2M+</strong> revenue optimization opportunities.</li>
-                  <li>Automate reporting workflows using n8n and Python, reducing manual reporting time by 30% and improving data accuracy for decision-making.</li>
-                  <li>Partner with sales and finance to define KPIs, perform gap analysis, and implement process improvements aligned with revenue growth objectives.</li>
-                </ul>
-              </article>
-
-              <!-- Salesforce -->
-              <article class="exp-card">
-                <div class="exp-topline">
-                  <div class="exp-role">Salesforce Revenue Cloud Analyst · Salesforce</div>
-                  <div class="exp-meta">Mar 2025 – Dec 2025 · Remote (CA)</div>
-                </div>
-                <div class="exp-org">SaaS · Revenue Cloud · GTM analytics</div>
-                <div class="exp-tags">
-                  <span class="chip">Revenue Cloud</span>
-                  <span class="chip">Power BI</span>
-                  <span class="chip">Forecasting</span>
-                </div>
-                <ul class="exp-bullets">
-                  <li>Developed customer health dashboard combining 15+ signals and win/loss analysis on 100+ deals, identifying <strong>$1.5M</strong> revenue recovery opportunities.</li>
-                  <li>Built sales performance and pipeline dashboards with Python time-series models, improving forecast accuracy by 20%.</li>
-                  <li>Automated Salesforce Revenue Cloud reporting, cutting manual data extraction by 40% and enabling near real-time revenue insights.</li>
-                  <li>Collaborated with Sales, Finance, and Product to define metrics and deliver actionable insights in Agile sprints.</li>
-                </ul>
-              </article>
-
-              <!-- Outreach.io -->
-              <article class="exp-card">
-                <div class="exp-topline">
-                  <div class="exp-role">Revenue Operations Analyst · Outreach.io</div>
-                  <div class="exp-meta">Jan 2024 – Dec 2024 · Remote (CT)</div>
-                </div>
-                <div class="exp-org">Sales engagement · GTM analytics</div>
-                <div class="exp-tags">
-                  <span class="chip">ARR & Churn</span>
-                  <span class="chip">Power BI</span>
-                  <span class="chip">Predictive Modeling</span>
-                </div>
-                <ul class="exp-bullets">
-                  <li>Performed ARR and churn prediction on 1M+ sales sequences, reducing churn risk by 18% for mid‑market accounts using Python and cohort analysis.</li>
-                  <li>Designed RevOps dashboards tracking funnel conversion, CAC, LTV, and pipeline velocity for data-driven sales strategy.</li>
-                  <li>Automated data pipelines integrating Salesforce, HubSpot, and billing systems with n8n and Python.</li>
-                  <li>Led root cause analysis on pipeline bottlenecks and process changes that increased win rates by 12%.</li>
-                </ul>
-              </article>
-
-              <!-- Deloitte -->
-              <article class="exp-card">
-                <div class="exp-topline">
-                  <div class="exp-role">RevOps Data Analyst · Deloitte</div>
-                  <div class="exp-meta">Aug 2023 – Dec 2023 · Remote (NY)</div>
-                </div>
-                <div class="exp-org">Consulting · Fortune 500 SaaS clients</div>
-                <div class="exp-tags">
-                  <span class="chip">Power BI</span>
-                  <span class="chip">SQL</span>
-                  <span class="chip">Churn Models</span>
-                </div>
-                <ul class="exp-bullets">
-                  <li>Built ARR, MRR, churn, and CAC dashboards for SaaS clients, uncovering <strong>$2M</strong> pipeline optimization opportunities via variance and trend analysis.</li>
-                  <li>Developed predictive churn models (Scikit‑learn, XGBoost) achieving 85% AUC‑PR to enable proactive retention strategies.</li>
-                  <li>Automated ETL pipelines with SQL Server, Power Query, and Python, reducing reporting cycle time by 50%.</li>
-                  <li>Partnered with client stakeholders to define KPIs and deliver executive-ready dashboards.</li>
-                </ul>
-              </article>
-
-              <!-- Wipro -->
-              <article class="exp-card">
-                <div class="exp-topline">
-                  <div class="exp-role">Workforce Real-Time Analyst · Wipro Ltd.</div>
-                  <div class="exp-meta">Mar 2022 – Jul 2023 · Hyderabad, India</div>
-                </div>
-                <div class="exp-org">Workforce management · Ops analytics</div>
-                <div class="exp-tags">
-                  <span class="chip">Power BI</span>
-                  <span class="chip">SQL</span>
-                  <span class="chip">Ops Optimization</span>
-                </div>
-                <ul class="exp-bullets">
-                  <li>Designed Power BI dashboards tracking KPIs and queue metrics for 500+ staff, reducing manual reporting by 40%.</li>
-                  <li>Automated daily and weekly labor utilization reports with SQL and Excel VBA, saving 10+ hours per week.</li>
-                  <li>Improved scheduling accuracy by 15% and reduced overtime costs by $50K annually through process changes.</li>
-                  <li>Monitored real-time adherence and led root cause analysis for service level misses.</li>
-                </ul>
-              </article>
-            </div>
+          <div class="stat">
+            <span class="stat__number" data-target="6">0</span><span class="stat__suffix">+</span>
+            <span class="stat__label">Analytics Projects</span>
           </div>
-        </section>
+          <div class="stat">
+            <span class="stat__number" data-target="5">0</span><span class="stat__suffix">+</span>
+            <span class="stat__label">Organizations</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-target="2">0</span><span class="stat__suffix">M+</span>
+            <span class="stat__label">Revenue Impact</span>
+          </div>
+        </div>
       </div>
+      <div class="hero__visual">
+        <div class="hero__card hero__card--main">
+          <div class="hero__tag">RevOps · Revenue Analytics</div>
+          <div class="hero__name">Hrushikesh Singh<br />Bondili</div>
+          <div class="hero__role">RevOps Analyst</div>
+        </div>
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__orb hero__orb--3"></div>
+      </div>
+      <div class="hero__scroll">Scroll</div>
+    </section>
 
-      <!-- RIGHT COLUMN -->
-      <div>
-        <!-- Key Projects -->
-        <section class="section-card">
-          <div class="section-inner">
-            <div class="section-header">
-              <div class="section-title">Key Projects</div>
-              <div class="section-tagline">Hands-on analytics & ML</div>
-            </div>
+    <section class="section" id="services">
+      <header class="section__header">
+        <h2>My Services</h2>
+        <p>End‑to‑end revenue analytics and RevOps support for SaaS and GovCon teams.</p>
+      </header>
+      <div class="grid services">
+        <article class="service card anim-fade-up">
+          <h3>Revenue Analytics & Forecasting</h3>
+          <p>
+            Build Power BI and Python‑powered forecasting models to improve revenue visibility and accuracy across ARR, MRR, and pipeline.
+          </p>
+          <ul>
+            <li>ARR/MRR forecasting</li>
+            <li>Scenario modeling</li>
+            <li>Executive‑ready dashboards</li>
+          </ul>
+        </article>
+        <article class="service card anim-fade-up">
+          <h3>RevOps Dashboarding</h3>
+          <p>
+            Design interactive dashboards for funnel performance, churn, CAC, and LTV so GTM teams can make fast, data‑driven decisions.
+          </p>
+          <ul>
+            <li>Sales & pipeline analytics</li>
+            <li>Customer health scoring</li>
+            <li>Funnel & cohort views</li>
+          </ul>
+        </article>
+        <article class="service card anim-fade-up">
+          <h3>Workflow Automation</h3>
+          <p>
+            Automate RevOps reporting with SQL, Python, Airflow, and n8n, eliminating manual work and reducing data latency.
+          </p>
+          <ul>
+            <li>ETL/ELT workflows</li>
+            <li>Cross‑tool integrations</li>
+            <li>Alerting & monitoring</li>
+          </ul>
+        </article>
+        <article class="service card anim-fade-up">
+          <h3>Business Analysis & Strategy</h3>
+          <p>
+            Translate business goals into requirements, KPIs, and process improvements that directly support revenue growth.
+          </p>
+          <ul>
+            <li>Requirements & BRD/FRD</li>
+            <li>Gap & root‑cause analysis</li>
+            <li>Stakeholder workshops</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-            <div class="projects-grid">
-              <article class="project-card">
-                <div class="project-header">
-                  <div class="project-name">AI-Powered Supply Chain Disruption Predictor</div>
-                  <div class="project-meta">Jan 2024 – Present</div>
-                </div>
-                <div class="project-stack">Python · XGBoost · Power BI · Tableau</div>
-                <p class="project-text">
-                  Developed a machine learning system forecasting supplier risk levels with 94.2% accuracy on Kaggle-based datasets from 500+ suppliers across 7 countries, achieving a Mean Absolute Error of 2.18 on a 0–100 risk scale and identifying 
-                  <span class="metric">$280M+</span> in annual savings potential via targeted risk mitigation scenarios in Power BI.
-                </p>
-              </article>
+    <section class="section section--alt" id="about">
+      <header class="section__header">
+        <h2>More About Me</h2>
+        <p>RevOps, business analytics, and data science with a strong consulting mindset.</p>
+      </header>
+      <div class="about-layout">
+        <div class="about-layout__col">
+          <h3>Profile</h3>
+          <p>
+            I’m a RevOps and business analytics professional with experience at Deloitte, A3 Technology, Salesforce, Outreach.io, and Wipro.
+            I specialize in revenue forecasting, churn prediction, and pipeline optimization using Power BI, Python, and SQL.
+          </p>
+          <p>
+            I enjoy building scalable analytics products, bridging business and technical teams, and turning raw data into clear, actionable narratives.
+          </p>
+        </div>
+        <div class="about-layout__col">
+          <h3>Education</h3>
+          <ul class="timeline">
+            <li class="timeline__item">
+              <div class="timeline__title">Master of Business Analytics (GPA 3.4/4.0)</div>
+              <div class="timeline__meta">Sacred Heart University · 2023 – 2024</div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__title">Bachelor of Commerce in Computer Applications</div>
+              <div class="timeline__meta">Jagruthi Degree &amp; PG College · 2018 – 2021</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-              <article class="project-card">
-                <div class="project-header">
-                  <div class="project-name">Hospital Readmission Risk Model</div>
-                  <div class="project-meta">Sep 2024 – Oct 2024</div>
-                </div>
-                <div class="project-stack">Python · XGBoost · Power BI</div>
-                <p class="project-text">
-                  Built a classification model on 100K patient records using feature engineering and model evaluation (AUC‑PR 85%) and delivered a Power BI dashboard with risk segmentation, enabling clinicians to prioritize interventions for high‑risk patients.
-                </p>
-              </article>
-
-              <article class="project-card">
-                <div class="project-header">
-                  <div class="project-name">EV Adoption Market Analysis</div>
-                  <div class="project-meta">Jan 2024</div>
-                </div>
-                <div class="project-stack">SQL · Python · Tableau</div>
-                <p class="project-text">
-                  Analyzed 2,000+ US counties to identify EV adoption drivers (income, charging infra, incentives), performed market segmentation, and built an interactive Tableau dashboard with LOD expressions to guide expansion and capital allocation decisions.
-                </p>
-              </article>
+    <section class="section" id="skills">
+      <header class="section__header">
+        <h2>My Skills</h2>
+        <p>Tools and technologies I use to deliver RevOps and analytics impact.</p>
+      </header>
+      <div class="skills-layout">
+        <div class="skills-bars">
+          <div class="skill-bar">
+            <div class="skill-bar__label">Power BI & DAX</div>
+            <div class="skill-bar__track">
+              <div class="skill-bar__fill" data-level="92"></div>
             </div>
           </div>
-        </section>
-
-        <!-- Technical Skills -->
-        <section class="section-card">
-          <div class="section-inner">
-            <div class="section-header">
-              <div class="section-title">Technical Skills</div>
-              <div class="section-tagline">Tools I use daily</div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skills-title">Data Analytics</div>
-              <div class="skills-chips">
-                <span class="chip">Advanced SQL</span>
-                <span class="chip">CTEs & Windows</span>
-                <span class="chip">Python</span>
-                <span class="chip">Pandas & NumPy</span>
-                <span class="chip">Scikit‑learn</span>
-                <span class="chip">Predictive Modeling</span>
-                <span class="chip">A/B Testing</span>
-                <span class="chip">Feature Engineering</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skills-title">BI & Visualization</div>
-              <div class="skills-chips">
-                <span class="chip">Power BI · DAX</span>
-                <span class="chip">Data Modeling</span>
-                <span class="chip">Power Query</span>
-                <span class="chip">RLS</span>
-                <span class="chip">Tableau</span>
-                <span class="chip">LOD Expressions</span>
-                <span class="chip">SSRS</span>
-                <span class="chip">Data Storytelling</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skills-title">Cloud & Automation</div>
-              <div class="skills-chips">
-                <span class="chip">Azure Synapse</span>
-                <span class="chip">Azure Data Factory</span>
-                <span class="chip">AWS S3 · Glue</span>
-                <span class="chip">Snowflake</span>
-                <span class="chip">Apache Airflow</span>
-                <span class="chip">n8n</span>
-                <span class="chip">ETL/ELT</span>
-                <span class="chip">Workflow Automation</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skills-title">Business & RevOps</div>
-              <div class="skills-chips">
-                <span class="chip">Requirements Gathering</span>
-                <span class="chip">Process Modeling</span>
-                <span class="chip">Gap Analysis</span>
-                <span class="chip">Root Cause Analysis</span>
-                <span class="chip">Stakeholder Management</span>
-                <span class="chip">Agile/Scrum</span>
-                <span class="chip">Salesforce Revenue Cloud</span>
-                <span class="chip">Churn Prediction</span>
-                <span class="chip">Customer Health Scoring</span>
-                <span class="chip">Deal Desk</span>
-                <span class="chip">Win/Loss</span>
-              </div>
+          <div class="skill-bar">
+            <div class="skill-bar__label">SQL (CTEs, windows, optimization)</div>
+            <div class="skill-bar__track">
+              <div class="skill-bar__fill" data-level="90"></div>
             </div>
           </div>
-        </section>
-
-        <!-- Education & Certifications -->
-        <section class="section-card">
-          <div class="section-inner">
-            <div class="section-header">
-              <div class="section-title">Education & Certifications</div>
-              <div class="section-tagline">Academic & continuous learning</div>
-            </div>
-
-            <div class="education-item">
-              <div class="edu-topline">
-                <div class="edu-degree">Master of Business Analytics (GPA 3.4/4.0)</div>
-                <div class="edu-meta">Sep 2023 – Dec 2024</div>
-              </div>
-              <div class="edu-inst">Sacred Heart University · Fairfield, CT, United States</div>
-            </div>
-
-            <div class="education-item">
-              <div class="edu-topline">
-                <div class="edu-degree">Bachelor of Commerce in Computer Applications</div>
-                <div class="edu-meta">2018 – 2021</div>
-              </div>
-              <div class="edu-inst">Jagruthi Degree &amp; PG College · Hyderabad, India</div>
-            </div>
-
-            <div class="education-item" style="margin-top:10px;">
-              <div class="skills-title">Certifications</div>
-              <ul class="cert-list">
-                <li>Business Analysis Foundations (LinkedIn, Nov 2025), IIBA-aligned Business Analysis.</li>
-                <li>Career Essentials in Generative AI by Microsoft & LinkedIn (Oct 2025), Microsoft Copilot.</li>
-                <li>Microsoft Certified Power BI Data Analyst (PL‑300) – in progress.</li>
-                <li>Apache Airflow Fundamentals, n8n Automation Specialist (in progress), Agile Scrum Framework.</li>
-              </ul>
+          <div class="skill-bar">
+            <div class="skill-bar__label">Python (Pandas, ML, XGBoost)</div>
+            <div class="skill-bar__track">
+              <div class="skill-bar__fill" data-level="88"></div>
             </div>
           </div>
-        </section>
+          <div class="skill-bar">
+            <div class="skill-bar__label">Revenue Operations & GTM Analytics</div>
+            <div class="skill-bar__track">
+              <div class="skill-bar__fill" data-level="86"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar__label">Workflow Automation (n8n, Airflow)</div>
+            <div class="skill-bar__track">
+              <div class="skill-bar__fill" data-level="84"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-tags card">
+          <h3>Tech Stack</h3>
+          <div class="tag-grid">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">Azure Synapse</span>
+            <span class="tag">Azure Data Factory</span>
+            <span class="tag">AWS S3 / Glue</span>
+            <span class="tag">Apache Airflow</span>
+            <span class="tag">n8n</span>
+            <span class="tag">Scikit‑learn</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">Salesforce Revenue Cloud</span>
+          </div>
+          <h3 style="margin-top:1.5rem;">Business Skills</h3>
+          <div class="tag-grid">
+            <span class="tag">Requirements Gathering</span>
+            <span class="tag">KPI Definition</span>
+            <span class="tag">Gap Analysis</span>
+            <span class="tag">Root Cause Analysis</span>
+            <span class="tag">Agile & Scrum</span>
+            <span class="tag">Stakeholder Management</span>
+          </div>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <footer>
-      <div class="footer-note">
-        Open to RevOps, Revenue Analytics, and Business Analytics roles (remote or hybrid).
+    <section class="section section--alt" id="projects">
+      <header class="section__header">
+        <h2>My Latest Projects</h2>
+        <p>Selected projects that showcase my approach to analytics, ML, and RevOps.</p>
+      </header>
+      <div class="grid projects">
+        <article class="project card anim-tilt">
+          <div class="project__category">Supply Chain Analytics</div>
+          <h3>AI‑Powered Supply Chain Disruption Predictor</h3>
+          <p>
+            Machine learning system forecasting supplier risk with 94.2% accuracy and MAE of 2.18 on a 0–100 scale, unlocking <strong>$280M+</strong> in potential savings.
+          </p>
+          <div class="project__stack">Python · XGBoost · Power BI · Tableau</div>
+        </article>
+        <article class="project card anim-tilt">
+          <div class="project__category">Healthcare Analytics</div>
+          <h3>Hospital Readmission Risk Model</h3>
+          <p>
+            Predictive model on 100K patient records with 85% AUC‑PR and a Power BI dashboard to help clinicians prioritize high‑risk patients.
+          </p>
+          <div class="project__stack">Python · XGBoost · Power BI</div>
+        </article>
+        <article class="project card anim-tilt">
+          <div class="project__category">Market Intelligence</div>
+          <h3>EV Adoption Market Analysis</h3>
+          <p>
+            Analysis of 2,000+ US counties to identify EV adoption drivers and build an interactive Tableau dashboard for expansion strategy.
+          </p>
+          <div class="project__stack">SQL · Python · Tableau</div>
+        </article>
       </div>
-      <div class="footer-links">
-        <a href="mailto:hrushisingh697@gmail.com">Email me</a>
-        <a href="https://linkedin.com/in/hrushikesh-singh-revops" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
-        <a href="https://rishisingh1999.github.io" target="_blank" rel="noreferrer">View full portfolio</a>
+    </section>
+
+    <section class="section" id="testimonials">
+      <header class="section__header">
+        <h2>What Teams Say</h2>
+        <p>How stakeholders describe working with me.</p>
+      </header>
+      <div class="grid testimonials">
+        <article class="testimonial card anim-fade-up">
+          <p>
+            “Hrushikesh quickly translated complex revenue requirements into intuitive dashboards and models. Our leadership finally had a single source of truth for pipeline health.”
+          </p>
+          <div class="testimonial__meta">
+            <span class="testimonial__name">RevOps Leader</span>
+            <span class="testimonial__role">SaaS Organization</span>
+          </div>
+        </article>
+        <article class="testimonial card anim-fade-up">
+          <p>
+            “His automation of our reporting stack saved the team hours every week and dramatically improved data quality across Salesforce and billing systems.”
+          </p>
+          <div class="testimonial__meta">
+            <span class="testimonial__name">Sales Operations Manager</span>
+            <span class="testimonial__role">GovCon Client</span>
+          </div>
+        </article>
       </div>
+    </section>
+
+    <section class="section section--alt" id="contact">
+      <header class="section__header">
+        <h2>Let’s Work Together</h2>
+        <p>Open to RevOps, revenue analytics, and business analytics roles (remote or hybrid).</p>
+      </header>
+      <div class="contact-layout">
+        <div class="contact-card card">
+          <h3>Contact Details</h3>
+          <ul class="contact-list">
+            <li><span>Email:</span> <a href="mailto:hrushisingh697@gmail.com">hrushisingh697@gmail.com</a></li>
+            <li><span>Phone:</span> <a href="tel:+12039944997">+1 203‑994‑4997</a></li>
+            <li><span>LinkedIn:</span> <a href="https://linkedin.com/in/hrushikesh-sing-revops" target="_blank">/in/hrushikesh-singh-revops</a></li>
+            <li><span>Portfolio:</span> <a href="https://rishisingh1999.github.io" target="_blank">rishisingh1999.github.io</a></li>
+          </ul>
+        </div>
+        <form class="contact-form card" onsubmit="return false;">
+          <h3>Quick Message (Demo)</h3>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Project details, role, or collaboration idea..."></textarea>
+          </div>
+          <button class="btn btn--primary" id="fake-submit">Send Message</button>
+          <p class="form-status" id="form-status">Form is in demo mode for this portfolio.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Hrushikesh Singh Bondili. All rights reserved.</p>
     </footer>
   </div>
+
+  <!-- TypeScript block: advanced animations & interactions -->
+  <script type="text/typescript">
+    // typed helpers
+    const qs = <T extends HTMLElement>(sel: string) =>
+      document.querySelector(sel) as T | null;
+    const qsa = <T extends HTMLElement>(sel: string) =>
+      Array.from(document.querySelectorAll(sel)) as T[];
+
+    // mobile nav
+    const navToggle = qs<HTMLButtonElement>("#nav-toggle");
+    const navMobile = qs<HTMLElement>("#nav-mobile");
+
+    navToggle?.addEventListener("click", () => {
+      if (!navMobile) return;
+      navMobile.style.display = navMobile.style.display === "flex" ? "none" : "flex";
+    });
+
+    navMobile?.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (navMobile) navMobile.style.display = "none";
+      });
+    });
+
+    // footer year
+    const yearEl = qs<HTMLSpanElement>("#year");
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+    // stat counters
+    const statNumbers = qsa<HTMLElement>(".stat__number");
+
+    const animateCounters: IntersectionObserverCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const target = Number(el.dataset.target ?? "0");
+        let current = 0;
+        const duration = 1200;
+        const start = performance.now();
+
+        const step = (ts: number) => {
+          const progress = Math.min((ts - start) / duration, 1);
+          current = Math.floor(progress * target);
+          el.textContent = String(current);
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        observer.unobserve(el);
+      });
+    };
+
+    if ("IntersectionObserver" in window) {
+      const counterObserver = new IntersectionObserver(animateCounters, {
+        threshold: 0.4,
+      });
+      statNumbers.forEach((el) => counterObserver.observe(el));
+    } else {
+      statNumbers.forEach((el) => (el.textContent = el.dataset.target ?? "0"));
+    }
+
+    // scroll reveal
+    const fadeUpEls = qsa<HTMLElement>(".anim-fade-up");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            (entry.target as HTMLElement).classList.add("visible");
+            obs.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.25 }
+      );
+      fadeUpEls.forEach((el) => revealObserver.observe(el));
+    } else {
+      fadeUpEls.forEach((el) => el.classList.add("visible"));
+    }
+
+    // hero parallax tilt
+    const heroVisual = qs<HTMLElement>(".hero__visual");
+    const heroCard = qs<HTMLElement>(".hero__card");
+
+    if (heroVisual && heroCard) {
+      heroVisual.addEventListener("mousemove", (e: MouseEvent) => {
+        const rect = heroVisual.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rotateX = y * -20;
+        const rotateY = x * 20;
+        heroCard.style.transform = `rotateX(${14 + rotateX}deg) rotateY(${
+          -14 + rotateY
+        }deg) translateY(-4px)`;
+      });
+
+      heroVisual.addEventListener("mouseleave", () => {
+        heroCard.style.transform = "rotateX(14deg) rotateY(-14deg) translateY(0)";
+      });
+    }
+
+    // skill bars
+    const skillBars = qsa<HTMLElement>(".skill-bar__fill");
+    if ("IntersectionObserver" in window && skillBars.length) {
+      const skillsObserver = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const bar = entry.target as HTMLElement;
+            const level = bar.dataset.level ?? "80";
+            bar.style.width = level + "%";
+            obs.unobserve(bar);
+          });
+        },
+        { threshold: 0.4 }
+      );
+      skillBars.forEach((bar) => skillsObserver.observe(bar));
+    } else {
+      skillBars.forEach((bar) => {
+        bar.style.width = (bar.dataset.level ?? "80") + "%";
+      });
+    }
+
+    // fake form submit
+    const fakeSubmit = qs<HTMLButtonElement>("#fake-submit");
+    const formStatus = qs<HTMLParagraphElement>("#form-status");
+
+    fakeSubmit?.addEventListener("click", () => {
+      if (formStatus) {
+        formStatus.textContent =
+          "Thanks! This is a demo – connect with me via email or LinkedIn.";
+      }
+    });
+  </script>
+
+  <!-- Small JS wrapper: compile TS block above at runtime -->
+  <script>
+    (function () {
+      const tsScript = document.querySelector('script[type="text/typescript"]');
+      if (!tsScript) return;
+      const tsCode = tsScript.textContent || "";
+      // compile TypeScript to JavaScript using the TS compiler loaded in <head>
+      const jsCode = window.ts.transpile(tsCode, {
+        target: window.ts.ScriptTarget.ES2017,
+        module: window.ts.ModuleKind.None,
+      });
+      const jsTag = document.createElement("script");
+      jsTag.textContent = jsCode;
+      document.body.appendChild(jsTag);
+    })();
+  </script>
 </body>
 </html>
