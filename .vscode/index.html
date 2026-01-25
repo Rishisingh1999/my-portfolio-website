@@ -10,6 +10,8 @@
   />
   <!-- TypeScript compiler (in‑browser) -->
   <script src="https://unpkg.com/typescript@5.6.3/lib/typescript.js"></script>
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
 
   <style>
     /* ===== Base / Theme (purple dashboard) ===== */
@@ -803,6 +805,113 @@
       text-align: center;
     }
 
+    /* Modal/Popup Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.modal--open {
+      display: flex;
+    }
+
+    .modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal__content {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      border-radius: 24px;
+      padding: 40px 32px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 32px 90px rgba(15, 23, 42, 1);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .modal__icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-strong), #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      color: #020617;
+      font-weight: 700;
+      box-shadow: 0 24px 60px rgba(88, 28, 135, 0.9);
+      animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal__title {
+      margin: 0 0 12px;
+      font-size: 1.8rem;
+      color: #e5e7eb;
+      font-weight: 700;
+    }
+
+    .modal__text {
+      margin: 0 0 24px;
+      color: #9ca3af;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .modal__btn {
+      width: 100%;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
     /* Animations */
     @keyframes float {
       0% {
@@ -1235,6 +1344,7 @@
 
         <form
           class="contact-form card"
+          id="contactForm"
           action="https://formsubmit.co/hrushisingh697@gmail.com"
           method="POST"
         >
@@ -1297,6 +1407,17 @@
     <footer class="footer">
       <p>© <span id="year"></span> Hrushikesh Singh Bondili. All rights reserved.</p>
     </footer>
+  </div>
+
+  <!-- Success Popup Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <div class="modal__icon">✓</div>
+      <h2 class="modal__title">Message Sent!</h2>
+      <p class="modal__text">Thank you for reaching out! I'll get back to you shortly at the email you provided.</p>
+      <button class="btn btn--primary modal__btn" id="closeModal">Okay, Got It!</button>
+    </div>
   </div>
 
   <!-- TypeScript: interactions & animations -->
@@ -1421,14 +1542,65 @@
       });
     }
 
-    // submit hint
-    const fakeSubmit = qs<HTMLButtonElement>("#fake-submit");
-    const formStatus = qs<HTMLParagraphElement>("#form-status");
-    fakeSubmit?.addEventListener("click", () => {
-      if (formStatus) {
-        formStatus.textContent =
-          "Sending… Your message is being processed. Please wait.";
+    // Form submission with celebration confetti + popup
+    const contactForm = qs<HTMLFormElement>("#contactForm");
+    const successModal = qs<HTMLElement>("#successModal");
+    const closeModalBtn = qs<HTMLButtonElement>("#closeModal");
+
+    contactForm?.addEventListener("submit", (e: SubmitEvent) => {
+      e.preventDefault();
+
+      // Launch confetti celebration across full page
+      try {
+        const confettiSettings = {
+          target: "html",
+          max: 150,
+          size: 1,
+          animate: true,
+          props: ["circle", "square"],
+          colors: ["#8b5cf6", "#a855f7", "#f97316", "#22c55e", "#3b82f6"],
+          physics: {
+            duration: 5000,
+            gravity: 0.5,
+            decay: 0.95,
+            initialVelocity: 18,
+            horizontalVelocity: 8,
+          },
+          rotate: { x: 0, z: 0 },
+          opacity: { start: 1, end: 0 },
+        };
+        
+        const confetti = new window.ConfettiGenerator(confettiSettings);
+        confetti.render();
+
+        // Stop confetti after animation
+        setTimeout(() => {
+          confetti.clear();
+        }, 5000);
+      } catch (err) {
+        console.log("Confetti library not loaded, skipping celebration");
       }
+
+      // Show success modal
+      if (successModal) {
+        setTimeout(() => {
+          successModal.classList.add("modal--open");
+        }, 300);
+      }
+
+      // Reset form
+      contactForm.reset();
+    });
+
+    closeModalBtn?.addEventListener("click", () => {
+      if (successModal) {
+        successModal.classList.remove("modal--open");
+      }
+
+      // Redirect to portfolio after closing modal
+      setTimeout(() => {
+        window.location.href = "https://rishisingh1999.github.io/my-portfolio-website/#contact";
+      }, 300);
     });
 
     // active nav link on scroll
