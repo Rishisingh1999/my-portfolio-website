@@ -8,11 +8,11 @@
     name="description"
     content="Portfolio of Hrushikesh Singh Bondili – RevOps Analyst and Business Analyst specializing in revenue analytics, dashboards and automation."
   />
-  <!-- TypeScript compiler from CDN (for in‑browser TS) -->
+  <!-- TypeScript compiler (in‑browser) -->
   <script src="https://unpkg.com/typescript@5.6.3/lib/typescript.js"></script>
 
   <style>
-    /* ===== Base ===== */
+    /* ===== Base / Theme (purple dashboard) ===== */
     *,
     *::before,
     *::after {
@@ -20,21 +20,22 @@
     }
 
     :root {
-      --bg: #020617;
-      --bg-alt: #020a16;
-      --bg-card: #020617;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --accent-strong: #0ea5e9;
+      --bg: #050816;
+      --bg-alt: #070b18;
+      --bg-card: #0b1020;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.16);
+      --accent-strong: #a855f7;
       --accent-2: #22c55e;
+      --chip: #1f2937;
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --border: #1f2937;
-      --radius-lg: 16px;
+      --border: #111827;
+      --radius-lg: 18px;
       --radius-md: 12px;
       --radius-sm: 999px;
-      --shadow-card: 0 25px 60px rgba(15, 23, 42, 0.9);
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --shadow-card: 0 26px 70px rgba(15, 23, 42, 0.95);
+      --shadow-soft: 0 20px 55px rgba(15, 23, 42, 0.9);
       --transition-fast: 0.18s ease-out;
       --transition-med: 0.25s ease-out;
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text",
@@ -47,7 +48,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
       color: var(--text);
       font-family: var(--font-sans);
       scroll-behavior: smooth;
@@ -58,24 +59,26 @@
     }
 
     #app {
-      max-width: 1120px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 20px 18px 60px;
       position: relative;
       z-index: 0;
     }
 
-    /* subtle page glow */
+    /* global soft glow */
     #app::before {
       content: "";
       position: fixed;
       inset: auto;
-      width: 460px;
-      height: 460px;
+      width: 520px;
+      height: 520px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.17), transparent 65%);
-      top: -180px;
-      right: -160px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.28), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.18), transparent 65%);
+      top: -220px;
+      right: -240px;
       z-index: -1;
       pointer-events: none;
     }
@@ -84,26 +87,37 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 14px;
-      margin: 0 -14px 12px;
-      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.98), rgba(2, 6, 23, 0.86));
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 12px 16px;
+      margin: 0 -16px 14px;
+      background: linear-gradient(
+        to bottom,
+        rgba(7, 11, 24, 0.97),
+        rgba(7, 11, 24, 0.9)
+      );
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.85);
     }
 
     .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       font-size: 0.9rem;
     }
 
-    .nav__logo span {
-      color: var(--accent);
+    .nav__logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 20% 20%, #f97316, #8b5cf6);
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.25);
     }
 
     .nav__links {
@@ -116,7 +130,7 @@
       color: var(--muted);
       text-decoration: none;
       position: relative;
-      padding-bottom: 2px;
+      padding-bottom: 3px;
       transition: color var(--transition-fast);
     }
 
@@ -148,8 +162,9 @@
     .nav__cta {
       padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.3), #0f172a);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
     }
 
     .nav__menu {
@@ -163,7 +178,7 @@
     }
 
     .nav__menu span {
-      width: 18px;
+      width: 19px;
       height: 2px;
       background: var(--text);
       border-radius: 999px;
@@ -186,10 +201,10 @@
       display: none;
       flex-direction: column;
       gap: 8px;
-      margin: 4px -14px 0;
+      margin: 4px -16px 0;
       padding: 10px 16px 14px;
-      background: rgba(2, 6, 23, 0.97);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(7, 11, 24, 0.98);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.85);
     }
 
     .nav-mobile a {
@@ -198,13 +213,13 @@
       padding: 4px 0;
     }
 
-    /* ===== Hero ===== */
+    /* ===== Hero (dashboard‑style) ===== */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-      gap: 26px;
-      padding: 28px 4px 24px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.75fr) minmax(0, 1.25fr);
+      gap: 28px;
+      padding: 26px 2px 24px;
+      align-items: stretch;
       position: relative;
     }
 
@@ -220,24 +235,23 @@
       padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(15, 23, 42, 0.9);
       font-size: 0.75rem;
       color: var(--muted);
-      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.95);
     }
 
-    .hero__badge::before {
-      content: "";
+    .hero__badge-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+      background: var(--accent-2);
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
     }
 
     .hero__title {
-      margin: 16px 0 10px;
-      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      margin: 18px 0 10px;
+      font-size: clamp(2rem, 3.2vw, 2.4rem);
       line-height: 1.25;
     }
 
@@ -245,14 +259,14 @@
       color: var(--accent);
     }
 
-    .hero__text {
-      color: var(--muted);
+    .hero__subtitle {
       font-size: 0.95rem;
-      max-width: 34rem;
+      color: var(--muted);
+      max-width: 32rem;
     }
 
     .hero__actions {
-      margin-top: 16px;
+      margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -274,61 +288,120 @@
     }
 
     .btn--primary {
-      background: linear-gradient(135deg, var(--accent-strong), #22c55e);
-      color: #0b1120;
-      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.9);
+      background: linear-gradient(135deg, var(--accent-strong), #f97316);
+      color: #020617;
+      box-shadow: 0 24px 60px rgba(88, 28, 135, 0.9);
     }
 
     .btn--primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
+      box-shadow: 0 28px 72px rgba(88, 28, 135, 1);
     }
 
     .btn--ghost {
-      background: transparent;
-      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.55);
       color: var(--text);
       box-shadow: var(--shadow-soft);
     }
 
     .btn--ghost:hover {
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.9);
     }
 
-    .hero__stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+    /* hero “dashboard” panel */
+    .hero__stats-board {
       margin-top: 18px;
-      max-width: 520px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 14px;
     }
 
-    .stat {
-      padding: 10px 9px 8px;
-      border-radius: 14px;
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617);
-      border: 1px solid rgba(30, 64, 175, 0.7);
+    .hero__panel {
+      background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.45), #020617);
+      border-radius: 18px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 12px 12px 10px;
       box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
     }
 
-    .stat__number {
-      font-size: 1.1rem;
-      font-weight: 600;
+    .hero__panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
     }
 
-    .stat__suffix {
+    .hero__panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__panel-title {
       font-size: 0.8rem;
-      margin-left: 2px;
-      color: var(--accent);
-    }
-
-    .stat__label {
-      display: block;
-      margin-top: 4px;
-      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
       color: var(--muted);
     }
 
+    .hero__panel-number {
+      margin-top: 6px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .hero__panel-meta {
+      margin-top: 2px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero__mini-stats {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mini-chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.85);
+      font-size: 0.72rem;
+      color: #c4b5fd;
+      font-family: var(--font-mono);
+    }
+
+    .hero__stat-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-stat {
+      padding: 8px 8px 7px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top, #020617, #020617);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-stat span {
+      display: block;
+    }
+
+    .hero-stat strong {
+      font-size: 1rem;
+      color: #e5e7eb;
+    }
+
+    /* hero right “card” */
     .hero__visual {
       position: relative;
       min-height: 260px;
@@ -341,58 +414,76 @@
     .hero__card {
       position: relative;
       width: 100%;
-      max-width: 280px;
-      padding: 20px 18px 22px;
+      max-width: 320px;
+      padding: 18px 16px 16px;
       border-radius: 22px;
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.25), #020617);
-      border: 1px solid rgba(56, 189, 248, 0.5);
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.95);
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.4), #020617);
+      border: 1px solid rgba(129, 140, 248, 0.8);
+      box-shadow: 0 32px 90px rgba(15, 23, 42, 1);
       transform-style: preserve-3d;
-      transform: rotateX(14deg) rotateY(-14deg);
-      animation: float 8s ease-in-out infinite;
+      transform: rotateX(16deg) rotateY(-16deg);
+      animation: float 10s ease-in-out infinite;
     }
 
     .hero__tag {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.16em;
     }
 
     .hero__name {
-      margin-top: 14px;
-      font-size: 1.4rem;
+      margin-top: 10px;
+      font-size: 1.2rem;
       font-weight: 600;
     }
 
     .hero__role {
-      margin-top: 4px;
+      margin-top: 3px;
       font-size: 0.85rem;
-      color: var(--accent);
+      color: #c4b5fd;
+    }
+
+    .hero__card-footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .hero__status-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #bbf7d0;
+      font-size: 0.72rem;
     }
 
     .hero__orb {
       position: absolute;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent);
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent);
       filter: blur(1px);
       mix-blend-mode: screen;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .hero__orb--1 {
       width: 120px;
       height: 120px;
-      top: 10%;
-      right: 5%;
+      top: 12%;
+      right: 4%;
       animation: orb1 14s linear infinite;
     }
 
     .hero__orb--2 {
-      width: 150px;
-      height: 150px;
-      bottom: -10%;
-      left: -10%;
+      width: 160px;
+      height: 160px;
+      bottom: -18%;
+      left: -16%;
       animation: orb2 18s linear infinite;
     }
 
@@ -400,7 +491,7 @@
       width: 90px;
       height: 90px;
       bottom: 20%;
-      right: -5%;
+      right: -8%;
       animation: orb3 12s linear infinite;
     }
 
@@ -417,24 +508,33 @@
 
     /* ===== Sections ===== */
     .section {
-      padding: 28px 4px 24px;
+      padding: 26px 2px 24px;
     }
 
     .section--alt {
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.9));
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.94), rgba(7, 11, 24, 0.98));
       border-radius: 24px;
-      border: 1px solid rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(31, 41, 55, 0.95);
       box-shadow: var(--shadow-card);
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .section__header {
       margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .section__eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
     }
 
     .section__header h2 {
-      font-size: 1.3rem;
-      margin-bottom: 4px;
+      font-size: 1.25rem;
     }
 
     .section__header p {
@@ -448,11 +548,11 @@
     }
 
     .services {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
 
     .projects {
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 
     .testimonials {
@@ -462,8 +562,8 @@
     .card {
       padding: 16px 14px 14px;
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.97));
-      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -473,7 +573,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 60%);
+      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.25), transparent 60%);
       opacity: 0;
       transition: opacity var(--transition-med);
       pointer-events: none;
@@ -484,9 +584,9 @@
     }
 
     .card h3 {
-      margin-top: 4px;
+      margin-top: 2px;
       margin-bottom: 4px;
-      font-size: 1rem;
+      font-size: 1.02rem;
     }
 
     .card p {
@@ -508,9 +608,10 @@
       color: var(--accent);
     }
 
+    /* about */
     .about-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.15fr);
       gap: 22px;
     }
 
@@ -523,7 +624,7 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      border-left: 1px solid rgba(55, 65, 81, 0.8);
+      border-left: 1px solid rgba(55, 65, 81, 0.9);
       padding-left: 14px;
     }
 
@@ -541,7 +642,7 @@
       height: 10px;
       border-radius: 999px;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.3);
     }
 
     .timeline__title {
@@ -553,9 +654,10 @@
       color: var(--muted);
     }
 
+    /* skills */
     .skills-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
       gap: 22px;
     }
 
@@ -575,7 +677,7 @@
       height: 8px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.95);
       overflow: hidden;
     }
 
@@ -583,9 +685,9 @@
       height: 100%;
       width: 0;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent-strong), var(--accent-2));
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
-      transition: width 1.1s ease-out;
+      background: linear-gradient(90deg, var(--accent-strong), #f97316);
+      box-shadow: 0 0 14px rgba(139, 92, 246, 0.7);
+      transition: width 1.05s ease-out;
     }
 
     .skills-tags h3 {
@@ -603,9 +705,9 @@
       font-size: 0.75rem;
       padding: 5px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.96);
+      background: var(--chip);
       border: 1px solid rgba(55, 65, 81, 0.9);
-      color: var(--muted);
+      color: #cbd5f5;
     }
 
     .project__category {
@@ -618,7 +720,7 @@
     .project__stack {
       margin-top: 6px;
       font-size: 0.8rem;
-      color: var(--accent);
+      color: #c4b5fd;
       font-family: var(--font-mono);
     }
 
@@ -633,6 +735,7 @@
       color: var(--muted);
     }
 
+    /* contact */
     .contact-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
@@ -669,9 +772,9 @@
 
     .contact-form input,
     .contact-form textarea {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.96);
       border-radius: 10px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.95);
       padding: 8px 10px;
       color: var(--text);
       font-family: inherit;
@@ -682,7 +785,7 @@
     .contact-form textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.7);
     }
 
     .form-status {
@@ -694,58 +797,41 @@
     .footer {
       margin-top: 30px;
       padding-top: 12px;
-      border-top: 1px solid rgba(15, 23, 42, 0.8);
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
       font-size: 0.8rem;
       color: var(--muted);
       text-align: center;
     }
 
+    /* Animations */
     @keyframes float {
       0% {
-        transform: rotateX(14deg) rotateY(-14deg) translateY(0);
+        transform: rotateX(16deg) rotateY(-16deg) translateY(0);
       }
       50% {
         transform: rotateX(10deg) rotateY(-10deg) translateY(-10px);
       }
       100% {
-        transform: rotateX(14deg) rotateY(-14deg) translateY(0);
+        transform: rotateX(16deg) rotateY(-16deg) translateY(0);
       }
     }
 
     @keyframes orb1 {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      50% {
-        transform: translate3d(-10px, 20px, 0);
-      }
-      100% {
-        transform: translate3d(0, 0, 0);
-      }
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(-10px, 22px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
     }
 
     @keyframes orb2 {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      50% {
-        transform: translate3d(20px, -10px, 0);
-      }
-      100% {
-        transform: translate3d(0, 0, 0);
-      }
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(20px, -16px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
     }
 
     @keyframes orb3 {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      50% {
-        transform: translate3d(-16px, 6px, 0);
-      }
-      100% {
-        transform: translate3d(0, 0, 0);
-      }
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(-18px, 6px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
     }
 
     .anim-fade-up {
@@ -760,15 +846,16 @@
     }
 
     .anim-tilt {
-      transform: perspective(800px) rotateX(8deg) rotateY(-6deg) translateY(10px);
+      transform: perspective(900px) rotateX(9deg) rotateY(-7deg) translateY(10px);
       transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
     }
 
     .anim-tilt:hover {
-      transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0);
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 1);
+      transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0);
+      box-shadow: 0 32px 85px rgba(15, 23, 42, 1);
     }
 
+    /* Responsive */
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
@@ -776,7 +863,10 @@
       .hero__visual {
         order: -1;
       }
-      .hero__stats {
+      .hero__stats-board {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero__stat-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .about-layout,
@@ -799,7 +889,10 @@
 <body>
   <div id="app">
     <header class="nav">
-      <div class="nav__logo">HSB<span>.</span></div>
+      <div class="nav__logo">
+        <div class="nav__logo-mark"></div>
+        <span>HSB</span>
+      </div>
       <nav class="nav__links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
@@ -822,45 +915,72 @@
       <a href="#contact">Contact</a>
     </nav>
 
+    <!-- Hero / dashboard style -->
     <section class="hero" id="hero">
       <div class="hero__content">
-        <span class="hero__badge">RevOps · Analytics · Automation</span>
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          RevOps · Analytics · Automation
+        </div>
         <h1 class="hero__title">
           I’m <span class="accent">Hrushikesh Singh Bondili</span><br />
           RevOps Analyst & Business Analyst
         </h1>
-        <p class="hero__text">
-          I help SaaS and GovCon teams unlock <strong>data‑driven revenue growth</strong> with Power BI dashboards,
-          predictive models, and automated RevOps workflows.
+        <p class="hero__subtitle">
+          I partner with SaaS and GovCon teams to design <strong>revenue dashboards</strong>,
+          build predictive models, and automate RevOps workflows that turn data into real ARR.
         </p>
         <div class="hero__actions">
           <a href="#contact" class="btn btn--primary hero__btn">Hire Me</a>
           <a href="#projects" class="btn btn--ghost">View Projects</a>
         </div>
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__number" data-target="4">0</span><span class="stat__suffix">+</span>
-            <span class="stat__label">Years Experience</span>
+
+        <div class="hero__stats-board">
+          <div class="hero__panel">
+            <div class="hero__panel-inner">
+              <div class="hero__panel-title">Revenue performance</div>
+              <div class="hero__panel-number">$2.0M+</div>
+              <div class="hero__panel-meta">Optimized pipeline & recovered revenue across roles.</div>
+              <div class="hero__mini-stats">
+                <span class="mini-chip">Forecast +20% acc.</span>
+                <span class="mini-chip">Churn −18%</span>
+                <span class="mini-chip">Win rate +12%</span>
+              </div>
+            </div>
           </div>
-          <div class="stat">
-            <span class="stat__number" data-target="6">0</span><span class="stat__suffix">+</span>
-            <span class="stat__label">Analytics Projects</span>
-          </div>
-          <div class="stat">
-            <span class="stat__number" data-target="5">0</span><span class="stat__suffix">+</span>
-            <span class="stat__label">Organizations</span>
-          </div>
-          <div class="stat">
-            <span class="stat__number" data-target="2">0</span><span class="stat__suffix">M+</span>
-            <span class="stat__label">Revenue Impact</span>
+          <div class="hero__stat-cards">
+            <div class="hero-stat">
+              <span>Experience</span>
+              <strong>4+ yrs</strong>
+            </div>
+            <div class="hero-stat">
+              <span>Analytics Projects</span>
+              <strong>6+</strong>
+            </div>
+            <div class="hero-stat">
+              <span>Organizations</span>
+              <strong>5</strong>
+            </div>
+            <div class="hero-stat">
+              <span>Dashboards</span>
+              <strong>20+</strong>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="hero__visual">
         <div class="hero__card hero__card--main">
           <div class="hero__tag">RevOps · Revenue Analytics</div>
           <div class="hero__name">Hrushikesh Singh<br />Bondili</div>
           <div class="hero__role">RevOps Analyst</div>
+          <div class="hero__card-footer">
+            <div>
+              <div style="font-size:0.76rem;">Status</div>
+              <div style="font-size:0.8rem;color:#e5e7eb;">Open to roles</div>
+            </div>
+            <div class="hero__status-pill">Remote · Hybrid</div>
+          </div>
         </div>
         <div class="hero__orb hero__orb--1"></div>
         <div class="hero__orb hero__orb--2"></div>
@@ -869,49 +989,51 @@
       <div class="hero__scroll">Scroll</div>
     </section>
 
+    <!-- Services -->
     <section class="section" id="services">
       <header class="section__header">
-        <h2>My Services</h2>
-        <p>End‑to‑end revenue analytics and RevOps support for SaaS and GovCon teams.</p>
+        <div class="section__eyebrow">What I do</div>
+        <h2>RevOps & Analytics Services</h2>
+        <p>Full‑stack revenue analytics, dashboarding, and automation for data‑driven GTM teams.</p>
       </header>
       <div class="grid services">
         <article class="service card anim-fade-up">
           <h3>Revenue Analytics & Forecasting</h3>
           <p>
-            Build Power BI and Python‑powered forecasting models to improve revenue visibility and accuracy across ARR, MRR, and pipeline.
+            Power BI and Python forecasting models that improve ARR/MRR visibility across pipeline, bookings, and renewals.
           </p>
           <ul>
             <li>ARR/MRR forecasting</li>
             <li>Scenario modeling</li>
-            <li>Executive‑ready dashboards</li>
+            <li>Executive‑ready scorecards</li>
           </ul>
         </article>
         <article class="service card anim-fade-up">
           <h3>RevOps Dashboarding</h3>
           <p>
-            Design interactive dashboards for funnel performance, churn, CAC, and LTV so GTM teams can make fast, data‑driven decisions.
+            Interactive dashboards tracking funnel, churn, CAC, LTV, and pipeline velocity for GTM and finance leaders.
           </p>
           <ul>
             <li>Sales & pipeline analytics</li>
             <li>Customer health scoring</li>
-            <li>Funnel & cohort views</li>
+            <li>Cohort & segment views</li>
           </ul>
         </article>
         <article class="service card anim-fade-up">
           <h3>Workflow Automation</h3>
           <p>
-            Automate RevOps reporting with SQL, Python, Airflow, and n8n, eliminating manual work and reducing data latency.
+            ETL/ELT and no‑code/low‑code automations using SQL, Airflow, and n8n that eliminate manual reporting.
           </p>
           <ul>
-            <li>ETL/ELT workflows</li>
-            <li>Cross‑tool integrations</li>
-            <li>Alerting & monitoring</li>
+            <li>Cross‑tool data sync</li>
+            <li>Alerting & SLAs</li>
+            <li>Revenue data quality</li>
           </ul>
         </article>
         <article class="service card anim-fade-up">
           <h3>Business Analysis & Strategy</h3>
           <p>
-            Translate business goals into requirements, KPIs, and process improvements that directly support revenue growth.
+            Translate business goals into requirements, KPIs, and process changes that directly support revenue growth.
           </p>
           <ul>
             <li>Requirements & BRD/FRD</li>
@@ -922,20 +1044,23 @@
       </div>
     </section>
 
+    <!-- About -->
     <section class="section section--alt" id="about">
       <header class="section__header">
+        <div class="section__eyebrow">Who I am</div>
         <h2>More About Me</h2>
-        <p>RevOps, business analytics, and data science with a strong consulting mindset.</p>
+        <p>RevOps, business analytics, and data science experience across Deloitte, A3 Technology, Salesforce, Outreach.io, and Wipro.</p>
       </header>
       <div class="about-layout">
         <div class="about-layout__col">
           <h3>Profile</h3>
           <p>
-            I’m a RevOps and business analytics professional with experience at Deloitte, A3 Technology, Salesforce, Outreach.io, and Wipro.
             I specialize in revenue forecasting, churn prediction, and pipeline optimization using Power BI, Python, and SQL.
+            I enjoy turning scattered GTM data into dashboards and models that leadership can trust.
           </p>
           <p>
-            I enjoy building scalable analytics products, bridging business and technical teams, and turning raw data into clear, actionable narratives.
+            I work best at the intersection of strategy and execution: understanding how RevOps, sales, and finance think,
+            then building analytics products that fit directly into their workflows.
           </p>
         </div>
         <div class="about-layout__col">
@@ -954,10 +1079,12 @@
       </div>
     </section>
 
+    <!-- Skills -->
     <section class="section" id="skills">
       <header class="section__header">
-        <h2>My Skills</h2>
-        <p>Tools and technologies I use to deliver RevOps and analytics impact.</p>
+        <div class="section__eyebrow">Capabilities</div>
+        <h2>Skills & Tech Stack</h2>
+        <p>Everything I use to design, build, and ship RevOps and analytics solutions.</p>
       </header>
       <div class="skills-layout">
         <div class="skills-bars">
@@ -1008,7 +1135,7 @@
             <span class="tag">XGBoost</span>
             <span class="tag">Salesforce Revenue Cloud</span>
           </div>
-          <h3 style="margin-top:1.5rem;">Business Skills</h3>
+          <h3 style="margin-top:1.3rem;">Business Skills</h3>
           <div class="tag-grid">
             <span class="tag">Requirements Gathering</span>
             <span class="tag">KPI Definition</span>
@@ -1021,17 +1148,20 @@
       </div>
     </section>
 
+    <!-- Projects -->
     <section class="section section--alt" id="projects">
       <header class="section__header">
-        <h2>My Latest Projects</h2>
-        <p>Selected projects that showcase my approach to analytics, ML, and RevOps.</p>
+        <div class="section__eyebrow">Case studies</div>
+        <h2>Recent Analytics Projects</h2>
+        <p>Selected projects that showcase my approach to ML‑driven analytics and RevOps dashboards.</p>
       </header>
       <div class="grid projects">
         <article class="project card anim-tilt">
           <div class="project__category">Supply Chain Analytics</div>
           <h3>AI‑Powered Supply Chain Disruption Predictor</h3>
           <p>
-            Machine learning system forecasting supplier risk with 94.2% accuracy and MAE of 2.18 on a 0–100 scale, unlocking <strong>$280M+</strong> in potential savings.
+            Built a model forecasting supplier risk with 94.2% accuracy and MAE of 2.18 on a 0–100 scale, identifying
+            <strong>$280M+</strong> in potential savings through targeted mitigation scenarios.
           </p>
           <div class="project__stack">Python · XGBoost · Power BI · Tableau</div>
         </article>
@@ -1039,7 +1169,7 @@
           <div class="project__category">Healthcare Analytics</div>
           <h3>Hospital Readmission Risk Model</h3>
           <p>
-            Predictive model on 100K patient records with 85% AUC‑PR and a Power BI dashboard to help clinicians prioritize high‑risk patients.
+            Developed a classification model on 100K patient records (AUC‑PR 85%) and a Power BI dashboard to help clinicians prioritize high‑risk patients.
           </p>
           <div class="project__stack">Python · XGBoost · Power BI</div>
         </article>
@@ -1047,22 +1177,25 @@
           <div class="project__category">Market Intelligence</div>
           <h3>EV Adoption Market Analysis</h3>
           <p>
-            Analysis of 2,000+ US counties to identify EV adoption drivers and build an interactive Tableau dashboard for expansion strategy.
+            Analyzed 2,000+ US counties to identify EV adoption drivers and built an interactive Tableau dashboard for expansion strategy and capital allocation.
           </p>
           <div class="project__stack">SQL · Python · Tableau</div>
         </article>
       </div>
     </section>
 
+    <!-- Testimonials -->
     <section class="section" id="testimonials">
       <header class="section__header">
+        <div class="section__eyebrow">Feedback</div>
         <h2>What Teams Say</h2>
-        <p>How stakeholders describe working with me.</p>
+        <p>How stakeholders describe working with me on RevOps and analytics initiatives.</p>
       </header>
       <div class="grid testimonials">
         <article class="testimonial card anim-fade-up">
           <p>
-            “Hrushikesh quickly translated complex revenue requirements into intuitive dashboards and models. Our leadership finally had a single source of truth for pipeline health.”
+            “Hrushikesh quickly translated complex revenue requirements into intuitive dashboards and models.
+            Our leadership finally had a single source of truth for pipeline health.”
           </p>
           <div class="testimonial__meta">
             <span class="testimonial__name">RevOps Leader</span>
@@ -1071,7 +1204,8 @@
         </article>
         <article class="testimonial card anim-fade-up">
           <p>
-            “His automation of our reporting stack saved the team hours every week and dramatically improved data quality across Salesforce and billing systems.”
+            “His automation of our reporting stack saved the team hours every week and dramatically improved
+            data quality across Salesforce and billing systems.”
           </p>
           <div class="testimonial__meta">
             <span class="testimonial__name">Sales Operations Manager</span>
@@ -1081,8 +1215,10 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="section section--alt" id="contact">
       <header class="section__header">
+        <div class="section__eyebrow">Contact</div>
         <h2>Let’s Work Together</h2>
         <p>Open to RevOps, revenue analytics, and business analytics roles (remote or hybrid).</p>
       </header>
@@ -1093,11 +1229,10 @@
             <li><span>Email:</span> <a href="mailto:hrushisingh697@gmail.com">hrushisingh697@gmail.com</a></li>
             <li><span>Phone:</span> <a href="tel:+12039944997">+1 203‑994‑4997</a></li>
             <li><span>LinkedIn:</span> <a href="https://linkedin.com/in/hrushikesh-singh-revops" target="_blank">/in/hrushikesh-singh-revops</a></li>
-            
+            <li><span>Portfolio:</span> <a href="https://rishisingh1999.github.io" target="_blank">rishisingh1999.github.io</a></li>
           </ul>
         </div>
 
-        <!-- Live Form using FormSubmit, HTML fixed -->
         <form
           class="contact-form card"
           action="https://formsubmit.co/hrushisingh697@gmail.com"
@@ -1164,9 +1299,8 @@
     </footer>
   </div>
 
-  <!-- TypeScript: advanced interactions & animations -->
+  <!-- TypeScript: interactions & animations -->
   <script type="text/typescript">
-    // typed helpers
     const qs = <T extends HTMLElement>(sel: string) =>
       document.querySelector(sel) as T | null;
     const qsa = <T extends HTMLElement>(sel: string) =>
@@ -1253,15 +1387,15 @@
         const rect = heroVisual.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const rotateX = y * -20;
-        const rotateY = x * 20;
-        heroCard.style.transform = `rotateX(${14 + rotateX}deg) rotateY(${
-          -14 + rotateY
+        const rotateX = y * -18;
+        const rotateY = x * 22;
+        heroCard.style.transform = `rotateX(${16 + rotateX}deg) rotateY(${
+          -16 + rotateY
         }deg) translateY(-4px)`;
       });
 
       heroVisual.addEventListener("mouseleave", () => {
-        heroCard.style.transform = "rotateX(14deg) rotateY(-14deg) translateY(0)";
+        heroCard.style.transform = "rotateX(16deg) rotateY(-16deg) translateY(0)";
       });
     }
 
@@ -1287,13 +1421,13 @@
       });
     }
 
-    // fake status update on submit (even though FormSubmit will redirect)
+    // submit hint
     const fakeSubmit = qs<HTMLButtonElement>("#fake-submit");
     const formStatus = qs<HTMLParagraphElement>("#form-status");
     fakeSubmit?.addEventListener("click", () => {
       if (formStatus) {
         formStatus.textContent =
-          "Sending via FormSubmit… if nothing happens, please email me directly.";
+          "Sending via FormSubmit… if you are not redirected, please email me directly.";
       }
     });
 
@@ -1319,7 +1453,7 @@
     }
   </script>
 
-  <!-- JS wrapper: compile the TypeScript block above at runtime -->
+  <!-- JS wrapper to compile TS above -->
   <script>
     (function () {
       const tsScript = document.querySelector('script[type="text/typescript"]');
