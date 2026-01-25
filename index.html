@@ -8,8 +8,9 @@
     name="description"
     content="Portfolio of Hrushikesh Singh Bondili – RevOps Analyst and Business Analyst specializing in revenue analytics, dashboards and automation."
   />
-  <!-- TypeScript compiler from CDN so we can run TS directly in the browser -->
+  <!-- TypeScript compiler from CDN (for in‑browser TS) -->
   <script src="https://unpkg.com/typescript@5.6.3/lib/typescript.js"></script>
+
   <style>
     /* ===== Base ===== */
     *,
@@ -25,6 +26,7 @@
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.15);
       --accent-strong: #0ea5e9;
+      --accent-2: #22c55e;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1f2937;
@@ -59,6 +61,23 @@
       max-width: 1120px;
       margin: 0 auto;
       padding: 20px 18px 60px;
+      position: relative;
+      z-index: 0;
+    }
+
+    /* subtle page glow */
+    #app::before {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 460px;
+      height: 460px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.17), transparent 65%);
+      top: -180px;
+      right: -160px;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* ===== Navigation ===== */
@@ -98,6 +117,7 @@
       text-decoration: none;
       position: relative;
       padding-bottom: 2px;
+      transition: color var(--transition-fast);
     }
 
     .nav__links a::after {
@@ -107,7 +127,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(to right, var(--accent), #22c55e);
+      background: linear-gradient(to right, var(--accent), var(--accent-2));
       border-radius: 999px;
       transition: width var(--transition-fast);
     }
@@ -116,8 +136,13 @@
       color: #f9fafb;
     }
 
-    .nav__links a:hover::after {
+    .nav__links a:hover::after,
+    .nav__links a.nav__link--active::after {
       width: 100%;
+    }
+
+    .nav__links a.nav__link--active {
+      color: #f9fafb;
     }
 
     .nav__cta {
@@ -142,6 +167,19 @@
       height: 2px;
       background: var(--text);
       border-radius: 999px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav__menu--open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav__menu--open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav__menu--open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
     }
 
     .nav-mobile {
@@ -157,6 +195,7 @@
     .nav-mobile a {
       color: var(--muted);
       text-decoration: none;
+      padding: 4px 0;
     }
 
     /* ===== Hero ===== */
@@ -544,7 +583,7 @@
       height: 100%;
       width: 0;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent-strong), #22c55e);
+      background: linear-gradient(90deg, var(--accent-strong), var(--accent-2));
       box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
       transition: width 1.1s ease-out;
     }
@@ -769,7 +808,7 @@
         <a href="#testimonials">Clients</a>
         <a href="#contact" class="nav__cta">Contact</a>
       </nav>
-      <button class="nav__menu" id="nav-toggle">
+      <button class="nav__menu" id="nav-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
     </header>
@@ -791,7 +830,7 @@
           RevOps Analyst & Business Analyst
         </h1>
         <p class="hero__text">
-          I help SaaS and GovCon teams unlock <strong>data-driven revenue growth</strong> with Power BI dashboards,
+          I help SaaS and GovCon teams unlock <strong>data‑driven revenue growth</strong> with Power BI dashboards,
           predictive models, and automated RevOps workflows.
         </p>
         <div class="hero__actions">
@@ -1053,30 +1092,70 @@
           <ul class="contact-list">
             <li><span>Email:</span> <a href="mailto:hrushisingh697@gmail.com">hrushisingh697@gmail.com</a></li>
             <li><span>Phone:</span> <a href="tel:+12039944997">+1 203‑994‑4997</a></li>
-            <li><span>LinkedIn:</span> <a href="https://linkedin.com/in/hrushikesh-sing-revops" target="_blank">/in/hrushikesh-singh-revops</a></li>
+            <li><span>LinkedIn:</span> <a href="https://linkedin.com/in/hrushikesh-singh-revops" target="_blank">/in/hrushikesh-singh-revops</a></li>
             <li><span>Portfolio:</span> <a href="https://rishisingh1999.github.io" target="_blank">rishisingh1999.github.io</a></li>
           </ul>
         </div>
-      <form class="contact__form card" action="https://formsubmit.co/hrushisingh697@gmail.com" method="POST">          <h3>Quick Message (Demo)</h3>
-                <!-- FormSubmit Configuration -->
-                         <input type="hidden" name="_subject" value="New Portfolio Contact from Website!">
-                                 <input type="hidden" name="_captcha" value="false">
-                                         <input type="hidden" name="_template" value="table">
-                                                 <input type="text" name="_honey" style="display:none">
-                                                         <input type="hidden" name="_next" value="https://rishisingh1999.github.io/my-portfolio-website/#contact">
+
+        <!-- Live Form using FormSubmit, HTML fixed -->
+        <form
+          class="contact-form card"
+          action="https://formsubmit.co/hrushisingh697@gmail.com"
+          method="POST"
+        >
+          <h3>Quick Message</h3>
+
+          <!-- FormSubmit configuration -->
+          <input type="hidden" name="_subject" value="New Portfolio Contact from Website!" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" style="display:none" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://rishisingh1999.github.io/my-portfolio-website/#contact"
+          />
+
           <div class="field">
             <label for="name">Name</label>
-            <input name="name" required id="name" type="text" placeholder="name="name" Your name" />
+            <input
+              name="name"
+              required
+              id="name"
+              type="text"
+              placeholder="Your name"
+            />
           </div>
+
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" required type="email" placeholder="you@example.com" />
+            <input
+              id="email"
+              name="email"
+              required
+              type="email"
+              placeholder="you@example.com"
+            />
           </div>
+
           <div class="field">
             <label for="message">Message</label>
-            <textarea idname="message" required ="message" rows="4" placeholder="Project details, role, or collaboration idea..."></textarea>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="4"
+              placeholder="Project details, role, or collaboration idea..."
+            ></textarea>
           </div>
-        <button type="submit" class="btn btn--primary">Send Message</button>          <p class="form-status" id="form-status">Form is in demo mode for this portfolio.</p>
+
+          <button type="submit" class="btn btn--primary" id="fake-submit">
+            Send Message
+          </button>
+          <p class="form-status" id="form-status">
+            Form sends via FormSubmit. You’ll be redirected after submit.
+          </p>
+        </form>
       </div>
     </section>
 
@@ -1085,7 +1164,7 @@
     </footer>
   </div>
 
-  <!-- TypeScript block: advanced animations & interactions -->
+  <!-- TypeScript: advanced interactions & animations -->
   <script type="text/typescript">
     // typed helpers
     const qs = <T extends HTMLElement>(sel: string) =>
@@ -1099,12 +1178,15 @@
 
     navToggle?.addEventListener("click", () => {
       if (!navMobile) return;
-      navMobile.style.display = navMobile.style.display === "flex" ? "none" : "flex";
+      const isOpen = navMobile.style.display === "flex";
+      navMobile.style.display = isOpen ? "none" : "flex";
+      navToggle.classList.toggle("nav__menu--open", !isOpen);
     });
 
     navMobile?.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
       link.addEventListener("click", () => {
         if (navMobile) navMobile.style.display = "none";
+        navToggle?.classList.remove("nav__menu--open");
       });
     });
 
@@ -1205,26 +1287,45 @@
       });
     }
 
-    // fake form submit
+    // fake status update on submit (even though FormSubmit will redirect)
     const fakeSubmit = qs<HTMLButtonElement>("#fake-submit");
     const formStatus = qs<HTMLParagraphElement>("#form-status");
-
     fakeSubmit?.addEventListener("click", () => {
       if (formStatus) {
         formStatus.textContent =
-          "Thanks! This is a demo – connect with me via email or LinkedIn.";
+          "Sending via FormSubmit… if nothing happens, please email me directly.";
       }
     });
+
+    // active nav link on scroll
+    const sections = qsa<HTMLElement>("section[id]");
+    const navLinks = qsa<HTMLAnchorElement>(".nav__links a");
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = (entry.target as HTMLElement).id;
+            navLinks.forEach((link) => {
+              const hrefId = link.getAttribute("href")?.replace("#", "");
+              link.classList.toggle("nav__link--active", hrefId === id);
+            });
+          });
+        },
+        { threshold: 0.5 }
+      );
+      sections.forEach((sec) => sectionObserver.observe(sec));
+    }
   </script>
-/*  */
-  <!-- Small JS wrapper: compile TS block above at runtime -->
+
+  <!-- JS wrapper: compile the TypeScript block above at runtime -->
   <script>
     (function () {
       const tsScript = document.querySelector('script[type="text/typescript"]');
-      if (!tsScript) return;
+      if (!tsScript || !window.ts) return;
       const tsCode = tsScript.textContent || "";
-      // compile TypeScript to JavaScript using the TS compiler loaded in <head>
-      const jsCode = window.ts.transpile(tsCode, /
+      const jsCode = window.ts.transpile(tsCode, {
         target: window.ts.ScriptTarget.ES2017,
         module: window.ts.ModuleKind.None,
       });
@@ -1235,4 +1336,3 @@
   </script>
 </body>
 </html>
-
