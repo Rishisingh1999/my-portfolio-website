@@ -1468,5 +1468,27 @@
       document.body.appendChild(jsTag);
     })();
   </script>
+<!-- AI Chatbot Widget -->
+<script>
+(function() {
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/@botpress/webchat@latest/dist/inject.js';
+  script.async = true;
+  document.body.appendChild(script);
+  script.onload = function() {
+    window.botpressWebChat.init({
+      botId: 'placeholder-bot-id',
+      hostUrl: 'https://cdn.botpress.cloud',
+      messagingUrl: 'https://messaging.botpress.cloud',
+      clientId: 'placeholder-client-id',
+      botName: 'Portfolio Assistant',
+      showPoweredBy: false,
+      stylesheet: 'https://webchat-styler-css.botpress.app/prod/code/96db5fc3-2eb9-43a5-9d0f-2edb9c9889db/v57821/style.css',
+      useSessionStorage: true,
+      enableConversationDeletion: false
+    });
+  };
+})();
+</script>
 </body>
 </html>
