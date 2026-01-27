@@ -1,0 +1,86 @@
+<script>
+const knowledge = {
+  name: "Hrushikesh Singh Bondili",
+  role: "RevOps Analyst & Business Analyst",
+  experience: "4+ years in analytics, revenue operations, and data science",
+  education: "Master of Business Analytics (GPA 3.4/4.0) from Sacred Heart University (2023-2024)",
+  skills: ["Power BI & DAX", "SQL", "Python (Pandas, ML, XGBoost)", "Revenue Operations", "Workflow Automation (n8n, Airflow)"],
+  projects: [
+    "AI-Powered Supply Chain Disruption Predictor with 94.2% accuracy",
+    "Hospital Readmission Risk Model with 85% AUC-PR",
+    "EV Adoption Market Analysis across 2000+ US counties"
+  ],
+  contact: "hrushisingh697@gmail.com | +1 203-994-4997",
+  status: "Open to roles (Remote/Hybrid)"
+};
+
+function toggleChat() {
+  document.getElementById('chatPanel').classList.toggle('active');
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') sendMessage();
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  if (!message) return;
+
+  addMessage('user', message);
+  input.value = '';
+
+  setTimeout(() => {
+    const response = generateResponse(message);
+    addMessage('bot', response);
+  }, 500);
+}
+
+function addMessage(type, text) {
+  const container = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${type}`;
+  
+  if (type === 'bot') {
+    messageDiv.innerHTML = `
+      <div class="avatar">🤖</div>
+      <div class="message-content">${text}</div>
+    `;
+  } else {
+    messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+  }
+  
+  container.appendChild(messageDiv);
+  container.scrollTop = container.scrollHeight;
+}
+
+function generateResponse(query) {
+  const q = query.toLowerCase();
+  
+  if (q.includes('skill') || q.includes('technical') || q.includes('tool')) {
+    return `${knowledge.name} specializes in: ${knowledge.skills.join(', ')}. He has 4+ years of experience in revenue analytics and business intelligence.`;
+  }
+  
+  if (q.includes('experience') || q.includes('work') || q.includes('background')) {
+    return `He has ${knowledge.experience}. He's worked across Deloitte, A3 Technology, Salesforce, and other leading organizations building revenue dashboards and predictive models.`;
+  }
+  
+  if (q.includes('project') || q.includes('portfolio') || q.includes('built')) {
+    return `Key projects include: ${knowledge.projects.join('; ')}. All projects demonstrate strong ML and analytics capabilities.`;
+  }
+  
+  if (q.includes('education') || q.includes('degree') || q.includes('study')) {
+    return `${knowledge.education}. Also holds a Bachelor of Commerce in Computer Applications.`;
+  }
+  
+  if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('hire')) {
+    return `You can contact ${knowledge.name} at: ${knowledge.contact}. He's currently ${knowledge.status}!`;
+  }
+  
+  if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
+    return `Hello! I'm here to help you learn about ${knowledge.name}'s experience in RevOps, analytics, and data science. What would you like to know?`;
+  }
+  
+  return `${knowledge.name} is a ${knowledge.role} with expertise in Power BI, SQL, Python, and revenue analytics. He's ${knowledge.status}. Ask me about his skills, experience, projects, or how to contact him!`;
+}
+</script>
