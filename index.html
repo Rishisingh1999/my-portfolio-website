@@ -1773,6 +1773,49 @@ function addMessage(type, text) {
   container.scrollTop = container.scrollHeight;
 }
 
+
+function toggleChat() {
+  document.getElementById('chatPanel').classList.toggle('active');
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') sendMessage();
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  if (!message) return;
+  
+  addMessage('user', message);
+  input.value = '';
+  
+  setTimeout(() => {
+    const response = generateResponse(message);
+    addMessage('bot', response);
+  }, 500);
+}
+
+function addMessage(type, text) {
+  const container = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message \${type}`;
+  
+  if (type === 'bot') {
+    messageDiv.innerHTML = `
+      <div class="avatar">🤖</div>
+      <div class="message-content">\${text}</div>
+    `;
+  } else {
+    messageDiv.innerHTML = `
+      <div class="message-content">\${text}</div>
+    `;
+  }
+  
+  container.appendChild(messageDiv);
+  container.scrollTop = container.scrollHeight;
+}
+
 function generateResponse(query) {
   const q = query.toLowerCase();
   
