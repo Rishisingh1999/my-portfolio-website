@@ -1870,5 +1870,331 @@ function generateResponse(query) {
 }
 </script>
 
+<!-- Glassmorphism AI Chatbot Widget -->
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Floating Chat Button */
+.chat-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-out;
+}
+
+.chat-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
+}
+
+.chat-button svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Glassmorphism Chat Panel */
+.chat-panel {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 380px;
+  height: 580px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  z-index: 9998;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+}
+
+.chat-panel.active { display: flex; }
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Chat Header */
+.chat-header {
+  padding: 20px;
+  background: rgba(102, 126, 234, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h3 {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.chat-header button:hover { opacity: 1; }
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-messages::-webkit-scrollbar { width: 6px; }
+.chat-messages::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.message {
+  display: flex;
+  gap: 12px;
+  animation: messageIn 0.3s ease-out;
+}
+
+@keyframes messageIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.message.bot .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.message.user { justify-content: flex-end; }
+
+.message-content {
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 75%;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.message.bot .message-content {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f0f0f0;
+  border-bottom-left-radius: 4px;
+}
+
+.message.user .message-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* Chat Input */
+.chat-input {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 12px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, sans-serif;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.chat-input input::placeholder { color: rgba(255, 255, 255, 0.5); }
+.chat-input input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.chat-input button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.chat-input button:hover { transform: scale(1.05); }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .chat-panel {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .chat-button { bottom: 16px; right: 16px; }
+}
+</style>
+
+<button class="chat-button" onclick="toggleChat()">
+  <svg viewBox="0 0 24 24">
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+  </svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <h3>💬 Portfolio Assistant</h3>
+    <button onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot">
+      <div class="avatar">🤖</div>
+      <div class="message-content">
+        Hi! I'm Hrushikesh's AI assistant. Ask me about his experience, skills, or projects!
+      </div>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Ask about experience, skills, projects..." onkeypress="handleKeyPress(event)">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+const knowledge = {
+  name: "Hrushikesh Singh Bondili",
+  role: "RevOps Analyst & Business Analyst",
+  experience: "4+ years in analytics, revenue operations, and data science",
+  education: "Master of Business Analytics (GPA 3.4/4.0) from Sacred Heart University (2023-2024)",
+  skills: ["Power BI & DAX", "SQL", "Python (Pandas, ML, XGBoost)", "Revenue Operations", "Workflow Automation (n8n, Airflow)"],
+  projects: [
+    "AI-Powered Supply Chain Disruption Predictor with 94.2% accuracy",
+    "Hospital Readmission Risk Model with 85% AUC-PR",
+    "EV Adoption Market Analysis across 2000+ US counties"
+  ],
+  contact: "hrushisingh697@gmail.com | +1 203-994-4997",
+  status: "Open to roles (Remote/Hybrid)"
+};
+
+function toggleChat() {
+  document.getElementById('chatPanel').classList.toggle('active');
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') sendMessage();
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  if (!message) return;
+
+  addMessage('user', message);
+  input.value = '';
+
+  setTimeout(() => {
+    const response = generateResponse(message);
+    addMessage('bot', response);
+  }, 500);
+}
+
+function addMessage(type, text) {
+  const container = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${type}`;
+  
+  if (type === 'bot') {
+    messageDiv.innerHTML = `
+      <div class="avatar">🤖</div>
+      <div class="message-content">${text}</div>
+    `;
+  } else {
+    messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+  }
+  
+  container.appendChild(messageDiv);
+  container.scrollTop = container.scrollHeight;
+}
+
+function generateResponse(query) {
+  const q = query.toLowerCase();
+  
+  if (q.includes('skill') || q.includes('technical') || q.includes('tool')) {
+    return `${knowledge.name} specializes in: ${knowledge.skills.join(', ')}. He has 4+ years of experience in revenue analytics and business intelligence.`;
+  }
+  
+  if (q.includes('experience') || q.includes('work') || q.includes('background')) {
+    return `He has ${knowledge.experience}. He's worked across Deloitte, A3 Technology, Salesforce, and other leading organizations building revenue dashboards and predictive models.`;
+  }
+  
+  if (q.includes('project') || q.includes('portfolio') || q.includes('built')) {
+    return `Key projects include: ${knowledge.projects.join('; ')}. All projects demonstrate strong ML and analytics capabilities.`;
+  }
+  
+  if (q.includes('education') || q.includes('degree') || q.includes('study')) {
+    return `${knowledge.education}. Also holds a Bachelor of Commerce in Computer Applications.`;
+  }
+  
+  if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('hire')) {
+    return `You can contact ${knowledge.name} at: ${knowledge.contact}. He's currently ${knowledge.status}!`;
+  }
+  
+  if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
+    return `Hello! I'm here to help you learn about ${knowledge.name}'s experience in RevOps, analytics, and data science. What would you like to know?`;
+  }
+  
+  return `${knowledge.name} is a ${knowledge.role} with expertise in Power BI, SQL, Python, and revenue analytics. He's ${knowledge.status}. Ask me about his skills, experience, projects, or how to contact him!`;
+}
+</script>
 </body>
 </html>
