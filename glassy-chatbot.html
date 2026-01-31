@@ -262,20 +262,45 @@ function handleKeyPress(event) {
   if (event.key === 'Enter') sendMessage();
 }
 
-function sendMessage() {
-  const input = document.getElementById('chatInput');
-  const message = input.value.trim();
-  if (!message) return;
+async function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    if (!message) return;
 
-  addMessage('user', message);
-  input.value = '';
+    addMessage('user', message);
+    input.value = '';
 
-  setTimeout(() => {
-    const response = generateResponse(message);
-    addMessage('bot', response);
-  }, 500);
+    try {
+        const response = await fetch('https://api.aimlapi.com/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 8023cf81f96c45b995e405fb09923057'
+            },
+            body: JSON.stringify({
+                model: 'gemini-2.0-flash-exp',
+                messages: [
+                    {
+                        role: 'system',
+                        content: 'You are a helpful AI assistant for a portfolio website. Answer questions about web development, data analytics, and related topics.'
+                    },
+                    {
+                        role: 'user',
+                        content: message
+                    }
+                ],
+                max_tokens: 500
+            })
+        });
+
+        const data = await response.json();
+        const botReply = data.choices[0].message.content;
+        addMessage('bot', botReply);
+    } catch (error) {
+        console.error('Error:', error);
+        addMessage('bot', 'Sorry, I encountered an error. Please try again.');
+    }
 }
-
 function addMessage(type, text) {
   const container = document.getElementById('chatMessages');
   const messageDiv = document.createElement('div');
