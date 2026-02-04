@@ -151,29 +151,6 @@ Multiple ways to connect:
 
 ---
 
-## 📁 Project Structure
-
-```
-my-portfolio-website/
-├── index.html                  # Main landing page
-├── about.html                  # About me page
-├── projects.html               # Projects showcase
-├── contact.html                # Contact page
-├── css/
-│   ├── style.css               # Main stylesheet
-│   └── responsive.css          # Mobile responsiveness
-├── js/
-│   ├── main.js                 # Core functionality
-│   └── animations.js           # Animation effects
-├── images/
-│   ├── profile.jpg             # Profile photo
-│   └── projects/                # Project screenshots
-├── assets/                     # Icons, fonts, etc.
-└── README.md                   # Project documentation
-```
-
----
-
 ## 🎓 Skills Highlighted
 
 This portfolio website demonstrates:
@@ -215,7 +192,7 @@ This portfolio website demonstrates:
 **Hrushikesh Singh**  
 *Business Analyst | Data Scientist | AI/ML Engineer*
 
-- 📧 Email: hrushisingh697@gmail.com
+- 📧 Email: singhhrushi1999@gmail.com
 - 💼 LinkedIn: [linkedin.com/in/hrushikesh-singh](https://www.linkedin.com/in/hrushikesh-singh-564b4035a)
 - 🐙 GitHub: [@Rishisingh1999](https://github.com/Rishisingh1999)
 - 🌐 Portfolio: [rishisingh1999.github.io/my-portfolio-website](https://rishisingh1999.github.io/my-portfolio-website/)
