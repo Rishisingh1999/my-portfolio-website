@@ -1628,11 +1628,6 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="text" name="_honey" style="display:none" />
-          <input
-            type="hidden"
-            name="_next"
-            value="https://rishisingh1999.github.io/my-portfolio-website/"
-          />
 
           <div class="field">
             <label for="name">Name</label>
@@ -1931,9 +1926,24 @@
 
     // Handle form submission
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      // Don't prevent default - let the form submit to FormSubmit
-      // Show the modal immediately
-      setTimeout(showSuccessModal, 100);
+      e.preventDefault(); // Prevent page redirect
+      
+      const formData = new FormData(this);
+      
+      // Submit to FormSubmit without redirecting
+      fetch('https://formsubmit.co/singhhrushi1999@gmail.com', {
+        method: 'POST',
+        body: formData
+      }).then(response => {
+        // Show modal regardless of response
+        setTimeout(showSuccessModal, 100);
+        // Reset form
+        document.getElementById('contactForm').reset();
+      }).catch(error => {
+        console.error('Error:', error);
+        // Still show modal even if there's an error
+        setTimeout(showSuccessModal, 100);
+      });
     });
 
     // Check if returning from FormSubmit
