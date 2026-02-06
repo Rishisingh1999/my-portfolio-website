@@ -1911,9 +1911,6 @@
           
           document.body.appendChild(confetti);
           
-          setTimeout(() => {
-            confetti.remove();
-          }, 5000);
         }, i * 10);
       }
     }
@@ -1927,6 +1924,9 @@
     // Close success modal
     function closeSuccessModal() {
       document.getElementById('successModal').classList.remove('show');
+        // Remove all confetti when modal closes
+  const allConfetti = document.querySelectorAll('.confetti');
+  allConfetti.forEach(confetti => confetti.remove());
     }
 
     // Handle form submission
