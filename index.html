@@ -1,389 +1,548 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hrushikesh Singh Bondili | Business Analytics Portfolio</title>
-  <meta
-    name="description"
-    content="Portfolio of Hrushikesh Singh Bondili — Business Analyst, RevOps Analyst, and Analytics professional focused on revenue operations, forecasting, dashboards, and process improvement."
-  />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hrushikesh Singh — AI Automation & GTM Engineer</title>
+<meta name="description" content="Hrushikesh Singh — AI Automation & GTM Analytics Engineer. I design LLM-driven pipelines and revenue-operations systems that turn manual GTM work into automated, observable workflows." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+  :root{
+    --bg:#0b0c0e;
+    --bg-panel:#131519;
+    --bg-elev:#181b20;
+    --text:#edede7;
+    --text-soft:rgba(237,237,231,.64);
+    --text-faint:rgba(237,237,231,.4);
+    --line:rgba(237,237,231,.12);
+    --line-strong:rgba(237,237,231,.22);
+    --amber:#f2a73b;
+    --amber-dim:rgba(242,167,59,.16);
+    --green:#6fcf97;
+    --green-dim:rgba(111,207,151,.16);
+    --radius:10px;
+  }
 
-  <style type="text/tailwindcss">
-    @theme {
-      --font-display: "Instrument Serif", serif;
-      --font-sans: "Inter", sans-serif;
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.02em;
+    margin:0;
+    font-weight:600;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--amber-dim);color:var(--text);}
 
-      --color-ink: #111111;
-      --color-paper: #f6f1e8;
-      --color-panel: #fbf8f3;
-      --color-line: rgba(17, 17, 17, 0.12);
-      --color-soft: rgba(17, 17, 17, 0.66);
-      --color-accent: #0f766e;
-      --color-accent-ink: #f4fffd;
-      --color-dark: #121212;
-      --color-dark-panel: #1a1a1a;
-      --color-dark-line: rgba(255, 255, 255, 0.12);
-      --color-dark-soft: rgba(255, 255, 255, 0.68);
-    }
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:24px;}
+  @media(min-width:768px){.wrap{padding-inline:40px;}}
 
-    @layer base {
-      body {
-        @apply bg-paper text-ink antialiased;
-      }
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, #000 40%, transparent 85%);
+            mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, #000 40%, transparent 85%);
+    opacity:.5;
+  }
 
-      h1, h2, h3 {
-        @apply font-display tracking-[-0.02em];
-      }
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    border-bottom:1px solid var(--line);
+    background:rgba(11,12,14,.82);
+    backdrop-filter:blur(10px);
+  }
+  header .bar{display:flex;align-items:center;justify-content:space-between;padding-block:16px;}
+  .logo{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.05em;display:flex;align-items:center;gap:2px;}
+  .cursor{display:inline-block;width:8px;height:16px;background:var(--amber);margin-left:2px;animation:blink 1.1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
 
-      p {
-        text-wrap: pretty;
-      }
-    }
-  </style>
+  nav{display:none;gap:28px;align-items:center;}
+  nav a{font-size:13.5px;color:var(--text-soft);transition:color .15s;}
+  nav a:hover{color:var(--text);}
+  @media(min-width:860px){nav{display:flex;}}
+
+  .status-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:7px 14px 7px 10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-soft);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(111,207,151,.6);animation:pulse 2s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(111,207,151,.5);}
+    70%{box-shadow:0 0 0 7px rgba(111,207,151,0);}
+    100%{box-shadow:0 0 0 0 rgba(111,207,151,0);}
+  }
+
+  section{position:relative;z-index:1;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);
+    display:flex;align-items:center;gap:10px;margin-bottom:16px;
+  }
+  .eyebrow::before{content:"";width:16px;height:1px;background:var(--amber);display:inline-block;}
+
+  /* hero */
+  .hero{padding-block:72px;}
+  @media(min-width:860px){.hero{padding-block:120px 96px;}}
+  .hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);line-height:1.04;max-width:15ch;}
+  .hero .lede{margin-top:22px;max-width:56ch;color:var(--text-soft);font-size:clamp(1rem,1.6vw,1.15rem);}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 22px;border-radius:8px;
+    font-size:14px;font-weight:500;transition:all .15s;
+  }
+  .btn-primary{background:var(--amber);color:#1a1204;}
+  .btn-primary:hover{background:#ffb654;}
+  .btn-ghost{border:1px solid var(--line-strong);color:var(--text);}
+  .btn-ghost:hover{background:var(--bg-panel);}
+
+  /* pipeline signature */
+  .pipeline-card{
+    margin-top:64px;border:1px solid var(--line);border-radius:16px;background:var(--bg-panel);
+    padding:22px 18px 26px;overflow:hidden;
+  }
+  @media(min-width:640px){.pipeline-card{padding:28px 34px 32px;}}
+  .pipeline-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+  .pipeline-head .title{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text-soft);letter-spacing:.03em;}
+  .pipeline-head .title b{color:var(--text);}
+  .run-badge{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--green);border:1px solid rgba(111,207,151,.35);background:var(--green-dim);border-radius:999px;padding:4px 10px;}
+
+  .flow{position:relative;}
+  .flow-track{position:relative;height:2px;background:var(--line-strong);border-radius:2px;margin:0 4px;}
+  .flow-progress{
+    position:absolute;left:0;top:0;height:100%;width:22%;border-radius:2px;
+    background:linear-gradient(90deg, transparent, var(--amber), transparent);
+    animation:travel 4.5s ease-in-out infinite;
+  }
+  @keyframes travel{
+    0%{left:-22%;}
+    100%{left:100%;}
+  }
+  .flow-nodes{display:flex;justify-content:space-between;margin-top:-11px;}
+  .fnode{display:flex;flex-direction:column;align-items:center;gap:10px;width:19%;text-align:center;}
+  .fnode .ring{
+    width:22px;height:22px;border-radius:50%;background:var(--bg-elev);border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .fnode .ring i{width:8px;height:8px;border-radius:50%;background:var(--text-faint);}
+  .fnode.on .ring{border-color:var(--amber);}
+  .fnode.on .ring i{background:var(--amber);animation:pulse-amber 1.6s infinite;}
+  @keyframes pulse-amber{0%{box-shadow:0 0 0 0 rgba(242,167,59,.55);}70%{box-shadow:0 0 0 6px rgba(242,167,59,0);}100%{box-shadow:0 0 0 0 rgba(242,167,59,0);}}
+  .fnode .lbl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-soft);line-height:1.3;}
+  .fnode .lbl b{display:block;color:var(--text);font-size:11.5px;margin-bottom:2px;}
+
+  .pipeline-foot{margin-top:24px;font-size:13px;color:var(--text-soft);border-top:1px solid var(--line);padding-top:16px;}
+
+  /* metrics strip */
+  .metrics{padding-block:28px;}
+  .metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;}
+  @media(min-width:768px){.metrics-grid{grid-template-columns:repeat(4,1fr);}}
+  .metric{border-top:1px solid var(--line);padding:20px 18px 0 0;}
+  .metric .num{font-family:'Space Grotesk',sans-serif;font-size:2rem;color:var(--amber);font-weight:600;}
+  .metric .lbl{margin-top:6px;font-size:13px;color:var(--text-soft);max-width:22ch;}
+
+  /* generic section heads */
+  .sec-head{max-width:640px;margin-bottom:48px;}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
+  .sec-pad{padding-block:80px;}
+
+  /* experience */
+  .job{
+    display:grid;gap:6px 28px;padding-block:32px;border-top:1px solid var(--line);
+    grid-template-columns:1fr;
+  }
+  .job:first-of-type{border-top:1px solid var(--line);}
+  @media(min-width:860px){.job{grid-template-columns:200px 1fr;}}
+  .job .when{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text-faint);}
+  .job .role{font-size:1.15rem;font-weight:600;font-family:'Space Grotesk',sans-serif;margin-top:4px;}
+  .job .org{color:var(--text-soft);font-size:14px;margin-top:2px;}
+  .job ul{margin:16px 0 0;padding-left:18px;color:var(--text-soft);font-size:14.5px;}
+  .job li{margin-bottom:8px;}
+  .job li::marker{color:var(--amber);}
+  .tag-current{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--green);border:1px solid rgba(111,207,151,.35);background:var(--green-dim);border-radius:999px;padding:2px 9px;margin-left:10px;}
+
+  /* projects */
+  .proj-grid{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media(min-width:768px){.proj-grid{grid-template-columns:1fr 1fr;}}
+  .proj{
+    border:1px solid var(--line);border-radius:14px;padding:26px 24px;background:var(--bg-panel);
+    transition:border-color .15s, transform .15s;
+  }
+  .proj:hover{border-color:var(--line-strong);transform:translateY(-2px);}
+  .proj .stack{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber);letter-spacing:.02em;}
+  .proj h3{margin-top:12px;font-size:1.2rem;}
+  .proj p{margin-top:10px;color:var(--text-soft);font-size:14px;}
+  .proj .stat{
+    margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--green);
+  }
+
+  /* skills */
+  .skill-grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;grid-template-columns:1fr;}
+  @media(min-width:768px){.skill-grid{grid-template-columns:repeat(2,1fr);}}
+  .skill-cell{background:var(--bg-panel);padding:24px;}
+  .skill-cell .cat{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--amber);letter-spacing:.06em;text-transform:uppercase;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .chip{font-size:13px;color:var(--text-soft);border:1px solid var(--line-strong);border-radius:7px;padding:5px 10px;}
+
+  /* education */
+  .edu-grid{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media(min-width:768px){.edu-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .edu-card{border:1px solid var(--line);border-radius:14px;padding:22px;}
+  .edu-card .deg{font-weight:600;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;}
+  .edu-card .school{color:var(--text-soft);font-size:13.5px;margin-top:6px;}
+  .edu-card .when{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-faint);margin-top:10px;}
+
+  /* contact */
+  .contact-card{border:1px solid var(--line-strong);border-radius:20px;padding:44px 28px;background:var(--bg-panel);}
+  @media(min-width:768px){.contact-card{padding:64px 56px;}}
+  .contact-card h2{font-size:clamp(1.9rem,4vw,3rem);max-width:20ch;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
+  .clink{
+    display:flex;align-items:center;gap:10px;border:1px solid var(--line-strong);border-radius:10px;
+    padding:12px 18px;font-size:14px;min-height:44px;
+  }
+  .clink:hover{border-color:var(--amber);}
+  .clink .k{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-faint);}
+
+  footer{padding-block:26px;}
+  footer .wrap{display:flex;flex-direction:column;gap:8px;font-size:12.5px;color:var(--text-faint);font-family:'IBM Plex Mono',monospace;}
+  @media(min-width:768px){footer .wrap{flex-direction:row;justify-content:space-between;align-items:center;}}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor,.dot,.flow-progress,.fnode.on .ring i{animation:none !important;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+</style>
 </head>
-<body class="bg-paper text-ink selection:bg-black/10">
-  <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-black focus:px-4 focus:py-2 focus:text-white">
-    Skip to content
-  </a>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
 
-  <div class="min-h-screen">
-    <header class="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
-        <a href="#" class="text-sm font-semibold tracking-[0.18em] uppercase">
-          HSB
-        </a>
-
-        <nav class="hidden items-center gap-8 md:flex">
-          <a href="#work" class="text-sm text-soft transition hover:text-ink">Work</a>
-          <a href="#about" class="text-sm text-soft transition hover:text-ink">About</a>
-          <a href="#approach" class="text-sm text-soft transition hover:text-ink">Approach</a>
-          <a href="#contact" class="text-sm text-soft transition hover:text-ink">Contact</a>
-        </nav>
-
-        <a
-          href="#contact"
-          class="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-sm font-medium text-white transition hover:opacity-90"
-        >
-          Let’s talk
-        </a>
-      </div>
-    </header>
-
-    <main id="content">
-      <section class="border-b border-line">
-        <div class="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:px-8 lg:py-28">
-          <div class="lg:col-span-7">
-            <p class="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-soft">
-              Business Analytics · RevOps · Forecasting
-            </p>
-
-            <h1 class="max-w-4xl text-[clamp(3rem,7vw,6.5rem)] leading-[0.95]">
-              I build analytics systems that turn messy operations into clear decisions.
-            </h1>
-
-            <p class="mt-6 max-w-2xl text-base leading-7 text-soft sm:text-lg">
-              I help teams improve revenue visibility, reporting accuracy, forecasting, and workflow efficiency through dashboards, analytics, and business process thinking.
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#work"
-                class="inline-flex min-h-11 items-center rounded-full bg-ink px-6 text-sm font-medium text-white transition hover:opacity-90"
-              >
-                View selected work
-              </a>
-              <a
-                href="#about"
-                class="inline-flex min-h-11 items-center rounded-full border border-line px-6 text-sm font-medium transition hover:bg-black/5"
-              >
-                About me
-              </a>
-            </div>
-          </div>
-
-          <aside class="lg:col-span-5">
-            <div class="rounded-[28px] border border-line bg-panel p-6 sm:p-8">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-soft">
-                Snapshot
-              </p>
-
-              <dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
-                <div>
-                  <dt class="text-xs uppercase tracking-[0.18em] text-soft">Focus</dt>
-                  <dd class="mt-2 text-lg font-semibold">RevOps + Analytics</dd>
-                </div>
-                <div>
-                  <dt class="text-xs uppercase tracking-[0.18em] text-soft">Experience</dt>
-                  <dd class="mt-2 text-lg font-semibold">3+ years</dd>
-                </div>
-                <div>
-                  <dt class="text-xs uppercase tracking-[0.18em] text-soft">Tools</dt>
-                  <dd class="mt-2 text-lg font-semibold">SQL, Python, Power BI</dd>
-                </div>
-                <div>
-                  <dt class="text-xs uppercase tracking-[0.18em] text-soft">Based in</dt>
-                  <dd class="mt-2 text-lg font-semibold">United States</dd>
-                </div>
-              </dl>
-
-              <div class="mt-8 border-t border-line pt-6">
-                <p class="text-sm leading-7 text-soft">
-                  Best fit for revenue operations, business analysis, reporting automation, forecasting, and decision-support dashboards.
-                </p>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="border-b border-line">
-        <div class="mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8">
-          <div class="grid gap-4 text-sm text-soft md:grid-cols-4">
-            <div class="border-t border-line pt-4">Forecasting & pipeline visibility</div>
-            <div class="border-t border-line pt-4">Dashboard design & KPI reporting</div>
-            <div class="border-t border-line pt-4">Process analysis & optimization</div>
-            <div class="border-t border-line pt-4">Automation & operational insights</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="work" class="border-b border-line">
-        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24 lg:px-8">
-          <div class="max-w-3xl">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-soft">
-              Selected work
-            </p>
-            <h2 class="mt-4 text-4xl leading-tight sm:text-5xl">
-              Featured case studies
-            </h2>
-            <p class="mt-4 text-base leading-7 text-soft sm:text-lg">
-              A tighter set of high-proof projects will make the site feel stronger than showing too many equal-weight cards.
-            </p>
-          </div>
-
-          <div class="mt-12 space-y-6">
-            <article class="grid gap-6 rounded-[32px] border border-line bg-panel p-6 md:grid-cols-12 md:p-8">
-              <div class="md:col-span-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-soft">
-                  Healthcare analytics
-                </p>
-                <h3 class="mt-3 text-3xl leading-tight">
-                  Hospital Readmission Risk Model
-                </h3>
-              </div>
-              <div class="md:col-span-5">
-                <p class="text-sm leading-7 text-soft">
-                  Built a predictive model and reporting layer to identify high-risk patients and support more targeted decision-making using large-scale healthcare data.
-                </p>
-              </div>
-              <div class="md:col-span-3">
-                <ul class="space-y-3 text-sm text-soft">
-                  <li>AUC-PR and classification workflow</li>
-                  <li>Python, SQL, Power BI</li>
-                  <li>100K+ records</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="grid gap-6 rounded-[32px] border border-line bg-panel p-6 md:grid-cols-12 md:p-8">
-              <div class="md:col-span-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-soft">
-                  RevOps analytics
-                </p>
-                <h3 class="mt-3 text-3xl leading-tight">
-                  Revenue Operations Dashboard
-                </h3>
-              </div>
-              <div class="md:col-span-5">
-                <p class="text-sm leading-7 text-soft">
-                  Designed a revenue visibility layer for tracking pipeline, churn, ARR, MRR, and related operating signals to support better GTM decision-making.
-                </p>
-              </div>
-              <div class="md:col-span-3">
-                <ul class="space-y-3 text-sm text-soft">
-                  <li>ARR, MRR, churn, CAC</li>
-                  <li>Power BI, Excel, SQL</li>
-                  <li>Executive reporting focus</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="grid gap-6 rounded-[32px] border border-line bg-panel p-6 md:grid-cols-12 md:p-8">
-              <div class="md:col-span-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-soft">
-                  Market intelligence
-                </p>
-                <h3 class="mt-3 text-3xl leading-tight">
-                  EV Adoption Market Analysis
-                </h3>
-              </div>
-              <div class="md:col-span-5">
-                <p class="text-sm leading-7 text-soft">
-                  Analyzed large public datasets to understand EV adoption patterns, regional differences, and market opportunity across counties in the United States.
-                </p>
-              </div>
-              <div class="md:col-span-3">
-                <ul class="space-y-3 text-sm text-soft">
-                  <li>2,000+ counties analyzed</li>
-                  <li>Python, Pandas, visualization</li>
-                  <li>Trend and segmentation reporting</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="border-b border-line">
-        <div class="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:px-8">
-          <div class="lg:col-span-4">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-soft">
-              About
-            </p>
-            <h2 class="mt-4 text-4xl leading-tight sm:text-5xl">
-              Strategy, analysis, and systems thinking
-            </h2>
-          </div>
-
-          <div class="space-y-6 lg:col-span-8">
-            <p class="max-w-3xl text-base leading-8 text-soft sm:text-lg">
-              My work sits between business goals and technical execution. I like turning ambiguous problems into measurable workflows, clearer reporting, and decisions leaders can act on.
-            </p>
-
-            <div class="grid gap-6 md:grid-cols-2">
-              <div class="rounded-[28px] border border-line bg-panel p-6">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-soft">
-                  Education
-                </p>
-                <div class="mt-4 space-y-4">
-                  <div>
-                    <h3 class="text-lg font-semibold">Master of Business Analytics</h3>
-                    <p class="mt-1 text-sm text-soft">Sacred Heart University</p>
-                  </div>
-                  <div>
-                    <h3 class="text-lg font-semibold">Bachelor of Commerce in Computer Applications</h3>
-                    <p class="mt-1 text-sm text-soft">Jagruthi Degree &amp; PG College</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rounded-[28px] border border-line bg-panel p-6">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-soft">
-                  Core tools
-                </p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">SQL</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Python</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Power BI</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Tableau</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Excel</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Snowflake</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Airflow</span>
-                  <span class="rounded-full border border-line px-3 py-2 text-sm">Azure</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="approach" class="border-b border-line">
-        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24 lg:px-8">
-          <div class="grid gap-10 lg:grid-cols-12">
-            <div class="lg:col-span-4">
-              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-soft">
-                Approach
-              </p>
-              <h2 class="mt-4 text-4xl leading-tight sm:text-5xl">
-                How I work
-              </h2>
-            </div>
-
-            <div class="grid gap-6 lg:col-span-8 md:grid-cols-3">
-              <div class="border-t border-line pt-5">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-soft">
-                  01
-                </p>
-                <h3 class="mt-3 text-xl">Clarify the problem</h3>
-                <p class="mt-3 text-sm leading-7 text-soft">
-                  Start with business context, stakeholders, process pain points, and the decisions the work needs to support.
-                </p>
-              </div>
-
-              <div class="border-t border-line pt-5">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-soft">
-                  02
-                </p>
-                <h3 class="mt-3 text-xl">Build useful reporting</h3>
-                <p class="mt-3 text-sm leading-7 text-soft">
-                  Create dashboards, models, and KPI frameworks that improve visibility without overwhelming the user.
-                </p>
-              </div>
-
-              <div class="border-t border-line pt-5">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-soft">
-                  03
-                </p>
-                <h3 class="mt-3 text-xl">Drive action</h3>
-                <p class="mt-3 text-sm leading-7 text-soft">
-                  The goal is not just analysis but clearer decisions, better operations, and measurable improvement.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24 lg:px-8">
-          <div class="rounded-[36px] bg-ink px-6 py-10 text-white sm:px-8 sm:py-14 md:px-12">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
-              Contact
-            </p>
-            <h2 class="mt-4 max-w-3xl text-4xl leading-tight sm:text-5xl">
-              Looking for someone who can connect business questions with analytics execution?
-            </h2>
-            <p class="mt-4 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-              I’m open to analyst, RevOps, and business analytics opportunities where reporting, forecasting, and process improvement matter.
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a
-                href="mailto:singhhrushi1999@gmail.com"
-                class="inline-flex min-h-11 items-center rounded-full bg-white px-6 text-sm font-medium text-black transition hover:opacity-90"
-              >
-                Email me
-              </a>
-              <a
-                href="https://www.linkedin.com/in/hrushikesh-singh-564b4035a"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex min-h-11 items-center rounded-full border border-white/20 px-6 text-sm font-medium text-white transition hover:bg-white/10"
-              >
-                LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-line">
-      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-6 text-sm text-soft sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-        <p>© 2026 Hrushikesh Singh Bondili</p>
-        <p>Business Analytics · RevOps · Forecasting</p>
-      </div>
-    </footer>
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="logo">HS<span class="cursor" aria-hidden="true"></span></a>
+    <nav aria-label="Primary">
+      <a href="#pipeline">How it works</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="status-pill"><span class="dot" aria-hidden="true"></span>open to roles</span>
   </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow mono">AI Automation &amp; GTM Engineering</p>
+      <h1>I turn manual GTM work into pipelines that run themselves.</h1>
+      <p class="lede">Hrushikesh Singh — I build production LLM workflows, RAG pipelines, and revenue-operations automation on top of Salesforce, HubSpot, Python, and n8n. Three-plus years making forecasts more accurate, dashboards faster, and busywork disappear.</p>
+      <div class="btn-row">
+        <a href="#experience" class="btn btn-primary">See the work</a>
+        <a href="mailto:rishisingh1999@gmail.com" class="btn btn-ghost">Email me</a>
+      </div>
+
+      <!-- signature: live pipeline -->
+      <div class="pipeline-card reveal" id="pipeline">
+        <div class="pipeline-head">
+          <span class="title mono">workflow.run <b>· content_automation_pipeline</b></span>
+          <span class="run-badge mono">status: healthy</span>
+        </div>
+
+        <div class="flow">
+          <div class="flow-track"><div class="flow-progress"></div></div>
+          <div class="flow-nodes">
+            <div class="fnode on">
+              <div class="ring"><i></i></div>
+              <span class="lbl"><b>Trigger</b>form submitted</span>
+            </div>
+            <div class="fnode on">
+              <div class="ring"><i></i></div>
+              <span class="lbl"><b>Orchestrate</b>n8n workflow</span>
+            </div>
+            <div class="fnode on">
+              <div class="ring"><i></i></div>
+              <span class="lbl"><b>Generate</b>ComfyUI / LLM</span>
+            </div>
+            <div class="fnode on">
+              <div class="ring"><i></i></div>
+              <span class="lbl"><b>Package</b>FastAPI service</span>
+            </div>
+            <div class="fnode on">
+              <div class="ring"><i></i></div>
+              <span class="lbl"><b>Deliver</b>distributed, logged</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="pipeline-foot">This is close to the actual shape of a system I shipped: a Dockerized, form-to-delivery media pipeline that cut generation time from about an hour to under two minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics">
+    <div class="wrap metrics-grid">
+      <div class="metric reveal"><div class="num">$500K+</div><div class="lbl">at-risk pipeline surfaced by an LLM anomaly-detection system</div></div>
+      <div class="metric reveal"><div class="num">40%</div><div class="lbl">faster lead-to-engagement analysis via Python + n8n pipelines</div></div>
+      <div class="metric reveal"><div class="num">5d → 1.5d</div><div class="lbl">leadership reporting cycle, after rebuilding dbt models</div></div>
+      <div class="metric reveal"><div class="num">85%</div><div class="lbl">less time spent preparing reports, after automating routing</div></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="sec-pad" id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow mono">Experience</p>
+        <h2>Four roles, one thread: make the system do the manual part.</h2>
+      </div>
+
+      <div class="job reveal">
+        <div>
+          <div class="when">Jan 2026 — Present</div>
+          <div class="role">AI Automation &amp; GTM Analytics Engineer<span class="tag-current mono">current</span></div>
+          <div class="org">A3 Technology, Inc. · Remote</div>
+        </div>
+        <ul>
+          <li>Shipped Python and n8n integration pipelines across GovCon CRM environments, cutting lead-to-engagement analysis latency by 40%.</li>
+          <li>Deployed an LLM anomaly-detection pipeline (Python, LangChain, Pinecone) that flagged high-risk opportunities and surfaced $500K+ in at-risk pipeline value.</li>
+          <li>Built dbt models on Snowflake and Azure Synapse, shrinking leadership reporting cycles from 5 days to 1.5 days.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div>
+          <div class="when">Mar 2025 — Dec 2025</div>
+          <div class="role">Revenue Cloud Analyst</div>
+          <div class="org">Salesforce · Remote, California</div>
+        </div>
+        <ul>
+          <li>Integrated Python time-series models with Salesforce CRM APIs, improving mid-market forecast accuracy by 18%.</li>
+          <li>Architected GTM data-sync and ETL workflows, cutting replication latency by 40% and improving Quote-to-Cash visibility.</li>
+          <li>Optimized Snowflake SQL compute and query patterns, cutting executive dashboard refresh time by 35% for 50+ stakeholders.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div>
+          <div class="when">Jan 2024 — Dec 2024</div>
+          <div class="role">Revenue Operations Analyst</div>
+          <div class="org">Outreach.io · Remote, Connecticut</div>
+        </div>
+        <ul>
+          <li>Built an XGBoost churn-prediction pipeline that flagged at-risk accounts 45 days early, supporting a 12% reduction in churn.</li>
+          <li>Automated lead routing and reporting with SQL and n8n event triggers, cutting lead-to-call latency by 25% and reporting prep time by 85%.</li>
+          <li>Designed GTM performance tracking for sales velocity and LTV, improving coaching efficiency by 30%.</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div>
+          <div class="when">Aug 2023 — Dec 2023</div>
+          <div class="role">Business Analytics &amp; Data Analyst</div>
+          <div class="org">Deloitte · Remote, New York</div>
+        </div>
+        <ul>
+          <li>Automated ETL/ELT workflows with Python, Azure Data Factory, and SQL, eliminating 60%+ of manual data compilation.</li>
+          <li>Delivered reporting platforms for Fortune 500 SaaS clients that isolated pipeline gaps, improving lead-to-opportunity conversion by 15%.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="sec-pad" id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow mono">Selected builds</p>
+        <h2>Systems I built end to end.</h2>
+      </div>
+
+      <div class="proj-grid">
+        <div class="proj reveal">
+          <p class="stack mono">n8n · ComfyUI · FastAPI · Docker</p>
+          <h3>AI Content Automation Platform</h3>
+          <p>End-to-end media automation from a form submission to self-hosted diffusion generation and distribution. Dockerized every service in the chain.</p>
+          <p class="stat mono">1 hour → &lt;2 min generation time</p>
+        </div>
+
+        <div class="proj reveal">
+          <p class="stack mono">FastAPI · WebSockets · Hugging Face · Docker</p>
+          <h3>Voice-Agent Conversational System</h3>
+          <p>A streaming speech-to-text → LLM → text-to-speech pipeline built on FastAPI and WebSockets, tuned for real-time conversation.</p>
+          <p class="stat mono">sub-500ms latency, tested components</p>
+        </div>
+
+        <div class="proj reveal">
+          <p class="stack mono">Python · LangChain · Pinecone</p>
+          <h3>LLM Pipeline Risk Detection</h3>
+          <p>An anomaly-detection layer over CRM opportunity data that flags deals showing risk signals before they slip, so reps and managers see them early.</p>
+          <p class="stat mono">$500K+ at-risk pipeline surfaced</p>
+        </div>
+
+        <div class="proj reveal">
+          <p class="stack mono">Python · XGBoost · SQL</p>
+          <h3>Churn Early-Warning Model</h3>
+          <p>A classification pipeline over account usage and engagement data that identifies churn risk well before renewal conversations start.</p>
+          <p class="stat mono">45 days early · 12% churn reduction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="sec-pad" id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow mono">Stack</p>
+        <h2>The tools behind the pipelines.</h2>
+      </div>
+
+      <div class="skill-grid reveal">
+        <div class="skill-cell">
+          <p class="cat mono">AI &amp; LLMOps</p>
+          <div class="chip-row">
+            <span class="chip">LLM application dev</span>
+            <span class="chip">RAG architectures</span>
+            <span class="chip">Llama 3</span>
+            <span class="chip">Pinecone</span>
+            <span class="chip">Weaviate</span>
+            <span class="chip">Prompt engineering</span>
+            <span class="chip">Agentic workflows</span>
+            <span class="chip">AI observability</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <p class="cat mono">Automation &amp; APIs</p>
+          <div class="chip-row">
+            <span class="chip">Python</span>
+            <span class="chip">n8n</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">WebSockets</span>
+            <span class="chip">Microservices</span>
+            <span class="chip">Workflow orchestration</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <p class="cat mono">Data Stack</p>
+          <div class="chip-row">
+            <span class="chip">SQL (CTEs, window fns)</span>
+            <span class="chip">dbt</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">Scikit-learn</span>
+            <span class="chip">Git &amp; GitHub Actions</span>
+            <span class="chip">CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <p class="cat mono">Cloud, Infra &amp; GTM</p>
+          <div class="chip-row">
+            <span class="chip">Docker</span>
+            <span class="chip">AWS S3 / Glue</span>
+            <span class="chip">Azure Synapse</span>
+            <span class="chip">Snowflake</span>
+            <span class="chip">Airflow</span>
+            <span class="chip">Salesforce CRM / CPQ</span>
+            <span class="chip">HubSpot</span>
+            <span class="chip">Hightouch · Polytomic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="sec-pad" id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow mono">Background</p>
+        <h2>Education &amp; certifications</h2>
+      </div>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <p class="deg">M.S. Business Analytics</p>
+          <p class="school">Sacred Heart University, Fairfield, CT · GPA 3.4/4.0</p>
+          <p class="when mono">Graduated 2024</p>
+        </div>
+        <div class="edu-card">
+          <p class="deg">B.Com. Computer Applications</p>
+          <p class="school">Jagruthi Degree &amp; PG College, Hyderabad, India</p>
+          <p class="when mono">Graduated 2021</p>
+        </div>
+        <div class="edu-card">
+          <p class="deg">Google Data Analytics<br/>Professional Certificate</p>
+          <p class="school">Google</p>
+          <p class="when mono">2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec-pad" id="contact" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <p class="eyebrow mono" style="color:var(--green);">status: open to roles</p>
+        <h2>Looking for someone to own the messy middle between GTM and engineering?</h2>
+        <p class="lede" style="margin-top:16px;color:var(--text-soft);max-width:56ch;">I'm open to AI automation, RevOps, and GTM engineering roles where forecasting, pipeline reliability, and cutting manual work actually move the needle.</p>
+        <div class="contact-links">
+          <a class="clink" href="mailto:rishisingh1999@gmail.com"><span class="k mono">mail</span> rishisingh1999@gmail.com</a>
+          <a class="clink" href="tel:+12039944997"><span class="k mono">call</span> +1 203 994 4997</a>
+          <a class="clink" href="https://www.linkedin.com/in/hrushikesh-singh-564b4035a" target="_blank" rel="noopener noreferrer"><span class="k mono">in</span> LinkedIn</a>
+          <a class="clink" href="#" ><span class="k mono">loc</span> Los Angeles, CA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Hrushikesh Singh</p>
+    <p>ai automation · gtm engineering · revenue analytics</p>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('show'));
+  }
+</script>
 </body>
 </html>
