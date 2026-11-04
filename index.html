@@ -1,2208 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Hrushikesh Singh Bondili — AI Automation & Data Engineer</title>
-
-<meta name="description" content="AI Automation & Data Engineer building data pipelines, LLM/RAG workflows and automation for revenue and operations teams. Python, SQL, dbt, Snowflake, LangChain, n8n.">
-<meta name="author" content="Hrushikesh Singh Bondili">
-
-<meta property="og:title" content="Hrushikesh Singh Bondili — AI Automation & Data Engineer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hrushikesh Singh Bondili — Data Engineer · GTM &amp; Revenue Analytics</title>
+<meta name="description" content="Data Engineer and GTM & revenue analytics professional. dbt, Snowflake, PySpark, Python, SQL, n8n and applied AI. Reporting cycles cut from 5 days to 1.5.">
+<meta name="theme-color" content="#0d0e11">
+<meta property="og:title" content="Hrushikesh Singh Bondili — Data Engineer">
 <meta property="og:description" content="Messy operational data into systems people can trust.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://rishisingh1999.github.io/my-portfolio-website/">
-
 <link rel="canonical" href="https://rishisingh1999.github.io/my-portfolio-website/">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050a12'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23ff3b4e' stroke-width='3' stroke-dasharray='40 24'/%3E%3C/svg%3E">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2306101c'/%3E%3Cpath d='M8 22V10l8 8 8-8v12' fill='none' stroke='%23f2c230' stroke-width='3'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hrushikesh Singh Bondili","jobTitle":"Data Engineer","email":"rishisingh1999@gmail.com","url":"https://rishisingh1999.github.io/my-portfolio-website/","sameAs":["https://github.com/Rishisingh1999","https://www.linkedin.com/in/hrushikesh-singh-revops/"],"alumniOf":"Sacred Heart University","knowsAbout":["Data engineering","dbt","Snowflake","PySpark","Revenue operations","LLM applications"]}</script>
 <style>
-:root{
-  --bg:#050a12;
-  --panel:#0a111d;
-  --ln:#dfe7f2;
-  --dim:#26344a;
-  --txt:#dfe7f2;
-  --mute:#8d9bb0;
-  --red:#ff3b4e;
-  --disp:Orbitron,"Arial Black",Arial,sans-serif;
-  --body:Rajdhani,"Segoe UI",Arial,sans-serif
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0
-}
-
-html{
-  scroll-behavior:smooth
-}
-
-body{
-  font-family:var(--body);
-  font-weight:500;
-  font-size:19px;
-  line-height:1.5;
-  color:var(--txt);
-  background:var(--bg);
-  background-image:
-    radial-gradient(
-      ellipse at 50% 110%,
-      rgba(255,59,78,.16),
-      transparent 55%
-    ),
-    linear-gradient(
-      rgba(223,231,242,.045) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(223,231,242,.045) 1px,
-      transparent 1px
-    );
-  background-size:auto,40px 40px,40px 40px;
-  background-attachment:fixed
-}
-
-button{
-  font:inherit;
-  color:inherit;
-  background:none;
-  border:0;
-  padding:0;
-  cursor:pointer;
-  text-align:inherit
-}
-
-button:focus-visible{
-  outline:2px solid var(--red);
-  outline-offset:3px
-}
-
-a{
-  color:inherit;
-  text-decoration:none
-}
-
-.wrap{
-  width:min(1080px,calc(100% - 36px));
-  margin:0 auto
-}
-
-h1,h2,h3{
-  font-family:var(--disp);
-  line-height:1.15
-}
-
-/* =========================================================
-   CORNER-BRACKET PANEL
-========================================================= */
-
-.hud{
-  --c:var(--ln);
-  position:relative;
-  background-color:rgba(10,17,29,.78);
-  border:1px solid rgba(223,231,242,.14);
-  background-origin:border-box;
-  background-repeat:no-repeat;
-  background-image:
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c)),
-    linear-gradient(var(--c),var(--c));
-  background-position:
-    0 0,
-    0 0,
-    100% 0,
-    100% 0,
-    0 100%,
-    0 100%,
-    100% 100%,
-    100% 100%;
-  background-size:
-    16px 2px,
-    2px 16px,
-    16px 2px,
-    2px 16px,
-    16px 2px,
-    2px 16px,
-    16px 2px,
-    2px 16px
-}
-
-.hud.red{
-  --c:var(--red);
-  border-color:rgba(255,59,78,.4)
-}
-
-/* =========================================================
-   TOP BAR
-========================================================= */
-
-.bar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-  padding:20px 0;
-  font-family:var(--disp);
-  font-size:13px;
-  letter-spacing:.06em;
-  border-bottom:1px solid rgba(223,231,242,.14)
-}
-
-.bar nav{
-  display:flex;
-  gap:22px;
-  font-family:var(--body);
-  font-weight:600;
-  font-size:16px;
-  letter-spacing:.08em
-}
-
-.bar nav button{
-  color:var(--mute)
-}
-
-.bar nav button:hover{
-  color:var(--red)
-}
-
-.brand{
-  font-family:var(--disp);
-  font-weight:700;
-  font-size:13px
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:48px;
-  align-items:center;
-  padding:56px 0 76px
-}
-
-.stat{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-  font-size:15px;
-  letter-spacing:.08em;
-  border:1px solid rgba(255,59,78,.5);
-  padding:5px 14px 5px 10px;
-  margin-bottom:24px
-}
-
-.stat i{
-  width:9px;
-  height:9px;
-  background:var(--red);
-  animation:blink 1.4s steps(2) infinite
-}
-
-@keyframes blink{
-  50%{opacity:.2}
-}
-
-h1{
-  font-size:clamp(28px,4.6vw,50px);
-  font-weight:900;
-  letter-spacing:.01em;
-  margin-bottom:22px
-}
-
-.lede{
-  max-width:33em;
-  color:var(--mute);
-  font-size:20px;
-  margin-bottom:28px
-}
-
-.lede b{
-  color:var(--txt);
-  font-weight:700
-}
-
-.cta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px
-}
-
-.btn,
-.cp{
-  font-family:var(--body);
-  font-weight:700;
-  font-size:17px;
-  letter-spacing:.06em;
-  padding:11px 22px;
-  color:var(--txt);
-  box-shadow:inset 0 0 0 1px var(--ln);
-  clip-path:polygon(
-    10px 0,
-    100% 0,
-    100% calc(100% - 10px),
-    calc(100% - 10px) 100%,
-    0 100%,
-    0 10px
-  );
-  transition:background .15s
-}
-
-.btn:hover,
-.cp:hover{
-  background:rgba(223,231,242,.12)
-}
-
-.btn.pri{
-  background:var(--red);
-  box-shadow:none;
-  color:#140408
-}
-
-.btn.pri:hover{
-  background:#ff6070
-}
-
-.cp{
-  font-size:15px;
-  padding:7px 16px
-}
-
-.cp.ok{
-  background:var(--red);
-  box-shadow:none;
-  color:#140408
-}
-
-/* =========================================================
-   RESULTS / OUTCOMES PANEL
-========================================================= */
-
-.log{
-  padding:20px;
-  font-family:"Share Tech Mono",ui-monospace,Menlo,monospace;
-  font-size:14px
-}
-
-.lh{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  color:var(--mute);
-  font-size:13px;
-  margin-bottom:10px
-}
-
-.lh em{
-  font-style:normal;
-  color:var(--red)
-}
-
-.lh em.done{
-  color:#3ddc97
-}
-
-.row{
-  display:block;
-  width:100%;
-  text-align:left;
-  padding:12px 0;
-  border-top:1px dashed var(--dim);
-  opacity:0;
-  transform:translateY(6px);
-  transition:opacity .3s,transform .3s
-}
-
-.row.on{
-  opacity:1;
-  transform:none
-}
-
-.row span{
-  display:block
-}
-
-.row .t{
-  color:var(--txt);
-  font-size:15px
-}
-
-.row .t b{
-  color:var(--red);
-  font-weight:400
-}
-
-.row .r{
-  color:var(--mute);
-  margin:2px 0 8px;
-  font-size:13px
-}
-
-.mt{
-  display:grid;
-  grid-template-columns:repeat(20,1fr);
-  gap:2px;
-  height:14px
-}
-
-.mt i{
-  background:#1c2738
-}
-
-.mt i.l{
-  background:var(--red);
-  box-shadow:0 0 6px rgba(255,59,78,.55)
-}
-
-.tg{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:6px;
-  color:var(--txt)
-}
-
-.ok{
-  color:#3ddc97;
-  border:1px solid #3ddc97;
-  padding:0 7px;
-  font-size:12px;
-  opacity:0;
-  transition:opacity .2s
-}
-
-.row.fin .ok{
-  opacity:1
-}
-
-.dt{
-  display:none;
-  margin-top:8px;
-  padding-left:10px;
-  border-left:2px solid var(--red);
-  color:var(--mute);
-  font-size:13px
-}
-
-.row[aria-expanded=true] .dt{
-  display:block
-}
-
-.lf{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  border-top:1px dashed var(--dim);
-  padding-top:12px;
-  color:var(--mute);
-  font-size:13px
-}
-
-.note{
-  margin-top:10px;
-  color:var(--mute);
-  font-size:13px
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-section{
-  padding:64px 0
-}
-
-.head{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin-bottom:30px
-}
-
-.head h2{
-  font-size:clamp(20px,3vw,28px);
-  font-weight:700;
-  letter-spacing:.04em;
-  white-space:nowrap
-}
-
-.head h2::before{
-  content:"[ ";
-  color:var(--red)
-}
-
-.head h2::after{
-  content:" ]";
-  color:var(--red)
-}
-
-.head i{
-  flex:1;
-  height:1px;
-  background:var(--dim);
-  position:relative
-}
-
-.head i::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:-3px;
-  width:7px;
-  height:7px;
-  background:var(--red)
-}
-
-.sub{
-  color:var(--mute);
-  max-width:36em;
-  margin:-14px 0 28px
-}
-
-/* =========================================================
-   EXPERIENCE
-========================================================= */
-
-.jobs{
-  display:grid;
-  gap:16px
-}
-
-.job{
-  padding:22px 24px 22px 30px
-}
-
-.job::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:22px;
-  bottom:22px;
-  width:5px;
-  background:var(--dim)
-}
-
-.job.now::after{
-  background:var(--red)
-}
-
-.job header{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  gap:2px 20px;
-  margin-bottom:10px
-}
-
-.job h3{
-  font-size:17px;
-  font-weight:700
-}
-
-.job h3 span{
-  color:var(--red)
-}
-
-.job time{
-  color:var(--mute);
-  font-weight:600;
-  letter-spacing:.04em;
-  font-size:16px
-}
-
-.job .act{
-  font-family:var(--disp);
-  font-size:10px;
-  color:var(--red);
-  border:1px solid var(--red);
-  padding:2px 7px;
-  margin-left:8px;
-  vertical-align:2px
-}
-
-.job ul{
-  padding-left:1.1em;
-  max-width:48em
-}
-
-.job li{
-  margin-bottom:4px
-}
-
-.job li::marker{
-  color:var(--red)
-}
-
-.job b{
-  color:var(--txt);
-  font-weight:700;
-  border-bottom:2px solid var(--red)
-}
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-.pg{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px
-}
-
-.p{
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  gap:10px
-}
-
-.hex{
-  width:44px;
-  height:48px;
-  background:var(--red);
-  clip-path:polygon(
-    50% 0,
-    100% 25%,
-    100% 75%,
-    50% 100%,
-    0 75%,
-    0 25%
-  );
-  display:grid;
-  place-items:center;
-  font-family:var(--disp);
-  font-weight:900;
-  font-size:13px;
-  color:#140408
-}
-
-.p h3{
-  font-size:16px;
-  font-weight:700
-}
-
-.p p{
-  color:var(--mute);
-  flex:1
-}
-
-.stk{
-  font-weight:700;
-  font-size:15px;
-  letter-spacing:.04em
-}
-
-.lnk{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  color:var(--mute);
-  font-size:14px;
-  overflow-wrap:anywhere
-}
-
-.lnk a{
-  color:var(--txt);
-  text-decoration:none;
-  overflow-wrap:anywhere;
-  transition:color .15s
-}
-
-.lnk a:hover{
-  color:var(--red);
-  text-decoration:underline;
-  text-underline-offset:3px
-}
-
-/* =========================================================
-   SKILLS
-========================================================= */
-
-.sk{
-  display:grid;
-  grid-template-columns:200px 1fr;
-  border-top:1px solid var(--dim)
-}
-
-.sk:last-child{
-  border-bottom:1px solid var(--dim)
-}
-
-.sk h3{
-  font-size:13px;
-  letter-spacing:.06em;
-  padding:18px 0
-}
-
-.sk div{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:14px 0
-}
-
-.sk span{
-  font-weight:600;
-  font-size:16px;
-  padding:3px 12px;
-  box-shadow:inset 0 0 0 1px var(--dim);
-  clip-path:polygon(
-    7px 0,
-    100% 0,
-    100% calc(100% - 7px),
-    calc(100% - 7px) 100%,
-    0 100%,
-    0 7px
-  )
-}
-
-/* =========================================================
-   EDUCATION
-========================================================= */
-
-.ed{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px
-}
-
-.ed div{
-  padding:20px
-}
-
-.ed h3{
-  font-size:14px;
-  margin-bottom:6px
-}
-
-.ed p{
-  color:var(--mute);
-  font-size:17px
-}
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact{
-  text-align:left
-}
-
-.alarm{
-  display:flex;
-  gap:26px;
-  align-items:center;
-  padding:30px
-}
-
-.alarm svg{
-  flex:none;
-  width:92px;
-  height:92px
-}
-
-.alarm h2{
-  font-size:clamp(22px,3.6vw,38px);
-  font-weight:900;
-  margin-bottom:10px
-}
-
-.alarm p{
-  color:var(--mute);
-  margin-bottom:6px;
-  max-width:34em
-}
-
-.reach{
-  list-style:none;
-  margin-top:18px
-}
-
-.reach li{
-  display:grid;
-  grid-template-columns:90px 1fr auto;
-  gap:16px;
-  align-items:center;
-  padding:12px 0;
-  border-top:1px solid var(--dim)
-}
-
-.reach li:last-child{
-  border-bottom:1px solid var(--dim)
-}
-
-.reach b{
-  color:var(--red);
-  font-weight:700;
-  letter-spacing:.06em
-}
-
-.reach span{
-  overflow-wrap:anywhere
-}
-
-.reach a{
-  color:var(--txt);
-  text-decoration:none;
-  overflow-wrap:anywhere;
-  transition:color .15s
-}
-
-.reach a:hover{
-  color:var(--red);
-  text-decoration:underline;
-  text-underline-offset:3px
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  padding:0 0 26px;
-  color:var(--mute);
-  font-size:15px
-}
-
-footer .wrap{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  border-top:1px solid rgba(223,231,242,.14);
-  padding-top:18px
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:860px){
-
-  .hero{
-    grid-template-columns:1fr;
-    gap:40px;
-    padding-bottom:56px
-  }
-
-  .pg,
-  .ed{
-    grid-template-columns:1fr
-  }
-
-  .sk{
-    grid-template-columns:1fr
-  }
-
-  .sk h3{
-    padding-bottom:0
-  }
-
-  .alarm{
-    flex-direction:column;
-    align-items:flex-start
-  }
-}
-
-@media(max-width:560px){
-
-  body{
-    font-size:18px
-  }
-
-  .bar nav{
-    gap:14px;
-    font-size:15px
-  }
-
-  .brand{
-    font-size:11px
-  }
-
-  .reach li{
-    grid-template-columns:1fr auto
-  }
-
-  .reach b{
-    grid-column:1/-1
-  }
-
-  footer .wrap{
-    flex-direction:column
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-
-  html{
-    scroll-behavior:auto
-  }
-
-  .stat i{
-    animation:none
-  }
-
-  .row{
-    transition:none
-  }
-
-  .btn,
-  .cp{
-    transition:none
-  }
-}
+:root{--bg:#0d0e11;--pn:#15171c;--ln:rgba(215,205,170,.17);--tx:#ebe8de;--mu:#9b9a90;--a:#f2c230;--b:#d9d2b4;--c:#ff6a4d;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font:17px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(900px 520px at 85% -8%,rgba(242,194,48,.11),transparent 62%),radial-gradient(700px 420px at -5% 40%,rgba(217,210,180,.05),transparent 60%),var(--bg);color:var(--tx);overflow-x:hidden}
+main,header,footer{position:relative;z-index:2}
+.w{width:min(1080px,calc(100% - 32px));margin:0 auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--a),var(--b));z-index:20}
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:rgba(13,14,17,.78);border-bottom:1px solid var(--ln)}
+nav .w{display:flex;justify-content:space-between;align-items:center;height:58px;gap:12px}
+.logo{font-weight:800;letter-spacing:.02em}.logo b{color:var(--a)}
+nav ul{display:flex;gap:4px;list-style:none;overflow-x:auto;scrollbar-width:none;min-width:0;flex:0 1 auto}.logo{flex:none}.demo>*,.grid>*{min-width:0}
+nav a{display:block;padding:6px 12px;border-radius:99px;color:var(--mu);font-size:15px;white-space:nowrap;transition:.2s}
+nav a:hover,nav a.on{color:var(--tx);background:rgba(242,194,48,.12)}
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 50px}
+.pill{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--ln);background:rgba(21,23,28,.75);padding:7px 15px;border-radius:99px;font-size:14px;color:var(--mu);width:fit-content;margin-bottom:26px}
+.pill i{width:9px;height:9px;border-radius:50%;background:var(--a);box-shadow:0 0 0 0 var(--a);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(40px,8.2vw,92px);line-height:1.02;letter-spacing:-.035em;font-weight:900}
+.g{background:linear-gradient(100deg,var(--a),#fff0b0 70%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:clamp(20px,3vw,30px);margin:20px 0 14px;color:var(--mu);min-height:1.5em}
+.lede{max-width:40em;color:var(--mu);font-size:19px;margin-bottom:30px}.lede b{color:var(--tx)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:13px 24px;border-radius:12px;font-weight:700;border:1px solid var(--ln);background:rgba(21,23,28,.8);transition:.2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--a)}
+.btn.p{background:linear-gradient(100deg,var(--a),var(--b));color:#14110a;border:0;box-shadow:0 10px 30px -8px rgba(242,194,48,.5)}
+section{padding:78px 0}
+.h{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}
+.h h2{font-size:clamp(28px,4.4vw,42px);letter-spacing:-.02em}.h span{color:var(--a);font-size:13px;text-transform:uppercase;letter-spacing:.14em}.h h2::before{content:"◆ ";color:var(--a);font-size:.45em;vertical-align:.35em}
+.sub{color:var(--mu);max-width:42em;margin-bottom:32px}
+.card{position:relative;background:linear-gradient(160deg,rgba(30,32,38,.88),rgba(18,19,23,.9));border:1px solid var(--ln);border-radius:3px;padding:24px;transition:border-color .2s}
+.card:hover{border-color:rgba(242,194,48,.45)}
+.grid{display:grid;gap:16px}
+.m4{grid-template-columns:repeat(4,1fr)}.m2{grid-template-columns:repeat(2,1fr)}
+.met b{display:block;font-size:clamp(38px,5vw,56px);font-weight:900;line-height:1;letter-spacing:-.03em}
+.met p{margin-top:8px}.met small{color:var(--mu);display:block;margin-top:6px}
+.demo{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.rec{display:grid;grid-template-columns:44px 1fr 176px minmax(120px,auto);gap:8px 10px;align-items:center;padding:12px 0;border-top:1px dashed var(--ln);font-size:13px}
+.rec:first-child{border-top:0}
+.rec input,.rec select{background:#0a0b0e;border:1px solid var(--ln);color:var(--tx);font:inherit;padding:5px 8px;border-radius:2px;min-width:0;width:100%}
+.rec input:focus,.rec select:focus{border-color:var(--a);outline:0}
+.st{grid-column:1/-1;display:flex;gap:6px}.st i{width:26px;height:6px;border-radius:3px;background:#2a2c33;transition:.35s}
+.st i.on{background:var(--b)}.rec.ok .st i.on{background:var(--a)}.rec.no .st i.on{background:var(--c)}
+.tag{justify-self:end;white-space:nowrap;font-size:11px;opacity:0;padding:2px 10px;border-radius:99px;font-size:12px;border:1px solid;transition:.3s}
+.rec.ok .tag{color:var(--a);opacity:1}.rec.no .tag{color:var(--c);opacity:1}
+.sum{display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.sum pre{font-size:13px;color:var(--mu);white-space:pre-wrap}
+.tl{position:relative;display:grid;gap:16px;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--a),transparent)}
+.job{position:relative}.job::before{content:"";position:absolute;left:-23px;top:30px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--a)}
+.job header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-bottom:8px}
+.job h3{font-size:19px}.job h3 em{font-style:normal;color:var(--a)}.job time{color:var(--mu);font-size:15px}
+.job ul{padding-left:1.1em;color:#c8c5b8}.job li{margin:4px 0}.job li::marker{color:var(--a)}
+.pj h3{font-size:20px;margin:6px 0}.pj p{color:var(--mu);margin-bottom:12px}
+.stk{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.chip{font-size:13px;padding:3px 11px;border-radius:99px;background:rgba(200,190,150,.1);border:1px solid rgba(200,190,150,.25);color:#e6dcae}
+.lk{display:flex;gap:14px;flex-wrap:wrap;font-size:15px;align-items:center}.lk a{color:var(--a)}.lk a:hover{text-decoration:underline}
+.cp{font-size:13px;padding:4px 12px;border-radius:8px;border:1px solid var(--ln);color:var(--mu)}
+.cp.copied{background:var(--a);color:#14110a;border-color:var(--a)}
+.sk{display:grid;grid-template-columns:200px 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--ln)}
+.sk h3{font-size:14px;color:var(--a);letter-spacing:.08em;text-transform:uppercase}
+.sk div{display:flex;flex-wrap:wrap;gap:8px}.sk span{padding:3px 13px;border-radius:8px;background:#1c1e24;border:1px solid var(--ln);font-size:15px;transition:.2s}.sk span:hover{border-color:var(--a);transform:translateY(-2px)}
+.term{background:#0a0b0e;border:1px solid var(--ln);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -30px #000}
+.tb{display:flex;gap:7px;padding:11px 14px;background:#14161b;border-bottom:1px solid var(--ln);align-items:center}
+.tb i{width:9px;height:9px;background:var(--a);transform:rotate(45deg)}.tb i:nth-child(2){opacity:.55}.tb i:nth-child(3){opacity:.25}.tb span{margin-left:10px;color:var(--mu);font-size:13px}
+#out{padding:16px;height:300px;overflow:auto;font-size:14px;line-height:1.55;white-space:pre-wrap;color:#e4e1d4}
+#out .c{color:var(--a)}#out .d{color:var(--mu)}
+.tin{display:flex;gap:8px;padding:0 16px 14px;font-size:14px;align-items:center}.tin label{color:var(--a)}.tin input{flex:1;background:none;border:0;color:var(--tx);font:inherit;outline:0}
+.hint{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.hint button{font-size:13px;padding:4px 12px;border:1px solid var(--ln);border-radius:99px;color:var(--mu)}.hint button:hover{color:var(--a);border-color:var(--a)}
+.ct{text-align:center;padding:90px 0 60px}.ct h2{font-size:clamp(30px,5.5vw,58px);letter-spacing:-.03em;margin-bottom:14px}
+.ct .cta{justify-content:center;margin-top:24px}
+footer{padding:28px 0 40px;color:var(--mu);font-size:14px;border-top:1px solid var(--ln)}footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(max-width:860px){.rec{grid-template-columns:44px 1fr}.rec select{grid-column:1/-1}.rec .tag{grid-column:1/-1;justify-self:start}.m4{grid-template-columns:repeat(2,1fr)}.m2,.demo{grid-template-columns:1fr}.sk{grid-template-columns:1fr}nav a{padding:6px 9px;font-size:14px}}
+@media(max-width:520px){.card{padding:18px}.m4{grid-template-columns:1fr}.logo small{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media print{nav,#prog,.term,.hint,.cp{display:none}body{background:#fff;color:#000}.card{border:1px solid #ccc;background:#fff}}
+.card::before,.card::after{content:"";position:absolute;width:15px;height:15px;border:2px solid var(--a);pointer-events:none}
+.card::before{top:-2px;left:-2px;border-right:0;border-bottom:0}.card::after{right:-2px;bottom:-2px;border-left:0;border-top:0}
+.arch{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px}.arch span{padding:6px 14px;border:1px solid var(--ln);background:rgba(21,23,28,.8);font-size:14px}.arch b{color:var(--a)}
+.st{align-items:center}.x{margin-left:auto;color:var(--mu);font-size:18px;line-height:1;padding:0 6px}.x:hover{color:var(--c)}
 </style>
 </head>
-
 <body>
+<div id="prog"></div>
+<nav><div class="w"><a href="#top" class="logo">HSB<b>.</b><small class="mono"> / data engineer</small></a>
+<ul><li><a href="#impact">Impact</a></li><li><a href="#demo">Pipeline</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#terminal">Terminal</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
-<div class="wrap">
+<header class="w hero" id="top">
+<div class="pill mono"><i></i>Open to Data Engineering · Analytics Engineering · GTM analytics roles</div>
+<h1>Hrushikesh<br><span class="g">Singh Bondili</span></h1>
+<p class="role mono">Data Engineer · GTM &amp; Revenue Operations Analytics</p>
+<p class="lede">I turn messy operational data into systems people can trust: <b>dbt and Snowflake models</b>, <b>Python and SQL pipelines</b>, <b>CRM integrations</b> and <b>forecasting</b>, with 3+ years across B2B SaaS and consulting.</p>
+<div class="cta"><a class="btn p" href="#demo">Watch a pipeline run</a><a class="btn" href="#terminal">Open the terminal</a><a class="btn" href="mailto:rishisingh1999@gmail.com">Email me</a></div>
+</header>
 
-  <!-- =====================================================
-       TOP NAVIGATION
-  ====================================================== -->
+<main>
+<section id="impact"><div class="w">
+<div class="h rv"><h2>Impact</h2><span class="mono">// from my resume</span></div>
+<p class="sub rv">Results from real roles at A3 Technology, Salesforce and Outreach.io.</p>
+<div class="grid m4" id="met"></div></div></section>
 
-  <div class="bar">
-
-    <button
-      type="button"
-      data-go="top"
-      class="brand">
-      HRUSHIKESH SINGH BONDILI
-    </button>
-
-    <nav aria-label="Sections">
-      <button type="button" data-go="experience">Experience</button>
-      <button type="button" data-go="projects">Projects</button>
-      <button type="button" data-go="skills">Skills</button>
-      <button type="button" data-go="contact">Contact</button>
-    </nav>
-
-  </div>
-
-  <main id="top">
-
-    <!-- ===================================================
-         HERO
-    ==================================================== -->
-
-    <div class="hero">
-
-      <div>
-
-        <div class="stat">
-          <i></i>
-          OPEN TO AI + DATA ENGINEERING ROLES
-        </div>
-
-        <h1>
-          I turn messy operational data into systems people can trust.
-        </h1>
-
-        <p class="lede">
-          I'm an AI Automation &amp; Data Engineer with 4+ years across
-          analytics, data engineering and revenue operations. I build
-          <b>pipelines, LLM/RAG workflows and automation</b> that cut
-          reporting time and surface risk earlier, using Python, SQL,
-          dbt, Snowflake and n8n.
-        </p>
-
-        <div class="cta">
-
-          <button
-            type="button"
-            class="btn pri"
-            data-go="contact">
-            Get in touch
-          </button>
-
-          <button
-            type="button"
-            class="btn"
-            data-go="experience">
-            See my experience
-          </button>
-
-          <button
-            type="button"
-            class="btn"
-            data-go="projects">
-            See my projects
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- =================================================
-           SELECTED OUTCOMES
-      ================================================== -->
-
-      <aside
-        class="hud red log"
-        aria-label="Selected professional outcomes">
-
-        <div class="lh">
-          <span>&gt; SELECTED_OUTCOMES // DOCUMENTED</span>
-          <em id="st">READY</em>
-        </div>
-
-        <div id="rows"></div>
-
-        <div class="lf">
-          <span id="sum">
-            Forecast accuracy also rose 18%.
-          </span>
-
-          <button
-            type="button"
-            class="cp"
-            id="rerun">
-            RE-RUN
-          </button>
-        </div>
-
-        <p class="note">
-          Lit blocks = magnitude of the selected outcome.
-          Tap a line to see the work behind it.
-        </p>
-
-      </aside>
-
-    </div>
-
-  </main>
-
+<section id="demo"><div class="w">
+<div class="h rv"><h2>Pipeline, live</h2><span class="mono">// PySpark quality gate</span></div>
+<p class="sub rv">Bad data breaks dashboards, so each record is checked before anything is written downstream. Pick a scenario, edit any field, add or remove records, or shuffle the order. The checks run in the same order as my PySpark pipeline: metadata, path, image, decode, duplicate ID, duplicate image.</p>
+<div class="hint rv" style="margin:0 0 16px"><span class="mono" style="color:var(--mu);font-size:13px;align-self:center">Scenarios:</span><button class="mono" data-pre="clean">Valid batch</button><button class="mono" data-pre="errors">Broken data</button><button class="mono" data-pre="dupes">Duplicates</button><button class="mono" data-pre="order">Which check wins?</button><button class="mono" data-pre="all">One of each</button><button class="mono" id="add">+ Add record</button></div>
+<div class="demo rv">
+<div class="card" id="recs"></div>
+<div class="card sum"><div><b class="mono" id="stt">READY</b><pre id="rep" class="mono">edit a record, or press run</pre></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn p" id="run">▶ Run pipeline</button><button class="btn" id="rst">Reset</button><button class="btn" id="shf">Shuffle order</button><button class="btn" data-copy="" id="cpj">Copy report</button></div></div>
 </div>
-
-
-<!-- =======================================================
-     EXPERIENCE
-======================================================== -->
-
-<section id="experience">
-
-  <div class="wrap">
-
-    <div class="head">
-      <h2>EXPERIENCE</h2>
-      <i></i>
-    </div>
-
-    <p class="sub">
-      From workforce operations into analytics, then data engineering
-      and applied AI.
-    </p>
-
-    <div class="jobs">
-
-      <!-- Mavin -->
-
-      <article class="hud red job now">
-
-        <header>
-
-          <h3>
-            AI Automation &amp; Data Engineer
-            <span>/ Mavin Technologies, Inc.</span>
-            <em class="act">ACTIVE</em>
-          </h3>
-
-          <time>
-            Jun 2026 – Present · United States
-          </time>
-
-        </header>
-
-        <ul>
-          <li>
-            Design and support data, automation and applied AI workflows
-            for production business processes and operational systems.
-          </li>
-        </ul>
-
-      </article>
-
-
-      <!-- A3 -->
-
-      <article class="hud job">
-
-        <header>
-
-          <h3>
-            AI Automation &amp; Data Analytics Engineer
-            <span>/ A3 Technology, Inc.</span>
-          </h3>
-
-          <time>
-            Jan 2026 – May 2026 · Remote
-          </time>
-
-        </header>
-
-        <ul>
-
-          <li>
-            Built Python and n8n pipelines that cut lead-to-engagement
-            analysis latency by <b>40%</b>.
-          </li>
-
-          <li>
-            Developed LangChain and vector-search anomaly detection
-            to flag high-risk records and pipeline risks.
-          </li>
-
-          <li>
-            Built dbt models on Snowflake and Azure Synapse,
-            shortening leadership reporting from 5 days to
-            <b>1.5 days</b>.
-          </li>
-
-        </ul>
-
-      </article>
-
-
-      <!-- Salesforce -->
-
-      <article class="hud job">
-
-        <header>
-
-          <h3>
-            Revenue Cloud Analyst
-            <span>/ Salesforce</span>
-          </h3>
-
-          <time>
-            Mar 2025 – Dec 2025 · Remote
-          </time>
-
-        </header>
-
-        <ul>
-
-          <li>
-            Raised forecast accuracy by <b>18%</b> by integrating
-            Python time-series models with CRM APIs.
-          </li>
-
-          <li>
-            Architected ETL and data-sync workflows that cut
-            replication latency by <b>40%</b> and improved
-            Quote-to-Cash reporting.
-          </li>
-
-          <li>
-            Optimized Snowflake SQL and compute, cutting dashboard
-            refresh times by <b>35%</b> for 50+ stakeholders.
-          </li>
-
-        </ul>
-
-      </article>
-
-
-      <!-- Outreach -->
-
-      <article class="hud job">
-
-        <header>
-
-          <h3>
-            Revenue Operations Analyst
-            <span>/ Outreach.io</span>
-          </h3>
-
-          <time>
-            Jan 2024 – Dec 2024 · Remote
-          </time>
-
-        </header>
-
-        <ul>
-
-          <li>
-            Built an XGBoost model to spot at-risk accounts earlier
-            and support retention workflows.
-          </li>
-
-          <li>
-            Automated lead routing and reporting with SQL and n8n,
-            cutting lead-to-call latency by <b>25%</b>.
-          </li>
-
-          <li>
-            Streamlined recurring reporting, cutting manual
-            preparation time by <b>85%</b>.
-          </li>
-
-        </ul>
-
-      </article>
-
-
-      <!-- Deloitte -->
-
-      <article class="hud job">
-
-        <header>
-
-          <h3>
-            Business Analytics &amp; Data Analyst
-            <span>/ Deloitte</span>
-          </h3>
-
-          <time>
-            Aug 2023 – Dec 2023 · Remote
-          </time>
-
-        </header>
-
-        <ul>
-
-          <li>
-            Automated ETL with Python, Azure Data Factory and SQL,
-            removing over <b>60%</b> of manual data compilation.
-          </li>
-
-          <li>
-            Built analytical datasets and data models that turned
-            business requirements into stakeholder reporting.
-          </li>
-
-        </ul>
-
-      </article>
-
-
-      <!-- Wipro -->
-
-      <article class="hud job">
-
-        <header>
-
-          <h3>
-            Workforce Management Analyst
-            <span>/ Wipro</span>
-          </h3>
-
-          <time>
-            Mar 2022 – Jul 2023 · Hyderabad, India
-          </time>
-
-        </header>
-
-        <ul>
-
-          <li>
-            Monitored workforce performance and operational queues
-            to support staffing and resource decisions.
-          </li>
-
-          <li>
-            Built performance tracking workflows and reports for
-            workforce metrics and operational visibility.
-          </li>
-
-        </ul>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     PROJECTS
-======================================================== -->
-
-<section id="projects">
-
-  <div class="wrap">
-
-    <div class="head">
-      <h2>PROJECTS</h2>
-      <i></i>
-    </div>
-
-    <p class="sub">
-      Selected projects with code, implementation details and
-      technical context on GitHub.
-    </p>
-
-    <div class="pg">
-
-      <!-- LLM Agent -->
-
-      <article class="hud p">
-
-        <div class="hex">AI</div>
-
-        <h3>
-          LLM Agent &amp; RAG System
-        </h3>
-
-        <p>
-          A LangChain agent with tool calling, semantic retrieval,
-          vector search and structured data tools. LangSmith tracing
-          makes each multi-step run observable.
-        </p>
-
-        <div class="stk">
-          Python · LangChain · RAG · LangSmith
-        </div>
-
-        <div class="lnk">
-
-          <a
-            href="https://github.com/Rishisingh1999/langchain-prod-agent"
-            target="_self">
-            github.com/Rishisingh1999/langchain-prod-agent
-          </a>
-
-          <button
-            class="cp"
-            type="button"
-            data-copy="https://github.com/Rishisingh1999/langchain-prod-agent">
-            Copy link
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- Chat With It -->
-
-      <article class="hud p">
-
-        <div class="hex">CH</div>
-
-        <h3>
-          Chat-With-It
-        </h3>
-
-        <p>
-          A multi-model AI chat app exploring provider abstraction,
-          file-based interactions and persistent user workflows.
-        </p>
-
-        <div class="stk">
-          LLMs · Multi-model · Web app
-        </div>
-
-        <div class="lnk">
-
-          <a
-            href="https://github.com/Rishisingh1999/Chat-With-It"
-            target="_self">
-            github.com/Rishisingh1999/Chat-With-It
-          </a>
-
-          <button
-            class="cp"
-            type="button"
-            data-copy="https://github.com/Rishisingh1999/Chat-With-It">
-            Copy link
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- Predictive Maintenance -->
-
-      <article class="hud p">
-
-        <div class="hex">PM</div>
-
-        <h3>
-          Predictive Maintenance for Manufacturing Assets
-        </h3>
-
-        <p>
-          An end-to-end ML workflow covering feature engineering,
-          failure-risk classification, and evaluation with ROC-AUC,
-          precision and recall.
-        </p>
-
-        <div class="stk">
-          Python · scikit-learn · XGBoost
-        </div>
-
-        <div class="lnk">
-
-          <a
-            href="https://github.com/Rishisingh1999/Predictive-Maintenance-for-Manufacturing-Assets"
-            target="_self">
-            github.com/Rishisingh1999/Predictive-Maintenance-for-Manufacturing-Assets
-          </a>
-
-          <button
-            class="cp"
-            type="button"
-            data-copy="https://github.com/Rishisingh1999/Predictive-Maintenance-for-Manufacturing-Assets">
-            Copy link
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- Supply Chain -->
-
-      <article class="hud p">
-
-        <div class="hex">SC</div>
-
-        <h3>
-          AI Supply Chain Disruption Predictor
-        </h3>
-
-        <p>
-          A Python risk-modeling workflow covering data preparation,
-          feature engineering, predictive modeling and disruption-risk
-          analysis.
-        </p>
-
-        <div class="stk">
-          Python · pandas · scikit-learn
-        </div>
-
-        <div class="lnk">
-
-          <a
-            href="https://github.com/Rishisingh1999/AI-Supply-Chain-Disruption-Predictor"
-            target="_self">
-            github.com/Rishisingh1999/AI-Supply-Chain-Disruption-Predictor
-          </a>
-
-          <button
-            class="cp"
-            type="button"
-            data-copy="https://github.com/Rishisingh1999/AI-Supply-Chain-Disruption-Predictor">
-            Copy link
-          </button>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     SKILLS
-======================================================== -->
-
-<section id="skills">
-
-  <div class="wrap">
-
-    <div class="head">
-      <h2>SKILLS</h2>
-      <i></i>
-    </div>
-
-    <div>
-
-      <div class="sk">
-
-        <h3>CODE &amp; ANALYSIS</h3>
-
-        <div data-s>
-          Python,SQL,pandas,NumPy,scikit-learn,XGBoost,Feature engineering,Forecasting
-        </div>
-
-      </div>
-
-
-      <div class="sk">
-
-        <h3>APPLIED AI</h3>
-
-        <div data-s>
-          LLM applications,RAG,LangChain,Vector search,Tool calling,Predictive modeling
-        </div>
-
-      </div>
-
-
-      <div class="sk">
-
-        <h3>DATA ENGINEERING</h3>
-
-        <div data-s>
-          ETL/ELT,Data modeling,Data validation,dbt,Snowflake,Azure Synapse,Azure Data Factory
-        </div>
-
-      </div>
-
-
-      <div class="sk">
-
-        <h3>AUTOMATION</h3>
-
-        <div data-s>
-          n8n,REST APIs,Docker,Git,GitHub Actions,CI/CD
-        </div>
-
-      </div>
-
-
-      <div class="sk">
-
-        <h3>BUSINESS SYSTEMS</h3>
-
-        <div data-s>
-          Salesforce,HubSpot,Revenue operations,KPI reporting,Business intelligence
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     EDUCATION
-======================================================== -->
-
-<section id="education">
-
-  <div class="wrap">
-
-    <div class="head">
-      <h2>EDUCATION</h2>
-      <i></i>
-    </div>
-
-    <div class="ed">
-
-      <div class="hud">
-
-        <h3>
-          Sacred Heart University
-        </h3>
-
-        <p>
-          M.S. Business Analytics, GPA 3.4/4.0. 2024
-        </p>
-
-      </div>
-
-
-      <div class="hud">
-
-        <h3>
-          Jagruthi Degree &amp; PG College
-        </h3>
-
-        <p>
-          B.Com, Computer Applications. 2021
-        </p>
-
-      </div>
-
-
-      <div class="hud">
-
-        <h3>
-          Google Data Analytics
-        </h3>
-
-        <p>
-          Professional Certificate. 2025
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     CONTACT
-======================================================== -->
-
-<section class="contact" id="contact">
-
-  <div class="wrap">
-
-    <div class="hud red alarm">
-
-      <svg
-        viewBox="0 0 92 92"
-        aria-hidden="true">
-
-        <path
-          d="M46 8 88 82H4Z"
-          fill="none"
-          stroke="#ff3b4e"
-          stroke-width="4"
-          stroke-linejoin="round"/>
-
-        <path
-          d="M46 34v24"
-          stroke="#ff3b4e"
-          stroke-width="6"
-          stroke-linecap="round"/>
-
-        <circle
-          cx="46"
-          cy="68"
-          r="4"
-          fill="#ff3b4e"/>
-
-      </svg>
-
-
-      <div>
-
-        <h2>
-          Have a data or AI problem worth solving?
-        </h2>
-
-        <p>
-          I'm interested in AI engineering, applied AI, data engineering
-          and analytics engineering opportunities.
-        </p>
-
-
-        <ul class="reach">
-
-          <!-- EMAIL -->
-
-          <li>
-
-            <b>EMAIL</b>
-
-            <a href="mailto:rishisingh1999@gmail.com">
-              rishisingh1999@gmail.com
-            </a>
-
-            <button
-              class="cp"
-              type="button"
-              data-copy="rishisingh1999@gmail.com">
-              Copy
-            </button>
-
-          </li>
-
-
-          <!-- LINKEDIN -->
-
-          <li>
-
-            <b>LINKEDIN</b>
-
-            <a
-              href="https://www.linkedin.com/in/hrushikesh-singh-revops/"
-              target="_self">
-              linkedin.com/in/hrushikesh-singh-revops
-            </a>
-
-            <button
-              class="cp"
-              type="button"
-              data-copy="https://www.linkedin.com/in/hrushikesh-singh-revops/">
-              Copy
-            </button>
-
-          </li>
-
-
-          <!-- GITHUB -->
-
-          <li>
-
-            <b>GITHUB</b>
-
-            <a
-              href="https://github.com/Rishisingh1999"
-              target="_self">
-              github.com/Rishisingh1999
-            </a>
-
-            <button
-              class="cp"
-              type="button"
-              data-copy="https://github.com/Rishisingh1999">
-              Copy
-            </button>
-
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FOOTER
-======================================================== -->
-
-<footer>
-
-  <div class="wrap">
-
-    <span>
-      © 2026 Hrushikesh Singh Bondili
-    </span>
-
-    <span>
-      United States
-    </span>
-
-  </div>
-
-</footer>
-
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================== -->
+<p class="sub mono" style="margin-top:14px;font-size:13px">Rules and their order match the repo; tie-breaks are simplified here. Synthetic data judged by JavaScript in your browser, not Spark itself.</p>
+<div class="arch rv" aria-label="Tools in typical data-flow order"><span>CRM / APIs</span><b>→</b><span>n8n · Python</span><b>→</b><span>Snowflake · Azure Synapse</span><b>→</b><span>dbt models</span><b>→</b><span>Dashboards · forecasts · pgvector</span></div>
+<p class="sub mono" style="margin-top:10px;font-size:12px">Tools I have used across roles, in typical data-flow order. Not a single production system.</p>
+</div></section>
+
+<section id="experience"><div class="w">
+<div class="h rv"><h2>Experience</h2><span class="mono">// 2022 → now</span></div>
+<div class="tl" id="tl"></div></div></section>
+
+<section id="projects"><div class="w">
+<div class="h rv"><h2>Projects</h2><span class="mono">// code you can read</span></div>
+<div class="grid m2" id="pj"></div></div></section>
+
+<section id="skills"><div class="w">
+<div class="h rv"><h2>Skills</h2></div>
+<div id="sk" class="rv"></div></div></section>
+
+<section id="terminal"><div class="w">
+<div class="h rv"><h2>Ask me anything</h2><span class="mono">// interactive terminal</span></div>
+<div class="term rv"><div class="tb"><i></i><i></i><i></i><span class="mono">hsb@portfolio ~ </span></div>
+<div id="out" class="mono" role="log" aria-live="polite"></div>
+<form class="tin mono" id="f"><label for="cmd">$</label><input id="cmd" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type help"></form></div>
+<div class="hint" id="hint"></div></div></section>
+
+<section class="ct" id="contact"><div class="w">
+<h2 class="rv">Have a data problem worth <span class="g">solving</span>?</h2>
+<p class="sub rv" style="margin:0 auto">I’m looking for data engineering, analytics engineering and GTM analytics roles. Let’s talk.</p>
+<div class="cta rv">
+<a class="btn p" href="mailto:rishisingh1999@gmail.com">rishisingh1999@gmail.com</a>
+<button class="btn cp" data-copy="rishisingh1999@gmail.com" style="padding:13px 20px;font-size:inherit">Copy email</button>
+<a class="btn" href="https://www.linkedin.com/in/hrushikesh-singh-revops/" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://github.com/Rishisingh1999" rel="noopener">GitHub</a></div>
+</div></section>
+</main>
+<footer><div class="w"><span>© 2026 Hrushikesh Singh Bondili</span><span class="mono">-</span></div></footer>
+<noscript><p style="position:relative;z-index:3;padding:20px">Enable JavaScript to see the full portfolio, or email rishisingh1999@gmail.com.</p></noscript>
+
+<script type="application/json" id="data">
+{"met":[{"v":70,"l":"shorter leadership reporting cycle","s":"From 5 days to 1.5 · A3 Technology"},{"v":18,"l":"forecast accuracy improvement","s":"Salesforce"},{"v":35,"l":"faster dashboards for 50+ stakeholders","s":"Salesforce"},{"v":85,"l":"less manual reporting prep","s":"Outreach.io"}],
+"exp":[
+{"co":"Mavin Technologies, Inc.","role":"AI Automation & Data Engineer","when":"Jun 2026 – Present","at":"United States","pts":["Design and support data, automation and applied AI workflows for business processes and operational systems."]},
+{"co":"A3 Technology, Inc.","role":"AI Automation & Data Analytics Engineer","when":"Jan 2026 – May 2026","at":"Remote","pts":["Developed dbt models across Snowflake and Azure Synapse, cutting leadership reporting cycles from 5 days to 1.5 days.","Engineered Python and n8n pipelines that reduced lead-to-engagement analysis latency by 40%.","Built LangChain and vector-search anomaly detection workflows to flag high-risk records and pipeline risks."]},
+{"co":"Salesforce","role":"Revenue Cloud Analyst","when":"Mar 2025 – Dec 2025","at":"Remote","pts":["Improved forecast accuracy by 18% by integrating Python time-series models with CRM APIs.","Architected ETL and data-synchronization workflows that reduced replication latency by 40% and improved Quote-to-Cash reporting.","Optimized Snowflake SQL and compute patterns, reducing dashboard refresh times by 35% for 50+ stakeholders."]},
+{"co":"Outreach.io","role":"Revenue Operations Analyst","when":"Jan 2024 – Dec 2024","at":"Remote","pts":["Automated sales operations lead routing and reporting with SQL and n8n, reducing lead-to-call latency by 25%.","Streamlined recurring reporting, reducing manual preparation time by 85%.","Built an XGBoost model for earlier identification of at-risk accounts and supported data-driven retention workflows."]},
+{"co":"Deloitte","role":"Business Analytics & Data Analyst","when":"Aug 2023 – Dec 2023","at":"Remote","pts":["Automated ETL workflows with Python, Azure Data Factory and SQL, eliminating 60%+ of manual data compilation; built analytical datasets and data models for stakeholder reporting."]},
+{"co":"Wipro","role":"Workforce Management Analyst","when":"Mar 2022 – Jul 2023","at":"Hyderabad, India","pts":["Monitored workforce performance and queues to support staffing decisions; built tracking workflows and reports."]}],
+"pj":[
+{"t":"Multimodal Data Quality Pipeline","d":"Local PySpark pipeline that validates image-caption records, rejects defects with per-record reasons, deduplicates by image hash and writes versioned Parquet. Verified against labelled synthetic fixtures in CI.","k":["PySpark","Parquet","Python","GitHub Actions"],"u":"https://github.com/researchsociety1999-hub/multimodal-data-pipeline"},
+{"t":"AI Supply Chain Disruption Predictor","d":"Unit-tested pipeline on a 5,000-row Kaggle dataset comparing three models; the best reached 0.828 ROC-AUC and 0.902 average precision on a held-out test set.","k":["Python","scikit-learn","pandas"],"u":"https://github.com/Rishisingh1999/AI-Supply-Chain-Disruption-Predictor"},
+{"t":"LLM Agent & RAG System","d":"LangChain agent with custom tools, persisted memory, pgvector semantic retrieval and LangSmith tracing.","k":["TypeScript","LangChain","pgvector","LangSmith"],"u":"https://github.com/Rishisingh1999/langchain-prod-agent"},
+{"t":"Chat-With-It","d":"Browser-only AI chat app for OpenRouter and Hugging Face models with file attachments, side-by-side model compare and local chat export.","k":["JavaScript","PWA","Vercel"],"u":"https://github.com/Rishisingh1999/Chat-With-It"}],
+"sk":{"Data engineering":["ETL/ELT","dbt","Snowflake","PySpark","Parquet","Azure Synapse","Azure Data Factory","Data modeling","Data validation"],"GTM & revenue ops":["Forecasting","Pipeline & KPI reporting","Quote-to-Cash","Lead routing","Salesforce","HubSpot","CRM APIs"],"Programming & ML":["Python","SQL","TypeScript","Pandas","NumPy","scikit-learn","XGBoost"],"Automation & AI":["n8n","REST APIs","Docker","Git","GitHub Actions","LLM/RAG","LangChain","LangSmith","pgvector"]},
+"edu":["M.S. Business Analytics, Sacred Heart University (2024)","B.Com. Computer Applications, Jagruthi Degree & PG College (2021)","Google Data Analytics Professional Certificate (2025)"]}
+</script>
 
 <script>
-(function(){
-
-  var reduce =
-    matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-
-  /* =====================================================
-     SKILLS CHIPS
-  ====================================================== */
-
-  document.querySelectorAll('[data-s]').forEach(function(d){
-
-    d.innerHTML =
-      d.textContent
-        .split(',')
-        .map(function(t){
-          return '<span>' + t.trim() + '</span>';
-        })
-        .join('');
-
-  });
-
-
-  /* =====================================================
-     SELECTED OUTCOMES
-     
-     These are historical professional outcomes represented
-     visually on the portfolio. They are not live systems.
-  ====================================================== */
-
-  var D = [
-
-    {
-      label:'Leadership reporting cycle',
-      before:'5 days',
-      after:'1.5 days',
-      value:70,
-      metric:'70% reduction',
-      source:'A3 Technology, Inc.: dbt models on Snowflake and Azure Synapse.'
-    },
-
-    {
-      label:'Manual report preparation',
-      before:'',
-      after:'',
-      value:85,
-      metric:'85% reduction',
-      source:'Outreach.io: streamlined recurring reporting.'
-    },
-
-    {
-      label:'Lead-to-engagement analysis',
-      before:'',
-      after:'',
-      value:40,
-      metric:'40% reduction',
-      source:'A3 Technology, Inc.: Python and n8n automation pipelines.'
-    },
-
-    {
-      label:'Dashboard refresh time',
-      before:'',
-      after:'',
-      value:35,
-      metric:'35% reduction',
-      source:'Salesforce: optimized Snowflake SQL and compute for 50+ stakeholders.'
-    },
-
-    {
-      label:'Forecast accuracy',
-      before:'',
-      after:'',
-      value:18,
-      metric:'+18% improvement',
-      source:'Salesforce: Python time-series models integrated with CRM APIs.'
-    }
-
-  ];
-
-
-  var rows =
-    document.getElementById('rows');
-
-  var st =
-    document.getElementById('st');
-
-  var sum =
-    document.getElementById('sum');
-
-  var token = 0;
-
-
-  /* =====================================================
-     BUILD OUTCOME ROWS
-  ====================================================== */
-
-  rows.innerHTML = D.map(function(d,i){
-
-    var m = '';
-
-    for(var k=0;k<20;k++){
-      m += '<i></i>';
-    }
-
-
-    var transitionText = '';
-
-    if(d.before && d.after){
-
-      transitionText =
-        'BEFORE ' +
-        d.before +
-        ' → AFTER ' +
-        d.after;
-
-    }else{
-
-      transitionText =
-        'SELECTED OUTCOME · ' +
-        d.metric;
-
-    }
-
-
-    return (
-
-      '<button type="button" class="row" aria-expanded="false">' +
-
-        '<span class="t">' +
-          '<b>[OUTCOME 0' + (i+1) + ']</b> ' +
-          d.label +
-        '</span>' +
-
-        '<span class="r">' +
-          transitionText +
-        '</span>' +
-
-        '<span class="mt">' +
-          m +
-        '</span>' +
-
-        '<span class="tg">' +
-          '<span>' +
-            d.metric +
-          '</span>' +
-          '<span class="ok">OK</span>' +
-        '</span>' +
-
-        '<span class="dt">' +
-          d.source +
-        '</span>' +
-
-      '</button>'
-
-    );
-
-  }).join('');
-
-
-  var R =
-    [].slice.call(rows.children);
-
-
-  /* =====================================================
-     COMPLETE OUTCOME DISPLAY
-  ====================================================== */
-
-  function final(){
-
-    R.forEach(function(r,i){
-
-      r.classList.add('on','fin');
-
-      [].slice.call(
-        r.querySelectorAll('.mt i')
-      ).forEach(function(b,k){
-
-        b.className =
-          k < Math.round(D[i].value / 5)
-            ? 'l'
-            : '';
-
-      });
-
-    });
-
-
-    st.textContent = 'COMPLETE';
-    st.className = 'done';
-
-    sum.textContent =
-      '5 selected professional outcomes documented.';
-
-  }
-
-
-  /* =====================================================
-     ANIMATED OUTCOME RUN
-  ====================================================== */
-
-  function run(){
-
-    var my = ++token;
-
-
-    R.forEach(function(r){
-
-      r.classList.remove('on','fin');
-
-      r.querySelectorAll('.mt i')
-        .forEach(function(b){
-          b.className = '';
-        });
-
-    });
-
-
-    st.textContent = 'RUNNING';
-    st.className = '';
-
-    sum.textContent =
-      'Forecast accuracy improved 18%.';
-
-
-    if(reduce){
-
-      final();
-      return;
-
-    }
-
-
-    var i = 0;
-
-
-    (function next(){
-
-      if(my !== token){
-        return;
-      }
-
-
-      if(i >= R.length){
-
-        st.textContent = 'COMPLETE';
-        st.className = 'done';
-
-        sum.textContent =
-          '5 selected professional outcomes documented.';
-
-        return;
-
-      }
-
-
-      var r = R[i];
-
-      var lit =
-        Math.round(D[i].value / 5);
-
-      var bl =
-        r.querySelectorAll('.mt i');
-
-      var k = 0;
-
-
-      r.classList.add('on');
-
-
-      var iv =
-        setInterval(function(){
-
-          if(my !== token){
-
-            clearInterval(iv);
-            return;
-
-          }
-
-
-          if(k < lit){
-
-            bl[k].className = 'l';
-            k++;
-
-          }else{
-
-            clearInterval(iv);
-
-            r.classList.add('fin');
-
-            i++;
-
-            setTimeout(next,250);
-
-          }
-
-        },45);
-
-    })();
-
-  }
-
-
-  /* =====================================================
-     EXPAND OUTCOME DETAILS
-  ====================================================== */
-
-  rows.addEventListener('click',function(e){
-
-    var r =
-      e.target.closest('.row');
-
-    if(!r){
-      return;
-    }
-
-    r.setAttribute(
-      'aria-expanded',
-      r.getAttribute('aria-expanded') === 'true'
-        ? 'false'
-        : 'true'
-    );
-
-  });
-
-
-  /* =====================================================
-     RE-RUN OUTCOME DISPLAY
-  ====================================================== */
-
-  document
-    .getElementById('rerun')
-    .addEventListener('click',run);
-
-
-  /* =====================================================
-     START OUTCOME DISPLAY WHEN VISIBLE
-  ====================================================== */
-
-  var started = false;
-
-  var box =
-    document.querySelector('.log');
-
-
-  if('IntersectionObserver' in window){
-
-    new IntersectionObserver(
-      function(en,o){
-
-        if(
-          en[0].isIntersecting &&
-          !started
-        ){
-
-          started = true;
-
-          o.disconnect();
-
-          run();
-
-        }
-
-      },
-      {
-        threshold:.35
-      }
-    ).observe(box);
-
-  }else{
-
-    run();
-
-  }
-
-
-  /* =====================================================
-     INTERNAL PAGE NAVIGATION
-  ====================================================== */
-
-  document.addEventListener(
-    'click',
-    function(e){
-
-      var g =
-        e.target.closest('[data-go]');
-
-
-      if(g){
-
-        var el =
-          document.getElementById(
-            g.getAttribute('data-go')
-          );
-
-
-        if(el){
-
-          el.scrollIntoView({
-            behavior:
-              reduce ? 'auto' : 'smooth',
-            block:'start'
-          });
-
-        }
-
-        return;
-
-      }
-
-
-      /* ===============================================
-         COPY TO CLIPBOARD
-      =============================================== */
-
-      var b =
-        e.target.closest('.cp');
-
-
-      if(!b){
-        return;
-      }
-
-
-      var t =
-        b.getAttribute('data-copy');
-
-      var old =
-        b.textContent;
-
-
-      function done(){
-
-        b.textContent = 'Copied';
-
-        b.classList.add('ok');
-
-
-        setTimeout(function(){
-
-          b.textContent = old;
-
-          b.classList.remove('ok');
-
-        },1600);
-
-      }
-
-
-      function fb(){
-
-        var a =
-          document.createElement('textarea');
-
-        a.value = t;
-
-        a.style.cssText =
-          'position:fixed;opacity:0';
-
-        document.body.appendChild(a);
-
-        a.select();
-
-        try{
-          document.execCommand('copy');
-        }catch(_){}
-
-        a.remove();
-
-        done();
-
-      }
-
-
-      if(
-        navigator.clipboard &&
-        window.isSecureContext
-      ){
-
-        navigator.clipboard
-          .writeText(t)
-          .then(done,fb);
-
-      }else{
-
-        fb();
-
-      }
-
-    }
-
-  );
+(()=>{
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)],D=JSON.parse($('#data').textContent);
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* render sections from the JSON block */
+D.met.forEach(m=>{const c=el('div','card met rv',`<b class="g" data-n="${m.v}">0%</b><p>${esc(m.l)}</p><small class="mono">${esc(m.s)}</small>`);$('#met').append(c)});
+D.exp.forEach((j,i)=>$('#tl').append(el('article','card job rv',`<header><h3>${esc(j.role)} <em>· ${esc(j.co)}</em></h3><time class="mono">${j.when} · ${j.at}</time></header><ul>${j.pts.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>`)));
+D.pj.forEach(p=>$('#pj').append(el('article','card pj rv',`<div class="stk">${p.k.map(k=>`<span class="chip mono">${k}</span>`).join('')}</div><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p><div class="lk"><a href="${p.u}" rel="noopener" target="_blank">View on GitHub ↗</a><button class="cp" data-copy="${p.u}">Copy link</button></div>`)));
+Object.entries(D.sk).forEach(([k,v])=>$('#sk').append(el('div','sk',`<h3>${esc(k)}</h3><div>${v.map(s=>`<span>${esc(s)}</span>`).join('')}</div>`)));
+$('#sk').append(el('div','sk',`<h3>Education</h3><div style="display:block;color:#c8c5b8">${D.edu.map(e=>`<div style="margin:2px 0">${esc(e)}</div>`).join('')}</div>`));
+
+/* reveal + counters + nav highlight */
+const cnt=e=>{const n=+e.dataset.n;if(RM){e.textContent=n+'%';return}let s=null;const f=t=>{s??=t;const p=Math.min((t-s)/1200,1);e.textContent=Math.round(n*(1-Math.pow(1-p,3)))+'%';p<1&&requestAnimationFrame(f)};requestAnimationFrame(f)};
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');const n=$('[data-n]',x.target);n&&cnt(n);io.unobserve(x.target)}}),{threshold:.15});
+$$('.rv').forEach(e=>io.observe(e));
+const links=$$('nav a[href^="#"]');
+const so=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+x.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section').forEach(s=>so.observe(s));
+addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+
+/* copy buttons */
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const t=b.dataset.copy,o=b.textContent,ok=()=>{b.textContent='Copied!';b.classList.add('copied');setTimeout(()=>{b.textContent=o;b.classList.remove('copied')},1500)};
+(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(ok,()=>{const a=el('textarea');a.value=t;document.body.append(a);a.select();try{document.execCommand('copy')}catch(_){}a.remove();ok()})});
+
+/* pipeline: editable records judged in the same rule order as spark_pipeline.py */
+const IM={red:{n:'red.png',h:'H1'},green:{n:'green.png',h:'H2'},blue:{n:'blue.png',h:'H3'},redcopy:{n:'red_copy.png',h:'H1'},ghost:{n:'ghost.png',miss:1},corrupt:{n:'corrupt.png',e:'decode_error'},gif:{n:'photo.gif',e:'unsupported_format'},nested:{n:'sub/x.png',bad:1},yellow:{n:'yellow.jpg',h:'H4'},big:{n:'big.png',e:'oversized_image'},huge:{n:'huge.png',e:'too_many_pixels'},mal:{n:'(malformed line)',mal:1}};
+const LB={red:'red.png',green:'green.png',blue:'blue.png',redcopy:'red_copy.png (same bytes as red)',ghost:'ghost.png (file missing)',corrupt:'corrupt.png (not an image)',gif:'photo.gif (GIF)',nested:'sub/x.png (nested path)',yellow:'yellow.jpg',big:'big.png (over 20 MB)',huge:'huge.png (26M pixels)',mal:'(malformed JSON line)'};
+const S0=[['1','a red square','red'],['2','a green square','green'],['3','a blue square','blue'],['4','image file does not exist','ghost'],['5','same image as record 1','redcopy']];
+let S=S0.map(r=>({id:r[0],cap:r[1],im:r[2]}));
+const grp=(a,f)=>{const g={};a.forEach(i=>(g[f(i)]??=[]).push(i));return Object.values(g)};
+const srt=(a,f)=>a.sort((x,y)=>f(x)<f(y)?-1:f(x)>f(y)?1:0);
+function judge(){const res=S.map(r=>{const m=IM[r.im];if(m.mal)return'malformed_json';if(!r.id.trim()||!r.cap.trim())return'missing_required_metadata';if(m.bad)return'invalid_image_path';if(m.miss)return'missing_image';return m.e||null});
+const keep=[];grp(S.map((_,i)=>i).filter(i=>!res[i]),i=>S[i].id).forEach(a=>{srt(a,i=>IM[S[i].im].h+'\0'+IM[S[i].im].n+'\0'+S[i].cap);keep.push(a[0]);a.slice(1).forEach(i=>res[i]='duplicate_id')});
+grp(keep,i=>IM[S[i].im].h).forEach(a=>{srt(a,i=>S[i].id+'\0'+IM[S[i].im].n+'\0'+S[i].cap);a.slice(1).forEach(i=>res[i]='duplicate_image')});return res}
+const FR={missing_required_metadata:'Missing info',invalid_image_path:'Broken path',missing_image:'Missing file',decode_error:'Corrupt file',unsupported_format:'Wrong format',malformed_json:'Bad JSON',oversized_image:'Too large',too_many_pixels:'Too many pixels',duplicate_id:'Duplicate ID',duplicate_image:'Duplicate image'},fr=c=>c?FR[c]:'Accepted';
+const rc=$('#recs'),stop=r=>r?(r.startsWith('duplicate')?2:1):3;
+function build(){rc.innerHTML='';S.forEach((r,i)=>rc.append(el('div','rec mono',`<input aria-label="Record ${i+1} id" value="${esc(r.id)}" data-i="${i}" data-k="id"><input aria-label="Record ${i+1} caption" value="${esc(r.cap)}" data-i="${i}" data-k="cap"><select aria-label="Record ${i+1} image" data-i="${i}" data-k="im">${Object.keys(LB).map(k=>`<option value="${k}"${k===r.im?' selected':''}>${LB[k]}</option>`).join('')}</select><span class="tag"></span><span class="st"><i></i><i></i><i></i><i></i><button class="x" type="button" aria-label="Remove record ${i+1}" data-x="${i}">×</button></span>`)))}
+function paint(){const res=judge();$$('.rec',rc).forEach((row,i)=>{row.classList.remove('ok','no');row.classList.add(res[i]?'no':'ok');$('.tag',row).textContent=fr(res[i]);$('.tag',row).title=res[i]||'';$$('i',row).forEach((x,k)=>x.className=k<=stop(res[i])?'on':'')});
+const acc=res.filter(x=>!x).length,rej={};res.forEach(x=>x&&(rej[x]=(rej[x]||0)+1));
+$('#rep').textContent=`input_records: ${S.length}\naccepted: ${acc}\nrejected: ${S.length-acc}`+Object.entries(rej).map(([k,v])=>`\n  ${k}: ${v}`).join('')+`\nparquet_readback: ${acc}`}
+rc.addEventListener('input',e=>{const t=e.target;if(!t.dataset.k)return;S[+t.dataset.i][t.dataset.k]=t.value;paint();$('#stt').textContent='LIVE RESULT'});
+rc.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b||S.length<2)return;S.splice(+b.dataset.x,1);build();paint();$('#stt').textContent='LIVE RESULT'});
+let busy=false;const wait=ms=>new Promise(r=>setTimeout(r,RM?0:ms));
+async function run(){if(busy)return;busy=true;const res=judge(),rows=$$('.rec',rc),st=$('#stt'),sp=res.map(stop),nm=['read','validate','dedupe','write'];st.textContent='RUNNING';
+rows.forEach((r,i)=>{r.classList.remove('ok','no');$('.tag',r).textContent=fr(res[i]);$$('i',r).forEach(x=>x.className='')});
+for(let s=0;s<4;s++){$('#rep').textContent='> '+nm[s]+' …';for(let i=0;i<rows.length;i++){if(s>sp[i])continue;$$('i',rows[i])[s].className='on';if(s===sp[i])rows[i].classList.add(res[i]?'no':'ok');await wait(100)}await wait(220)}
+paint();st.textContent='COMPLETE';busy=false}
+$('#run').onclick=run;$('#rst').onclick=()=>{S=S0.map(r=>({id:r[0],cap:r[1],im:r[2]}));build();paint();$('#stt').textContent='READY'};
+const PRE={clean:[['1','a red square','red'],['2','a green square','green'],['3','a blue square','blue']],errors:[['1','','red'],['2','missing file test','ghost'],['3','corrupt file test','corrupt'],['4','path outside the folder','nested']],dupes:[['1','red square A','red'],['2','red square B','redcopy'],['2','green square','green'],['3','another green','green']],order:[['1','','ghost'],['2','caption ok','nested'],['3','caption ok','corrupt'],['4','caption ok','mal']],all:[['1','a red square','red'],['2','caption','mal'],['3','','green'],['4','x','nested'],['5','x','ghost'],['6','x','big'],['7','x','huge'],['8','x','gif'],['9','x','corrupt'],['1','repeats id 1','blue'],['11','same bytes as red','redcopy']]};
+$$('[data-pre]').forEach(b=>b.onclick=()=>{S=PRE[b.dataset.pre].map(r=>({id:r[0],cap:r[1],im:r[2]}));build();paint();$('#stt').textContent='SCENARIO: '+b.dataset.pre.toUpperCase()});
+$('#add').onclick=()=>{if(S.length>=12)return;const n=Math.max(0,...S.map(r=>+r.id||0))+1;S.push({id:String(n),cap:'new record',im:'yellow'});build();paint();$('#stt').textContent='LIVE RESULT'};
+const sig=()=>{const r=judge();return S.map((x,i)=>r[i]?'':x.id+'|'+x.im).filter(Boolean).sort().join()};
+$('#shf').onclick=()=>{const a=sig();for(let i=S.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[S[i],S[j]]=[S[j],S[i]]}build();paint();const same=a===sig();$('#stt').textContent='SHUFFLED';$('#rep').textContent+=`\nrow order changed · accepted set ${same?'unchanged ✓':'DIFFERS'}`};
+$('#cpj').onclick=function(){const r=judge(),rej={};r.forEach(x=>x&&(rej[x]=(rej[x]||0)+1));this.dataset.copy=JSON.stringify({demo:true,input_records:S.length,accepted_records:r.filter(x=>!x).length,rejected_records:r.filter(Boolean).length,rejections_by_reason:rej},null,2)};
+build();paint();
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();run()}},{threshold:.5}).observe($('#recs'));
+
+/* terminal */
+const out=$('#out'),inp=$('#cmd'),hist=[];let hi=0;
+const say=(t,c)=>{const d=el('div',c||'');d.textContent=t;out.append(d);out.scrollTop=out.scrollHeight};
+const C={
+help:()=>'commands: about · experience · projects · skills · pipeline · education · contact · hire · clear',
+about:()=>'Data Engineer and GTM analytics professional, 3+ years across data engineering, revenue operations and workflow automation.\nI build dbt/Snowflake models, Python/SQL pipelines, CRM integrations and forecasting models that sales and leadership teams actually use.',
+experience:()=>D.exp.map(j=>`${j.when.padEnd(22)} ${j.co} — ${j.role}`).join('\n'),
+projects:()=>D.pj.map(p=>`• ${p.t}\n  ${p.u}`).join('\n'),
+skills:()=>Object.entries(D.sk).map(([k,v])=>`${k}: ${v.join(', ')}`).join('\n'),
+pipeline:()=>{location.hash='#demo';return 'replaying the pipeline demo … scroll up if it did not move.'},
+education:()=>D.edu.join('\n'),
+contact:()=>'email    rishisingh1999@gmail.com\nlinkedin linkedin.com/in/hrushikesh-singh-revops\ngithub   github.com/Rishisingh1999',
+hire:()=>'Great idea. Email rishisingh1999@gmail.com and let’s talk about the role.',
+whoami:()=>'a data engineer who likes numbers that survive scrutiny.',
+sudo:()=>'nice try.'};
+say('Welcome. Type "help" to see what I can answer.','d');
+['help','about','experience','projects','skills','contact'].forEach(c=>{const b=el('button','mono',c);b.onclick=()=>exec(c);$('#hint').append(b)});
+function exec(v){v=v.trim();if(!v)return;hist.push(v);hi=hist.length;say('$ '+v,'c');const k=v.split(/\s+/)[0].toLowerCase();
+if(k==='clear'){out.innerHTML='';return}say(C[k]?C[k]():`command not found: ${k}. try "help".`)}
+$('#f').onsubmit=e=>{e.preventDefault();exec(inp.value);inp.value=''};
+inp.onkeydown=e=>{if(e.key==='ArrowUp'&&hi>0){inp.value=hist[--hi];e.preventDefault()}else if(e.key==='ArrowDown'){inp.value=hist[++hi]||'';hi=Math.min(hi,hist.length)}};
 
 })();
 </script>
-
 </body>
 </html>
